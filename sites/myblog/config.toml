@@ -58,7 +58,7 @@ publishDir = "../../docs"
     pre = ""
     post = ""
     name = "关于"
-    url = "/about.md"
+    url = "/about"
     title = ""
   [[menu.main]]
     weight = 5
