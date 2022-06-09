@@ -1,0 +1,11 @@
+
+# 解决github page 编译错误
+# Error: fatal: No url found for submodule path 'sites/test/themes/LoveIt' in .gitmodules
+# Error: The process '/usr/bin/git' failed with exit code 128
+
+[submodule "sites/myblog/themes/LoveIt"]
+ 	path = sites/myblog/themes/LoveIt
+ 	url = https://github.com/dillonzq/LoveIt.git
+[submodule "sites/test/themes/LoveIt"]
+	path = sites/test/themes/LoveIt
+	url = https://github.com/dillonzq/LoveIt.git
