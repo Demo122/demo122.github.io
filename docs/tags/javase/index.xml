@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>javase - 标签 - 明里的博客</title>
+        <link>https://demo122.github.io/tags/javase/</link>
+        <description>javase - 标签 - 明里的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 19 Mar 2022 13:52:20 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/tags/javase/" rel="self" type="application/rss+xml" /><item>
+    <title>javaSE</title>
+    <link>https://demo122.github.io/javase/</link>
+    <pubDate>Sat, 19 Mar 2022 13:52:20 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/javase/</guid>
+    <description><![CDATA[3.23 单元测试、反射、注解、工厂模式、装饰模式 单元测试 单元测试就是针对最小的功能单元编写测试代码，Java程序最小的功能单元是方法，因此，单元测]]></description>
+</item>
+</channel>
+</rss>

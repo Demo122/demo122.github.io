@@ -1,0 +1,2848 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>javaSE - 明里的博客</title><meta name="Description" content="明里的博客"><meta property="og:title" content="javaSE" />
+<meta property="og:description" content="3.23 单元测试、反射、注解、工厂模式、装饰模式 单元测试 单元测试就是针对最小的功能单元编写测试代码，Java程序最小的功能单元是方法，因此，单元测" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://demo122.github.io/javase/" /><meta property="og:image" content="https://demo122.github.io/favicon.ico"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-19T13:52:20+08:00" />
+<meta property="article:modified_time" content="2022-06-09T13:52:20+08:00" /><meta property="og:site_name" content="明里的博客" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://demo122.github.io/favicon.ico"/>
+
+<meta name="twitter:title" content="javaSE"/>
+<meta name="twitter:description" content="3.23 单元测试、反射、注解、工厂模式、装饰模式 单元测试 单元测试就是针对最小的功能单元编写测试代码，Java程序最小的功能单元是方法，因此，单元测"/>
+<meta name="application-name" content="我的网站">
+<meta name="apple-mobile-web-app-title" content="我的网站"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://demo122.github.io/javase/" /><link rel="prev" href="https://demo122.github.io/git%E5%85%A5%E9%97%A8/" /><link rel="next" href="https://demo122.github.io/docker%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "javaSE",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/demo122.github.io\/javase\/"
+        },"genre": "posts","keywords": "javase","wordcount":  14418 ,
+        "url": "https:\/\/demo122.github.io\/javase\/","datePublished": "2022-03-19T13:52:20+08:00","dateModified": "2022-06-09T13:52:20+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "明里"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="明里的博客">明里的博客</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about.md"> 关于 </a><a class="menu-item" href="https://github.com/Demo122/demo122.github.io.git" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i> Github </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="明里的博客">明里的博客</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about.md" title="">关于</a><a class="menu-item" href="https://github.com/Demo122/demo122.github.io.git" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>Github</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">javaSE</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://demo122.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>明里</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/java%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>java基础</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-03-19">2022-03-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 14418 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 29 分钟&nbsp;<span id="/javase/" class="leancloud_visitors" data-flag-title="javaSE">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#323-单元测试反射注解工厂模式装饰模式">3.23 单元测试、反射、注解、工厂模式、装饰模式</a></li>
+    <li><a href="#318-多线程">3.18 多线程</a></li>
+    <li><a href="#318-缓冲流序列化propertiescommons-io">3.18 缓冲流、序列化、Properties、commons-io</a></li>
+    <li><a href="#317-不可变集合stream异常体系日志框架fileio流">3.17 不可变集合、Stream、异常体系、日志框架、File、IO流</a></li>
+    <li><a href="#316-map集合">3.16 Map集合</a></li>
+    <li><a href="#315-数据结构list系列集合泛型set系列集合">3.15 数据结构、List系列集合、泛型、Set系列集合</a></li>
+    <li><a href="#314-arrays二分查找lambda表达式">3.14 Arrays、二分查找、lambda表达式</a></li>
+    <li><a href="#313-内部类">3.13 内部类</a></li>
+    <li><a href="#311-多态">3.11 多态</a></li>
+    <li><a href="#310-final关键字常量枚举抽象类和抽象方法接口">3.10 final关键字、常量、枚举、抽象类和抽象方法、接口</a></li>
+    <li><a href="#39-static关键字使用代码块单例模式继承">3.9 static关键字使用、代码块、单例模式、继承</a></li>
+    <li><a href="#38-stringarraylist集合">3.8 String、ArrayList集合</a></li>
+    <li><a href="#37">3.7</a></li>
+    <li><a href="#36">3.6</a></li>
+    <li><a href="#35-方法重载面向对象">3.5 方法重载、面向对象</a></li>
+    <li><a href="#34-三种控制结构顺序分支循环-冒泡排序">3.4 三种控制结构，顺序、分支、循环 冒泡排序</a></li>
+    <li><a href="#33-基本数据类型四大类8种自动类型转换">3.3 基本数据类型：四大类8种、自动类型转换</a></li>
+    <li><a href="#32-git入门">3.2 git入门</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="323-单元测试反射注解工厂模式装饰模式">3.23 单元测试、反射、注解、工厂模式、装饰模式</h2>
+<p><strong>单元测试</strong>
+单元测试就是针对最小的功能单元编写测试代码，Java程序最小的功能单元是方法，因此，单元测试就是针对Java方法的测试，进而检查方法的正确性。</p>
+<ul>
+<li>Junit单元测试框架
+<ul>
+<li>JUnit是使用Java语言实现的单元测试框架，它是开源的，Java开发者都应当学习并使用JUnit编写单元测试</li>
+<li>此外，几乎所有的IDE工具都集成了JUnit，这样我们就可以直接在IDE中编写并运行JUnit测试，JUnit目前最新版本是5。</li>
+</ul>
+</li>
+<li>JUnit优点
+<ul>
+<li>JUnit可以灵活的选择执行哪些测试方法，可以一键执行全部测试方法。</li>
+<li>Junit可以生成全部方法的测试报告。</li>
+<li>单元测试中的某个方法测试失败了，不会影响其他测试方法的测试。</li>
+</ul>
+</li>
+<li>单元测试快速入门
+<ol>
+<li>将JUnit的jar包导入到项目中</li>
+<li>编写测试方法：该测试方法必须是公共的无参数无返回值的非静态方法。</li>
+<li>在测试方法上使用 <strong>@Test</strong> 注解：标注该方法是一个测试方法</li>
+<li>在测试方法中完成被测试方法的预期正确性测试。 <code>Assert.assertEquals();</code></li>
+<li>选中测试方法，选择“JUnit运行” ，如果测试良好则是绿色；如果测试失败，则是红色</li>
+</ol>
+</li>
+<li>Junit常用注解(Junit 4.xxxx版本)
+<ul>
+<li>@Test         : 测试方法。</li>
+<li>@Before       : 用来修饰 <em><strong>实例方法</strong></em>，该方法会在每一个测试方法执行之前执行一次。 junit5为@BeforeEach</li>
+<li>@After        : 用来修饰 <em><strong>实例方法</strong></em>，该方法会在每一个测试方法执行之后执行一次。 junit5为@AftereEach</li>
+<li>@BeforeClass  : 用来 <strong>静态修饰方法</strong>，该方法会在所有测试方法之前只执行一次。      junit5为@BeforeAll</li>
+<li>@AfterClass   : 用来 <strong>静态修饰方法</strong>，该方法会在所有测试方法之后只执行一次。      junit5为@AfterAll</li>
+<li>开始执行的方法:初始化资源</li>
+<li>执行完之后的方法:释放资源</li>
+</ul>
+</li>
+</ul>
+<p><strong>反射</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E6%A6%82%E8%BF%B0.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E6%A6%82%E8%BF%B0.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E6%A6%82%E8%BF%B0.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E6%A6%82%E8%BF%B0.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E6%A6%82%E8%BF%B0.png"
+        title="反射概述" width="793" height="501" />
+<strong>获取class对象</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//1. Class.forName()
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">&#34;com.day7.People&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//2. 类名.class
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Class</span> <span class="n">c1</span><span class="o">=</span> <span class="n">Studnet</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c1</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//3. getClass()
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">Studnet</span> <span class="n">s</span><span class="o">=</span><span class="k">new</span> <span class="n">Studnet</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">Class</span> <span class="n">c2</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="na">getClass</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c2</span><span class="o">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E9%82%A3%E6%9E%84%E9%80%A0%E5%99%A8.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E9%82%A3%E6%9E%84%E9%80%A0%E5%99%A8.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E9%82%A3%E6%9E%84%E9%80%A0%E5%99%A8.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E9%82%A3%E6%9E%84%E9%80%A0%E5%99%A8.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E9%82%A3%E6%9E%84%E9%80%A0%E5%99%A8.png"
+        title="反射拿构造器" width="1030" height="449" /></p>
+</li>
+<li>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E6%9E%84%E9%80%A0%E5%AF%B9%E8%B1%A1.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E6%9E%84%E9%80%A0%E5%AF%B9%E8%B1%A1.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E6%9E%84%E9%80%A0%E5%AF%B9%E8%B1%A1.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E6%9E%84%E9%80%A0%E5%AF%B9%E8%B1%A1.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E6%9E%84%E9%80%A0%E5%AF%B9%E8%B1%A1.png"
+        title="反射构造对象" width="996" height="398" /></p>
+</li>
+<li>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E8%8E%B7%E5%8F%96%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E8%8E%B7%E5%8F%96%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E8%8E%B7%E5%8F%96%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E8%8E%B7%E5%8F%96%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E8%8E%B7%E5%8F%96%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F.png"
+        title="反射获取成员变量" width="882" height="383" /></p>
+</li>
+<li>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A8.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A8.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A8.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A8.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A8.png"
+        title="使用反射技术获取成员变量对象并使用" width="961" height="386" /></p>
+</li>
+<li>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A8.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A8.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A8.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A8.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A8.png"
+        title="使用反射技术获取方法对象并使用" width="1016" height="419" /></p>
+</li>
+<li>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A82.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A82.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A82.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A82.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%B0%84%E6%8A%80%E6%9C%AF%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%E5%AF%B9%E8%B1%A1%E5%B9%B6%E4%BD%BF%E7%94%A82.png"
+        title="使用反射技术获取方法对象并使用2" width="1009" height="406" /></p>
+</li>
+<li>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E7%BC%96%E8%AF%91%E6%88%90Class%E6%96%87%E4%BB%B6%E8%BF%9B%E5%85%A5%E8%BF%90%E8%A1%8C%E9%98%B6%E6%AE%B5%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E6%B3%9B%E5%9E%8B%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%93%A6%E9%99%A4%E3%80%82.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E7%BC%96%E8%AF%91%E6%88%90Class%E6%96%87%E4%BB%B6%E8%BF%9B%E5%85%A5%E8%BF%90%E8%A1%8C%E9%98%B6%E6%AE%B5%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E6%B3%9B%E5%9E%8B%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%93%A6%E9%99%A4%E3%80%82.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E7%BC%96%E8%AF%91%E6%88%90Class%E6%96%87%E4%BB%B6%E8%BF%9B%E5%85%A5%E8%BF%90%E8%A1%8C%E9%98%B6%E6%AE%B5%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E6%B3%9B%E5%9E%8B%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%93%A6%E9%99%A4%E3%80%82.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E7%BC%96%E8%AF%91%E6%88%90Class%E6%96%87%E4%BB%B6%E8%BF%9B%E5%85%A5%E8%BF%90%E8%A1%8C%E9%98%B6%E6%AE%B5%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E6%B3%9B%E5%9E%8B%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%93%A6%E9%99%A4%E3%80%82.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E7%BC%96%E8%AF%91%E6%88%90Class%E6%96%87%E4%BB%B6%E8%BF%9B%E5%85%A5%E8%BF%90%E8%A1%8C%E9%98%B6%E6%AE%B5%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E6%B3%9B%E5%9E%8B%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%93%A6%E9%99%A4%E3%80%82.png"
+        title="编译成Class文件进入运行阶段的时候，泛型会自动擦除" width="601" height="201" /></p>
+</li>
+<li>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%9C%E7%94%A8.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%9C%E7%94%A8.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%9C%E7%94%A8.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%9C%E7%94%A8.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%9C%E7%94%A8.png"
+        title="反射的作用" width="578" height="371" /></p>
+</li>
+</ul>
+<p><strong>注解</strong></p>
+<ul>
+<li>
+<p>注解概述、作用</p>
+<ul>
+<li>Java 注解（Annotation）又称 Java 标注，是 JDK5.0 引入的一种注释机制</li>
+<li>Java 语言中的类、构造器、方法、成员变量、参数等都可以被注解进行标注。</li>
+</ul>
+</li>
+<li>
+<p>注解的作用是什么呢</p>
+<ul>
+<li>对Java中类、方法、成员变量做标记，然后进行特殊处理，至于到底做何种处理由业务需求来决定。</li>
+<li>例如：JUnit框架中，标记了注解@Test的方法就可以被当成测试方法执行，而没有标记的就不能当成测试方法执行。</li>
+</ul>
+</li>
+<li>
+<p><strong>自定义注解 &mdash; 格式</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">public @interface 注解名称 {
+</span></span><span class="line"><span class="cl">    public 属性类型 属性名() default 默认值 ;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>特殊属性</strong></p>
+<ul>
+<li>value属性，如果只有一个value属性的情况下，使用value属性的时候可以省略value名称不写!!</li>
+<li>但是如果有多个属性,  且多个属性没有默认值，那么value名称是不能省略的。</li>
+</ul>
+</li>
+<li>
+<p>元注解：就是注解 注解的注解</p>
+<ul>
+<li>元注解有两个：
+<ul>
+<li><strong>@Target: 约束自定义注解只能在哪些地方使用</strong></li>
+<li><strong>@Retention：申明注解的生命周期</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%85%83%E6%B3%A8%E8%A7%A3.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%85%83%E6%B3%A8%E8%A7%A3.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%85%83%E6%B3%A8%E8%A7%A3.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%85%83%E6%B3%A8%E8%A7%A3.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E5%85%83%E6%B3%A8%E8%A7%A3.png"
+        title="元注解" width="735" height="466" /></li>
+</ul>
+</li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E6%B3%A8%E8%A7%A3%E7%9A%84%E8%A7%A3%E6%9E%90.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E6%B3%A8%E8%A7%A3%E7%9A%84%E8%A7%A3%E6%9E%90.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E6%B3%A8%E8%A7%A3%E7%9A%84%E8%A7%A3%E6%9E%90.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E6%B3%A8%E8%A7%A3%E7%9A%84%E8%A7%A3%E6%9E%90.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E6%B3%A8%E8%A7%A3%E7%9A%84%E8%A7%A3%E6%9E%90.png"
+        title="注解的解析" width="1053" height="484" /></li>
+<li>解析注解的技巧
+<ul>
+<li>注解在哪个成分上，我们就先拿哪个成分对象。</li>
+<li>比如注解作用成员方法，则要获得该成员方法对应的Method对象，再来拿上面的注解</li>
+<li>比如注解作用在类上，则要该类的Class对象，再来拿上面的注解</li>
+<li>比如注解作用在成员变量上，则要获得该成员变量对应的Field对象，再来拿上面的注解</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>工厂模式</strong></p>
+<ul>
+<li>什么是工厂模式
+<ul>
+<li>之前我们创建类对象时, 都是使用new 对象的形式创建,在很多业务场景下也提供了不直接new的方式 。</li>
+<li>工厂模式（Factory Pattern）是 Java 中最常用的设计模式之一，  这种类型的设计模式属于创建型模式，它提供了一种获取对象的方式。</li>
+</ul>
+</li>
+<li>工厂设计模式的作用：
+<ul>
+<li>工厂的方法可以封装对象的创建细节，比如：为该对象进行加工和数据注入。</li>
+<li>可以实现类与类之间的解耦操作（核心思想）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>装饰模式</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.23/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F.png"
+        title="装饰模式" width="801" height="511" /></p>
+<p>​</p>
+<hr>
+<h2 id="318-多线程">3.18 多线程</h2>
+<p><strong>多线程</strong></p>
+<ul>
+<li>多线程是指从软硬件上实现多条执行流程的技术。</li>
+<li><strong>多线程的创建</strong>
+<ul>
+<li>
+<p>方式一：继承Thread类</p>
+<ul>
+<li>Thread类,Java是通过java.lang.Thread 类来代表线程的。</li>
+<li>多线程的实现方案一：继承Thread类
+<ol>
+<li>定义一个子类MyThread继承线程类java.lang.Thread，重写run()方法</li>
+<li>创建MyThread类的对象</li>
+<li>调用线程对象的start()方法启动线程（启动后还是执行run方法的）</li>
+</ol>
+</li>
+<li>优点：编码简单</li>
+<li>缺点：线程类已经继承Thread，无法继承其他类，不利于扩展</li>
+<li><em>问答</em>
+<ol>
+<li>为什么不直接调用了run方法，而是调用start启动线程。
+<ul>
+<li>直接调用run方法会当成普通方法执行，此时相当于还是单线程执行。</li>
+<li>只有调用start方法才是启动一个新的线程执行。</li>
+</ul>
+</li>
+<li>把主线程任务放在子线程之前了。
+<ul>
+<li>这样主线程一直是先跑完的，相当于是一个单线程的效果了</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>方式二：实现Runnable接口</p>
+<ul>
+<li>多线程的实现方案二：实现Runnable接口
+<ol>
+<li>定义一个线程任务类MyRunnable实现Runnable接口，重写run()方法</li>
+<li>创建MyRunnable任务对象</li>
+<li>把MyRunnable任务对象交给Thread处理。</li>
+<li>调用线程对象的start()方法启动线程
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/runnable.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/runnable.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/runnable.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/runnable.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/runnable.png"
+        title="Runnable构造器" width="1294" height="309" /></li>
+</ol>
+<ul>
+<li>优点：线程任务类只是实现接口，可以继续继承类和实现接口，扩展性强。</li>
+<li>缺点：编程多一层对象包装，如果线程有执行结果是不可以直接返回的。</li>
+</ul>
+</li>
+<li>实现Runnable接口(匿名内部类形式)
+<ol>
+<li>可以创建Runnable的匿名内部类对象。</li>
+<li>交给Thread处理。</li>
+<li>调用线程对象的start()启动线程。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>前两种方式的问题
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E9%97%AE%E9%A2%98.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E9%97%AE%E9%A2%98.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E9%97%AE%E9%A2%98.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E9%97%AE%E9%A2%98.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E9%97%AE%E9%A2%98.png"
+        title="前两种方式的问题" width="792" height="545" /></p>
+</li>
+<li>
+<p>方式三：JDK 5.0新增：利用Callable、FutureTask接口实现</p>
+<ol>
+<li>得到任务对象
+<ul>
+<li>定义类实现Callable接口，重写call方法，封装要做的事情。</li>
+<li>用FutureTask把Callable对象封装成线程任务对象</li>
+</ul>
+</li>
+<li>把线程任务对象交给Thread处理</li>
+<li>调用Thread的start方法启动线程，执行任务</li>
+<li>线程执行完毕后、通过FutureTask的get方法去获取任务执行的结果。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/Callable.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/Callable.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/Callable.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/Callable.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/Callable.png"
+        title="Callable" width="1338" height="613" /></li>
+</ol>
+</li>
+<li>
+<p>三种方式比较
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83.png"
+        title="三种方式比较" width="913" height="450" /></p>
+</li>
+<li>
+<p>线程安全</p>
+<ul>
+<li>什么是线程安全
+<ul>
+<li><strong>多个线程同时操作同一个共享资源的时候可能会出现业务安全问题，称为线程安全问题</strong></li>
+</ul>
+</li>
+<li>线程安全问题出现的原因？
+<ul>
+<li>存在多线程并发</li>
+<li>同时访问共享资源</li>
+<li>存在修改共享资源</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>线程同步</p>
+<ul>
+<li>让多个线程实现先后依次访问共享资源，这样就解决了安全问题</li>
+<li>线程同步的核心思想
+<strong>加锁，把共享资源进行上锁，每次只能一个线程进入访问完毕以后解锁，然后其他线程才能进来。</strong></li>
+<li><strong>方式一：同步代码块</strong>
+<ul>
+<li><strong>作用：把出现线程安全问题的核心代码给上锁。</strong></li>
+<li><strong>原理：每次只能一个线程进入，执行完毕后自动解锁，其他线程才可以进来执行。</strong></li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">      操作共享资源的代码(核心代码)
+</span></span><span class="line"><span class="cl">  } ```
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>锁对象要求, 理论上：锁对象只要对于当前同时执行的线程来说是同一个对象即可。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E9%94%81%E5%AF%B9%E8%B1%A1.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E9%94%81%E5%AF%B9%E8%B1%A1.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E9%94%81%E5%AF%B9%E8%B1%A1.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E9%94%81%E5%AF%B9%E8%B1%A1.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E9%94%81%E5%AF%B9%E8%B1%A1.png"
+        title="锁对象" width="813" height="506" /></li>
+</ul>
+</li>
+<li><strong>方式二：同步方法</strong>
+<ul>
+<li><strong>作用：把出现线程安全问题的核心方法给上锁。</strong></li>
+<li><strong>原理：每次只能一个线程进入，执行完毕以后自动解锁，其他线程才可以进来执行。</strong></li>
+<li>格式 
+<code>修饰符 synchronized 返回值类型 方法名称(形参列表) { 操作共享资源的代码 } </code></li>
+<li>同步方法底层原理
+<ul>
+<li>同步方法其实底层也是有隐式锁对象的，只是锁的范围是整个方法代码。</li>
+<li>如果方法是实例方法：同步方法默认用this作为的锁对象。但是代码要高度面向对象</li>
+<li>如果方法是静态方法：同步方法默认用类名.class作为的锁对象。</li>
+</ul>
+</li>
+<li>同步代码块锁的范围更小，同步方法锁的范围更大。</li>
+</ul>
+</li>
+<li><strong>方式三：Lock锁</strong>
+<ul>
+<li>为了更清晰的表达如何加锁和释放锁，JDK5以后提供了一个新的锁对象Lock，更加灵活、方便。</li>
+<li>Lock实现提供比使用synchronized方法和语句可以获得更广泛的锁定操作。</li>
+<li>Lock是接口不能直接实例化，这里采用它的实现类ReentrantLock来构建Lock锁对象。</li>
+<li>public ReentrantLock(),获得Lock锁的实现类对象</li>
+<li>Lock的API,lock()获得锁，unlock()释放锁</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>线程通信
+所谓线程通信就是线程间相互发送数据，线程间共享一个资源即可实现线程通信。
+通过共享一个数据的方式实现。
+根据共享数据的情况决定自己该怎么做，以及通知其他线程怎么做。</p>
+<ul>
+<li>线程通信实际应用场景
+<ul>
+<li>生产者与消费者模型：生产者线程负责生产数据，消费者线程负责消费生产者产生的数据</li>
+<li>要求：生产者线程生产完数据后唤醒消费者，然后等待自己，消费者消费完该数据后唤醒生产者，然后等待自己。</li>
+</ul>
+</li>
+<li>线程通信的前提：线程通信通常是在多个线程操作同一个共享资源的时候需要进行通信，且要保证线程安全。</li>
+<li>Object类的等待和唤醒方法：
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1.png"
+        title="线程通信" width="866" height="313" /></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>线程池[重点]</strong></p>
+<ul>
+<li>线程池就是一个可以复用线程的技术。如果用户每发起一个请求，后台就创建一个新线程来处理，下次新任务来了又要创建新线程，而创建新线程的开销是很大的，这样会严重影响系统的性能。</li>
+<li>JDK 5.0起提供了代表线程池的接口：ExecutorService</li>
+<li>如何得到线程池对象
+<ul>
+<li><strong>方式一：使用ExecutorService的实现类ThreadPoolExecutor自创建一个线程池对象</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E6%B1%A0.jpg"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E6%B1%A0.jpg, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E6%B1%A0.jpg 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E6%B1%A0.jpg 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E6%B1%A0.jpg"
+        title="线程池" width="956" height="494" /></li>
+<li><strong>线程池常见面试题</strong>
+<ol>
+<li><strong>临时线程什么时候创建啊？</strong>
+<strong>新任务提交时发现核心线程都在忙，任务队列也满了，并且还可以创建临时线程，此时才会创建临时线程。</strong></li>
+<li><strong>什么时候会开始拒绝任务？</strong>
+<strong>核心线程和临时线程都在忙，任务队列也满了，新的任务过来的时候才会开始任务拒绝。</strong></li>
+</ol>
+</li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%A4%BA%E4%BE%8B.jpg"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%A4%BA%E4%BE%8B.jpg, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%A4%BA%E4%BE%8B.jpg 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%A4%BA%E4%BE%8B.jpg 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%A4%BA%E4%BE%8B.jpg"
+        title="线程池示例" width="921" height="464" /></li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E6%96%B0%E4%BB%BB%E5%8A%A1%E6%8B%92%E7%BB%9D%E7%AD%96%E7%95%A5.jpg"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E6%96%B0%E4%BB%BB%E5%8A%A1%E6%8B%92%E7%BB%9D%E7%AD%96%E7%95%A5.jpg, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E6%96%B0%E4%BB%BB%E5%8A%A1%E6%8B%92%E7%BB%9D%E7%AD%96%E7%95%A5.jpg 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E6%96%B0%E4%BB%BB%E5%8A%A1%E6%8B%92%E7%BB%9D%E7%AD%96%E7%95%A5.jpg 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/%E6%96%B0%E4%BB%BB%E5%8A%A1%E6%8B%92%E7%BB%9D%E7%AD%96%E7%95%A5.jpg"
+        title="新任务拒绝策略" width="1011" height="377" /></li>
+<li>线程池如何处理Callable任务，并得到任务执行完后返回的结果。
+<ul>
+<li>使用ExecutorService的方法：</li>
+<li>Future<T> submit(Callable<T> command)</li>
+</ul>
+</li>
+<li>方式二：使用Executors（线程池的工具类）调用方法返回不同特点的线程池对象（不推荐）
+public static ExecutorService newFixedThreadPool​(int nThreads)
+创建固定线程数量的线程池，如果某个线程因为执行异常而结束，那么线程池会补充一个新线程替代它。</li>
+</ul>
+</li>
+</ul>
+<p><strong>定时器</strong></p>
+<ul>
+<li>定时器是一种控制任务延时调用，或者周期调用的技术。</li>
+<li>作用：闹钟、定时邮件发送。</li>
+<li>定时器的实现方式
+<ul>
+<li>方式一：Timer
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/timer%E5%AE%9A%E6%97%B6%E5%99%A8.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/timer%E5%AE%9A%E6%97%B6%E5%99%A8.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/timer%E5%AE%9A%E6%97%B6%E5%99%A8.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/timer%E5%AE%9A%E6%97%B6%E5%99%A8.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/timer%E5%AE%9A%E6%97%B6%E5%99%A8.png"
+        title="timer定时器" width="1011" height="411" /></li>
+<li>方式二： <strong>ScheduledExecutorService</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/ScheduledExecutorService%E5%AE%9A%E6%97%B6%E5%99%A8.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/ScheduledExecutorService%E5%AE%9A%E6%97%B6%E5%99%A8.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/ScheduledExecutorService%E5%AE%9A%E6%97%B6%E5%99%A8.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/ScheduledExecutorService%E5%AE%9A%E6%97%B6%E5%99%A8.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/ScheduledExecutorService%E5%AE%9A%E6%97%B6%E5%99%A8.png"
+        title="ScheduledExecutorService定时器" width="1007" height="463" /></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="318-缓冲流序列化propertiescommons-io">3.18 缓冲流、序列化、Properties、commons-io</h2>
+<p><strong>缓冲流</strong></p>
+<ul>
+<li>缓冲流也称为高效流、或者高级流。之前学习的字节流可以称为原始流</li>
+<li>作用：缓冲流自带缓冲区、可以提高原始字节流、字符流读写数据的性能</li>
+<li><strong>建议使用字节缓冲输入流、字节缓冲输出流，结合字节数组的方式，目前来看是性能最优的组合</strong></li>
+</ul>
+<p><strong>对象序列化</strong></p>
+<ul>
+<li>作用：以内存为基准，把内存中的对象存储到磁盘文件中去，称为对象序列化</li>
+<li>使用到的流是对象字节输出流：ObjectOutputStream</li>
+<li><strong>对象必须实现序列化接口Serializable</strong>
+<strong>对象反序列化</strong></li>
+<li>使用到的流是对象字节输入流：ObjectInputStream</li>
+<li>作用：以内存为基准，把存储到磁盘文件中去的对象数据恢复成内存中的对象，称为对象反序列化。</li>
+</ul>
+<p><strong>打印流</strong></p>
+<ul>
+<li>打印流一般是指：PrintStream，PrintWriter两个类。</li>
+<li>打印功能2者是一样的使用方式</li>
+<li>PrintStream继承自字节输出流OutputStream，支持写字节</li>
+<li>PrintWrite继承自字符输出流Writer，支持写字符</li>
+<li>两者在打印功能上都是使用方便，性能高效（核心优势）</li>
+</ul>
+<p><strong>Properties</strong></p>
+<ul>
+<li>Properties属性集对象
+<ul>
+<li>其实就是一个Map集合，但是我们一般不会当集合使用，因为HashMap更好用。</li>
+</ul>
+</li>
+<li>Properties核心作用：
+<ul>
+<li>Properties代表的是一个属性文件，可以把自己对象中的键值对信息存入到一个属性文件中去。</li>
+<li>属性文件：后缀是.properties结尾的文件,里面的内容都是 key=value，后续做系统配置信息的。</li>
+</ul>
+</li>
+<li>properties的API
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/properties.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/properties.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/properties.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/properties.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.18/properties.png"
+        title="properties——api" width="1357" height="671" /></li>
+</ul>
+<p><strong>commons-io</strong></p>
+<ul>
+<li>commons-io是apache开源基金组织提供的一组有关IO操作的类库，可以提高IO功能开发的效率。</li>
+<li>commons-io工具包提供了很多有关io操作的类。有两个主要的类FileUtils, IOUtils</li>
+<li><strong>FileUtils主要有如下方法:</strong>
+<ul>
+<li><code>String readFileToString(File file, String encoding)</code>, 读取文件中的数据, 返回字符串</li>
+<li><code>void copyFile(File srcFile, File destFile)</code>, 复制文件。</li>
+<li><code>void copyDirectoryToDirectory(File srcDir, File destDir)</code>, 复制文件夹。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="317-不可变集合stream异常体系日志框架fileio流">3.17 不可变集合、Stream、异常体系、日志框架、File、IO流</h2>
+<p><strong>不可变集合</strong>
+集合的数据项在创建的时候提供，并且在整个生命周期中都不可改变。否则报错</p>
+<ul>
+<li>为什么要创建不可变集合？
+<ul>
+<li>如果某个数据不能被修改，把它防御性地拷贝到不可变集合中是个很好的实践</li>
+<li>或者当集合对象被不可信的库调用时，不可变形式是安全的。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E4%B8%8D%E5%8F%AF%E5%8F%98%E9%9B%86%E5%90%88.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E4%B8%8D%E5%8F%AF%E5%8F%98%E9%9B%86%E5%90%88.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E4%B8%8D%E5%8F%AF%E5%8F%98%E9%9B%86%E5%90%88.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E4%B8%8D%E5%8F%AF%E5%8F%98%E9%9B%86%E5%90%88.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E4%B8%8D%E5%8F%AF%E5%8F%98%E9%9B%86%E5%90%88.png"
+        title="不可变集合" width="1451" height="488" />
+<strong>List、Set、Map接口中，都存在of方法可以创建不可变集合，jdk9开始才有</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>Stream流</strong>
+暂无、跳过</p>
+<p><strong>异常体系</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB.png"
+        title="异常体系" width="1454" height="680" /></p>
+<ul>
+<li>运行时异常
+直接继承自RuntimeException或者其子类，编译阶段不会报错，运行时可能出现的错误。</li>
+<li>运行时异常示例
+<ul>
+<li>数组索引越界异常: ArrayIndexOutOfBoundsException</li>
+<li>空指针异常 : NullPointerException，直接输出没有问题，但是调用空指针的变量的功能就会报错。</li>
+<li>数学操作异常：ArithmeticException</li>
+<li>类型转换异常：ClassCastException</li>
+<li>数字转换异常： NumberFormatException
+<strong>运行时异常：一般是程序员业务没有考虑好或者是编程逻辑不严谨引起的程序错误，自己的水平有问题！</strong></li>
+</ul>
+</li>
+<li>编译时异常
+不是RuntimeException或者其子类的异常，编译阶就报错，必须处理，否则代码不通过</li>
+</ul>
+<p><em><strong>编译时异常的处理形式有三种：</strong></em></p>
+<ul>
+<li>
+<p>出现异常直接抛出去给调用者，调用者也继续抛出去。</p>
+<ul>
+<li>throws：用在方法上，可以将方法内部出现的异常抛出去给本方法的调用者处理。</li>
+<li>这种方式并不好，发生异常的方法自己不处理异常，如果异常最终抛出去给虚拟机将引起程序死亡。</li>
+<li>抛出异常格式：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">方法 throws 异常1 ，异常2 ，异常3 ..{
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//代表可以抛出一切异常
+</span></span><span class="line"><span class="cl">方法 throws Exception{
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>出现异常自己捕获处理，不麻烦别人。</p>
+<ul>
+<li>try…catch…</li>
+<li>监视捕获异常，用在方法内部，可以将方法内部出现的异常直接捕获处理。</li>
+<li>这种方式还可以，发生异常的方法自己独立完成异常的处理，程序可以继续往下执行。</li>
+<li>格式
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">try{
+</span></span><span class="line"><span class="cl">    // 监视可能出现异常的代码！
+</span></span><span class="line"><span class="cl">}catch(异常类型1 变量){
+</span></span><span class="line"><span class="cl">    // 处理异常
+</span></span><span class="line"><span class="cl">}catch(异常类型2 变量){
+</span></span><span class="line"><span class="cl">    // 处理异常
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><strong>建议格式：</strong>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">try{
+</span></span><span class="line"><span class="cl">    // 可能出现异常的代码！
+</span></span><span class="line"><span class="cl">}catch (Exception e){
+</span></span><span class="line"><span class="cl">    e.printStackTrace(); 
+</span></span><span class="line"><span class="cl">    // 直接打印异常栈信息
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">//Exception可以捕获处理一切异常类型！
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li><strong>throws/throw 关键字：</strong>
+<ul>
+<li>如果一个方法没有捕获到一个检查性异常，那么该方法必须使用 throws 关键字来声明。throws 关键字放在方法签名的尾部。</li>
+<li>也可以使用 throw 关键字抛出一个异常，无论它是新实例化的还是刚捕获到的。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">public class className
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    public void deposit(double amount) throws RemoteException
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        // Method implementation
+</span></span><span class="line"><span class="cl">        throw new RemoteException();
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    //Remainder of class definition
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li><strong>finally关键字</strong>
+<ul>
+<li>finally 关键字用来创建在 try 代码块后面执行的代码块。</li>
+<li><strong>无论是否发生异常，finally 代码块中的代码总会被执行。</strong></li>
+<li>在 finally 代码块中，可以运行清理类型等收尾善后性质的语句。</li>
+<li>finally 代码块出现在 catch 代码块最后，语法如下：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">try{
+</span></span><span class="line"><span class="cl">    // 程序代码
+</span></span><span class="line"><span class="cl">}catch(异常类型1 异常的变量名1){
+</span></span><span class="line"><span class="cl">    // 程序代码
+</span></span><span class="line"><span class="cl">}catch(异常类型2 异常的变量名2){
+</span></span><span class="line"><span class="cl">    // 程序代码
+</span></span><span class="line"><span class="cl">}finally{
+</span></span><span class="line"><span class="cl">    // 程序代码
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>前两者结合，出现异常直接抛出去给调用者，调用者捕获处理。</p>
+<ul>
+<li>方法直接将异通过throws抛出去给调用者</li>
+<li>调用者收到异常后直接捕获处理。</li>
+</ul>
+</li>
+<li>
+<p><strong>异常处理的总结</strong></p>
+<ul>
+<li><strong>在开发中按照规范来说第三种方式是最好的：底层的异常抛出去给最外层，最外层集中捕获处理</strong></li>
+<li>实际应用中，只要代码能够编译通过，并且功能能完成，那么每一种异常处理方式似乎也都是可以的</li>
+</ul>
+</li>
+<li>
+<p><strong>自定义异常类</strong></p>
+<ul>
+<li>Java无法为这个世界上全部的问题提供异常类。如果企业想通过异常的方式来管理自己的某个业务问题，就需要自定义异常类了。</li>
+<li>可以使用异常的机制管理业务问题，如提醒程序员注意。同时一旦出现bug，可以用异常的形式清晰的指出出错的地方。</li>
+<li>自定义异常的分类</li>
+</ul>
+<ol>
+<li>自定义编译时异常
+<ul>
+<li>定义一个异常类继承Exception.</li>
+<li>重写构造器。</li>
+<li>在出现异常的地方用throw new 自定义对象抛出，</li>
+<li>作用：编译时异常是编译阶段就报错，提醒更加强烈，一定需要处理！！</li>
+</ul>
+</li>
+<li>自定义运行时异常
+<ul>
+<li>定义一个异常类继承RuntimeException.</li>
+<li>重写构造器。</li>
+<li>在出现异常的地方用throw new 自定义对象抛出!</li>
+<li>作用：提醒不强烈，编译阶段不报错！！运行时才可能出现！！</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//自定义异常
+</span></span><span class="line"><span class="cl">public class myException extends Exception{
+</span></span><span class="line"><span class="cl">    public myException() {
+</span></span><span class="line"><span class="cl">        System.out.println(&#34;自定义异常&#34;);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">//抛出异常
+</span></span><span class="line"><span class="cl">public class Demo {
+</span></span><span class="line"><span class="cl">    public void test() throws myException {
+</span></span><span class="line"><span class="cl">        System.out.println(&#34;开始抛出异常&#34;);
+</span></span><span class="line"><span class="cl">        throw new myException();
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">//捕获异常
+</span></span><span class="line"><span class="cl">Demo d=new Demo();
+</span></span><span class="line"><span class="cl">try {
+</span></span><span class="line"><span class="cl">    d.test();
+</span></span><span class="line"><span class="cl">} catch (myException e) {
+</span></span><span class="line"><span class="cl">    e.printStackTrace();
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">System.out.println(&#34;异常抛出&#34;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p><strong>日志框架</strong></p>
+<ul>
+<li>日志技术具备的优势
+<ul>
+<li>可以将系统执行的信息选择性的记录到指定的位置（控制台、文件中、数据库中）。</li>
+<li>可以随时以开关的形式控制是否记录日志，无需修改源代码。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E6%97%A5%E5%BF%97%E6%8A%80%E6%9C%AF.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E6%97%A5%E5%BF%97%E6%8A%80%E6%9C%AF.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E6%97%A5%E5%BF%97%E6%8A%80%E6%9C%AF.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E6%97%A5%E5%BF%97%E6%8A%80%E6%9C%AF.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E6%97%A5%E5%BF%97%E6%8A%80%E6%9C%AF.png"
+        title="日志技术" width="1307" height="731" />
+<strong>log4j很流行，但是logback更好，是他的升级版</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>Logback</strong></p>
+<ul>
+<li>介绍
+<ul>
+<li>Logback是由log4j创始人设计的另一个开源日志组件，性能比log4j要好</li>
+<li>Logback是基于slf4j的日志规范实现的框架。</li>
+</ul>
+</li>
+<li>Logback主要分为三个技术模块：
+<ul>
+<li>logback-core： logback-core 模块为其他两个模块奠定了基础，必须有。</li>
+<li>logback-classic：它是log4j的一个改良版本，同时它完整实现了slf4j API。</li>
+<li>logback-access 模块与 Tomcat 和 Jetty 等 Servlet 容器集成，以提供 HTTP 访问日志功能</li>
+</ul>
+</li>
+<li><strong>Logback快速入门</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/logback%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8.png"
+        title="Logback快速入门" width="1176" height="617" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/logback1.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/logback1.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/logback1.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/logback1.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/logback1.png"
+        title="Logback1" width="1232" height="576" /></li>
+<li><em><strong>日志级别</strong></em>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E6%97%A5%E5%BF%97%E7%BA%A7%E5%88%AB.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E6%97%A5%E5%BF%97%E7%BA%A7%E5%88%AB.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E6%97%A5%E5%BF%97%E7%BA%A7%E5%88%AB.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E6%97%A5%E5%BF%97%E7%BA%A7%E5%88%AB.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E6%97%A5%E5%BF%97%E7%BA%A7%E5%88%AB.png"
+        title="日志级别" width="983" height="437" /></li>
+</ul>
+<p><strong>File类使用</strong></p>
+<ul>
+<li>File类创建对象
+<ul>
+<li><code>public File​(String pathname)</code>,根据文件路径创建文件对象</li>
+<li><code>public File​(String parent, String child)</code>,从父路径名字符串和子路径名字符串创建文件对象</li>
+<li><code>public File​(File  parent, String child)</code>,根据父路径对应文件对象和子路径名字符串创建文件对象</li>
+<li>File对象可以定位文件和文件夹</li>
+<li>File封装的对象仅仅是一个路径名，这个路径可以是存在的，也可以是不存在的。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api.png"
+        title="file_api" width="1037" height="620" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api2.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api2.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api2.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api2.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api2.png"
+        title="file_api2" width="860" height="622" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api3.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api3.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api3.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api3.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/file_api3.png"
+        title="fiel_api3" width="1272" height="587" /></li>
+</ul>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81.png"
+        title="字符编码" width="676" height="452" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/String%E7%BC%96%E7%A0%81.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/String%E7%BC%96%E7%A0%81.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/String%E7%BC%96%E7%A0%81.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/String%E7%BC%96%E7%A0%81.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/String%E7%BC%96%E7%A0%81.png"
+        title="String编码" width="1348" height="631" /></p>
+<p><strong>IO流</strong></p>
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/IO%E6%B5%81.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/IO%E6%B5%81.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/IO%E6%B5%81.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/IO%E6%B5%81.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/IO%E6%B5%81.png"
+        title="IO流" width="685" height="417" /></li>
+<li>总结流的四大类:
+<ul>
+<li>字节输入流：以内存为基准，来自磁盘文件/网络中的数据<strong>以字节的形式读入到内存中</strong>去的流称为字节输入流。</li>
+<li>字节输出流：以内存为基准，把内存中的数据<strong>以字节写出到磁盘文件或者网络中</strong>去的流称为字节输出流。</li>
+<li>字符输入流：以内存为基准，来自磁盘文件/网络中的数据<strong>以字符的形式读入到内存中</strong>去的流称为字符输入流。</li>
+<li>字符输出流：以内存为基准，把内存中的数据<strong>以字符写出到磁盘文件或者网络介质中</strong>去的流称为字符输出流。</li>
+</ul>
+</li>
+<li><strong>字节流</strong>
+<ul>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileinputstram.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileinputstram.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileinputstram.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileinputstram.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileinputstram.png"
+        title="fileinputstram" width="1174" height="601" /></li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileoutputstram.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileoutputstram.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileoutputstram.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileoutputstram.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileoutputstram.png"
+        title="fileoutputstram" width="1268" height="393" /></li>
+<li><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileoutputstram_api.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileoutputstram_api.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileoutputstram_api.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileoutputstram_api.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/fileoutputstram_api.png"
+        title="fileoutputstram_api" width="1258" height="600" /></li>
+</ul>
+</li>
+<li><strong>资源释放</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE.png"
+        title="资源释放" width="910" height="635" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E7%AE%80%E5%8C%96%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E7%AE%80%E5%8C%96%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E7%AE%80%E5%8C%96%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E7%AE%80%E5%8C%96%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E7%AE%80%E5%8C%96%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE.png"
+        title="简化资源释放" width="1194" height="529" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE%E6%B3%A8%E6%84%8F.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE%E6%B3%A8%E6%84%8F.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE%E6%B3%A8%E6%84%8F.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE%E6%B3%A8%E6%84%8F.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.17/%E8%B5%84%E6%BA%90%E9%87%8A%E6%94%BE%E6%B3%A8%E6%84%8F.png"
+        title="资源释放注意" width="1127" height="446" /></li>
+</ul>
+<hr>
+<h2 id="316-map集合">3.16 Map集合</h2>
+<p><strong>Map集合</strong></p>
+<ul>
+<li>Map集合概述和使用
+<ul>
+<li>Map集合是一种双列集合，每个元素包含两个数据。</li>
+<li>Map集合的每个元素的格式：key=value(键值对元素)。</li>
+<li>Map集合也被称为“键值对集合”。</li>
+<li>Map集合的完整格式：{key1=value1 , key2=value2 , key3=value3 , &hellip;}</li>
+</ul>
+</li>
+<li>Map集合体系
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.16/Map%E9%9B%86%E5%90%88%E4%BD%93%E7%B3%BB.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.16/Map%E9%9B%86%E5%90%88%E4%BD%93%E7%B3%BB.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.16/Map%E9%9B%86%E5%90%88%E4%BD%93%E7%B3%BB.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.16/Map%E9%9B%86%E5%90%88%E4%BD%93%E7%B3%BB.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.16/Map%E9%9B%86%E5%90%88%E4%BD%93%E7%B3%BB.png"
+        title="Map集合体系" width="1319" height="588" />
+<ul>
+<li>Map集合体系特点
+<ol>
+<li>Map集合的特点都是由键决定的。</li>
+<li>Map集合的键是无序,不重复的，无索引的，值不做要求（可以重复）。</li>
+<li>Map集合后面重复的键对应的值会覆盖前面重复键的值。</li>
+<li>Map集合的键值对都可以为null。</li>
+</ol>
+</li>
+<li>Map集合实现类特点
+<ol>
+<li>HashMap:元素按照键是无序，不重复，无索引，值不做要求。（与Map体系一致）</li>
+<li>LinkedHashMap:元素按照键是有序，不重复，无索引，值不做要求。</li>
+<li>TreeMap：元素按照键是排序，不重复，无索引的，值不做要求。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Map集合的遍历方式有：3种。
+<ul>
+<li>方式一：键找值的方式遍历：先获取Map集合全部的键，再根据遍历键找值。</li>
+<li>方式二：键值对的方式遍历，把“键值对“看成一个整体，难度较大。</li>
+<li>方式三：JDK 1.8开始之后的新技术：Lambda表达式。
+得益于JDK 8开始的新技术Lambda表达式，提供了一种更简单、更直接的遍历集合的方式。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">       System.out.println(k +&#34;-----&gt;&#34; + v);
+</span></span><span class="line"><span class="cl">    });
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>HashMap
+<ul>
+<li>HashMap跟HashSet底层原理是一模一样的，都是哈希表结构，只是HashMap的每个元素包含两个值而已</li>
+<li>实际上：Set系列集合的底层就是Map实现的，只是Set集合中的元素只要键数据，不要值数据而已。</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">        map = new HashMap&lt;&gt;();
+</span></span><span class="line"><span class="cl">    }
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>LinkedHashMap
+<ul>
+<li>原理：底层数据结构是依然哈希表，只是每个键值对元素又额外的多了一个双链表的机制记录存储的顺序。</li>
+</ul>
+</li>
+<li>TreeMap
+<ul>
+<li>可排序：按照键数据的大小默认升序（有小到大）排序。只能对键排序。</li>
+<li>注意：TreeMap集合是一定要排序的，可以默认排序，也可以将键按照指定的规则进行排序</li>
+<li>TreeMap跟TreeSet一样底层原理是一样的。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="315-数据结构list系列集合泛型set系列集合">3.15 数据结构、List系列集合、泛型、Set系列集合</h2>
+<p><strong>数据结构</strong></p>
+<ul>
+<li>栈：后进先出，先进后出</li>
+<li>队列：先进先出，后进后出</li>
+<li>数组：数组是一种查询快，增删慢的模型
+<ol>
+<li>查询速度快：查询数据通过地址值和索引定位，查询任意数据耗时相同。（元素在内存中是连续存储的）</li>
+<li>删除效率低：要将原始数据删除，同时后面每个数据前移。</li>
+<li>添加效率极低：添加位置后的每个数据后移，再添加元素</li>
+</ol>
+</li>
+<li>链表： 链表中的元素是在内存中不连续存储的，每个元素节点包含数据值和下一个元素的地址
+<ol>
+<li>链表查询慢。无论查询哪个数据都要从头开始找</li>
+<li>链表增删相对快</li>
+</ol>
+</li>
+<li>二叉树
+<ol>
+<li>只能有一个根节点，每个节点最多支持2个直接子节点</li>
+<li>节点的度： 节点拥有的子树的个数，二叉树的度不大于2 叶子节点 度为0的节点，也称之为终端结点</li>
+<li>高度：叶子结点的高度为1，叶子结点的父节点高度为2，以此类推，根节点的高度最高。</li>
+<li>层：根节点在第一层，以此类推</li>
+<li>兄弟节点 ：拥有共同父节点的节点互称为兄弟节点</li>
+</ol>
+</li>
+<li>平衡二叉树：平衡二叉树是在满足查找二叉树的大小规则下，让树尽可能矮小，以此提高查数据的性能</li>
+<li><strong>红黑树</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E7%BA%A2%E9%BB%91%E6%A0%91.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E7%BA%A2%E9%BB%91%E6%A0%91.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E7%BA%A2%E9%BB%91%E6%A0%91.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E7%BA%A2%E9%BB%91%E6%A0%91.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E7%BA%A2%E9%BB%91%E6%A0%91.png"
+        title="红黑树" width="1202" height="557" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E6%80%BB%E7%BB%93.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E6%80%BB%E7%BB%93.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E6%80%BB%E7%BB%93.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E6%80%BB%E7%BB%93.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E6%80%BB%E7%BB%93.png"
+        title="总结" width="861" height="511" /></li>
+</ul>
+<p><strong>List系列集合</strong></p>
+<ul>
+<li>特点：
+<ol>
+<li>ArrayList、LinekdList ：有序，可重复，有索引。</li>
+<li>有序：存储和取出的元素顺序一致</li>
+<li>有索引：可以通过索引操作元素</li>
+<li>可重复：存储的元素可以重复</li>
+</ol>
+</li>
+<li>List的实现类的底层原理
+<ol>
+<li>ArrayList底层是基于数组实现的，根据查询元素快，增删相对慢。</li>
+<li>LinkedList底层基于双链表实现的，查询元素慢，增删首尾元素是非常快的。</li>
+</ol>
+</li>
+<li>List集合的遍历方式有几种: <strong>迭代器</strong>(推荐，更安全) 、增强for循环、Lambda表达式、for循环（因为List集合存在索引）</li>
+<li>LinkedList的特点：底层数据结构是双链表，查询慢，首尾操作的速度是极快的，所以多了很多首尾操作的特有API。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/linkedlist.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/linkedlist.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/linkedlist.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/linkedlist.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/linkedlist.png"
+        title="LinkedList特点" width="993" height="499" /></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//linkedlist可以完成队列、栈结构，因为它是双链表结构
+</span></span><span class="line"><span class="cl">//栈
+</span></span><span class="line"><span class="cl">LinkedList&lt;String&gt; stack=new LinkedList&lt;&gt;();
+</span></span><span class="line"><span class="cl">    //入栈
+</span></span><span class="line"><span class="cl">//  stack.addFirst(&#34;1&#34;);
+</span></span><span class="line"><span class="cl">//  stack.addFirst(&#34;2&#34;);
+</span></span><span class="line"><span class="cl">//  stack.addFirst(&#34;3&#34;);
+</span></span><span class="line"><span class="cl">stack.push(&#34;1&#34;); //push就是addFirst
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">System.out.println(stack);  //[3, 2, 1]
+</span></span><span class="line"><span class="cl">    //出栈
+</span></span><span class="line"><span class="cl">//  System.out.println(stack.removeFirst()); //3
+</span></span><span class="line"><span class="cl">//  System.out.println(stack.removeFirst()); //2
+</span></span><span class="line"><span class="cl">//  System.out.println(stack.removeFirst()); //1
+</span></span><span class="line"><span class="cl">System.out.println(stack.pop()); //pop就是removeFirst()
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//队列
+</span></span><span class="line"><span class="cl">LinkedList&lt;String&gt; queue=new LinkedList&lt;&gt;();
+</span></span><span class="line"><span class="cl">    //入队
+</span></span><span class="line"><span class="cl">queue.addLast(&#34;A&#34;);
+</span></span><span class="line"><span class="cl">queue.addLast(&#34;B&#34;);
+</span></span><span class="line"><span class="cl">queue.addLast(&#34;C&#34;);
+</span></span><span class="line"><span class="cl">System.out.println(queue); //[A, B, C]
+</span></span><span class="line"><span class="cl">    //出队
+</span></span><span class="line"><span class="cl">System.out.println(queue.removeFirst());
+</span></span><span class="line"><span class="cl">System.out.println(queue.removeFirst());
+</span></span><span class="line"><span class="cl">System.out.println(queue.removeFirst());
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>集合的并发修改异常问题</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E9%9B%86%E5%90%88%E7%9A%84%E5%B9%B6%E5%8F%91%E4%BF%AE%E6%94%B9%E5%BC%82%E5%B8%B8.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E9%9B%86%E5%90%88%E7%9A%84%E5%B9%B6%E5%8F%91%E4%BF%AE%E6%94%B9%E5%BC%82%E5%B8%B8.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E9%9B%86%E5%90%88%E7%9A%84%E5%B9%B6%E5%8F%91%E4%BF%AE%E6%94%B9%E5%BC%82%E5%B8%B8.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E9%9B%86%E5%90%88%E7%9A%84%E5%B9%B6%E5%8F%91%E4%BF%AE%E6%94%B9%E5%BC%82%E5%B8%B8.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E9%9B%86%E5%90%88%E7%9A%84%E5%B9%B6%E5%8F%91%E4%BF%AE%E6%94%B9%E5%BC%82%E5%B8%B8.png"
+        title="集合的并发修改异常" width="991" height="571" /></p>
+<p><strong>Iterator迭代器中的remove的方法需要在next()方法调用后才能调用，且只能使用一次</strong></p>
+<p><strong>泛型</strong></p>
+<ol>
+<li>泛型概述
+<ul>
+<li>泛型：是JDK5中引入的特性，可以在编译阶段约束操作的数据类型，并进行检查</li>
+<li><strong>泛型类的原理：把出现泛型变量的地方全部替换成传输的真实数据类型</strong></li>
+<li>泛型的格式：&lt;数据类型&gt;; 注意：泛型只能支持引用数据类型</li>
+<li>泛型类的格式：修饰符 class 类名&lt;泛型变量&gt;{  }</li>
+<li>泛型方法的格式：修饰符 &lt;泛型变量&gt; 方法返回值 方法名称(形参列表){}</li>
+<li>泛型接口的格式：修饰符 interface 接口名称&lt;泛型变量&gt;{}</li>
+<li>集合体系的全部接口和实现类都是支持泛型的使用的</li>
+</ul>
+</li>
+<li>泛型的好处
+<ul>
+<li>统一数据类型</li>
+<li>把运行时期的问题提前到了编译期间，避免了强制类型转换可能出现的异常，因为编译阶段类型就能确定下来</li>
+</ul>
+</li>
+<li>通配符:?
+<ul>
+<li>? 可以在“使用泛型”的时候代表一切类型。</li>
+<li>E T K V 是在定义泛型的时候使用的</li>
+<li>泛型的上下限：
+<ul>
+<li>? extends Car: ?必须是Car或者其子类   泛型上限</li>
+<li>? super Car ： ?必须是Car或者其父类   泛型下限</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Set系列集合</strong></p>
+<ul>
+<li>Set系列集合特点
+<ol>
+<li>无序：存取顺序不一致</li>
+<li>不重复：可以去除重复</li>
+<li>无索引：没有带索引的方法，所以不能使用普通for循环遍历，也不能通过索引来获取元素</li>
+</ol>
+</li>
+<li>Set集合实现类特点
+<ol>
+<li>HashSet : <strong>无序</strong>、不重复、无索引</li>
+<li>LinkedHashSet：<strong>有序</strong>、不重复、无索引</li>
+<li>TreeSet：<strong>排序</strong>、不重复、无索引</li>
+</ol>
+</li>
+<li><strong>HashSet底层原理</strong>
+HashSet集合底层采取哈希表存储的数据,哈希表是一种对于增删改查数据性能都较好的结构。
+<ol>
+<li><strong>哈希表的组成</strong>
+<ul>
+<li>JDK8之前的，底层使用<strong>数组+链表</strong>组成</li>
+<li>JDK8开始后，底层采用<strong>数组+链表+红黑树</strong>组成。</li>
+</ul>
+</li>
+<li>jdk8的hashset原理
+<ul>
+<li>哈希表（数组、链表、红黑树的结合体）</li>
+<li>当挂在元素下面的数据过多时，查询性能降低，<strong>从JDK8开始后，当链表长度超过8的时候，自动转换为红黑树</strong></li>
+<li>HashSet去重复原理解析
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/Hashset%E5%8E%BB%E9%87%8D%E5%A4%8D.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/Hashset%E5%8E%BB%E9%87%8D%E5%A4%8D.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/Hashset%E5%8E%BB%E9%87%8D%E5%A4%8D.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/Hashset%E5%8E%BB%E9%87%8D%E5%A4%8D.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/Hashset%E5%8E%BB%E9%87%8D%E5%A4%8D.png"
+        title="HashSet去重复" width="1412" height="653" /></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><strong>LinkedHashSet</strong>
+<ul>
+<li>有序、不重复、无索引。</li>
+<li>这里的有序指的是保证存储和取出的元素顺序一致</li>
+<li>原理：底层数据结构是依然哈希表，只是每个元素又额外的多了一个双链表的机制记录存储的顺序。</li>
+</ul>
+</li>
+<li><strong>TreeSet</strong>
+<ol>
+<li>不重复、无索引、可排序</li>
+<li>可排序：按照元素的大小默认升序（有小到大）排序。</li>
+<li>TreeSet集合底层是基于<strong>红黑树的数据结构实现排序</strong>的，增删改查性能都较好。</li>
+<li><strong>注意：TreeSet集合是一定要排序的，可以将元素按照指定的规则进行排序。</strong>
+<strong>想要使用TreeSet存储自定义类型，需要制定排序规则</strong>
+自定义排序规则,TreeSet集合存储对象的的时候有2种方式可以设计自定义比较规则</li>
+</ol>
+<ul>
+<li>让自定义的类（如学生类）实现Comparable接口重写里面的compareTo方法来定制比较规则。</li>
+<li><strong>TreeSet集合有参数构造器，可以设置Comparator接口对应的比较器对象，来定制比较规则。</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> public TreeSet(Comparator&lt;? super E&gt; comparator) {
+</span></span><span class="line"><span class="cl">    this(new TreeMap&lt;&gt;(comparator));
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E9%9B%86%E5%90%88%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E9%9B%86%E5%90%88%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E9%9B%86%E5%90%88%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E9%9B%86%E5%90%88%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.15/%E9%9B%86%E5%90%88%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF.png"
+        title="集合使用场景" width="888" height="662" /></li>
+</ul>
+<p>可变参数</p>
+<ul>
+<li>可变参数用在形参中可以接收多个数据。可变参数的格式：数据类型&hellip;参数名称</li>
+<li>传输参数非常灵活，方便。可以不传输参数，可以传输1个或者多个，也可以传输一个数组</li>
+<li><strong>可变参数在方法内部本质上就是一个数组</strong></li>
+<li>可变参数的注意事项
+<ol>
+<li>一个形参列表中可变参数只能有一个</li>
+<li>可变参数必须放在形参列表的最后面</li>
+</ol>
+</li>
+</ul>
+<p><strong>Collections集合工具类</strong>
+java.utils.Collections:是集合工具类
+<strong>作用：Collections并不属于集合，是用来操作集合的工具类。</strong></p>
+<hr>
+<h2 id="314-arrays二分查找lambda表达式">3.14 Arrays、二分查找、lambda表达式</h2>
+<p><strong>Arrays</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/arrays1.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/arrays1.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/arrays1.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/arrays1.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/arrays1.png"
+        title="arrays1" width="1361" height="613" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/arrays2.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/arrays2.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/arrays2.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/arrays2.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/arrays2.png"
+        title="arrays2" width="1261" height="661" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/Arrays_comparator.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/Arrays_comparator.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/Arrays_comparator.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/Arrays_comparator.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/Arrays_comparator.png"
+        title="comparatoe" width="653" height="256" /></p>
+<p><strong>二分查找</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/**
+</span></span><span class="line"><span class="cl"> * 二分查找法
+</span></span><span class="line"><span class="cl"> */
+</span></span><span class="line"><span class="cl">public class BinarySearch {
+</span></span><span class="line"><span class="cl">    // 二分查找法,在有序数组arr中,查找target
+</span></span><span class="line"><span class="cl">    // 如果找到target,返回相应的索引index
+</span></span><span class="line"><span class="cl">    // 如果没有找到target,返回-1
+</span></span><span class="line"><span class="cl">    public static int find(Comparable[] arr, Comparable target) {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        // 在arr[l...r]之中查找target
+</span></span><span class="line"><span class="cl">        int l = 0, r = arr.length-1;
+</span></span><span class="line"><span class="cl">        while( l &lt;= r ){
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            //int mid = (l + r)/2;
+</span></span><span class="line"><span class="cl">            // 防止极端情况下的整形溢出，使用下面的逻辑求出mid
+</span></span><span class="line"><span class="cl">            int mid = l + (r-l)/2;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            if( arr[mid].compareTo(target) == 0 )
+</span></span><span class="line"><span class="cl">                return mid;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            if( arr[mid].compareTo(target) &gt; 0 )
+</span></span><span class="line"><span class="cl">                r = mid - 1;
+</span></span><span class="line"><span class="cl">            else
+</span></span><span class="line"><span class="cl">                l = mid + 1;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        return -1;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.png"
+        title="binarySearch" width="688" height="426" /></p>
+<p><strong>Lambda表达式</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F.png"
+        title="lambda" width="1096" height="591" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/lambda2.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/lambda2.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/lambda2.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/lambda2.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/lambda2.png"
+        title="lambda2" width="1151" height="308" />
+<a href="https://www.runoob.com/java/java8-lambda-expressions.html" target="_blank" rel="noopener noreffer">附录</a></p>
+<p><strong>集合</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/collection%E9%9B%86%E5%90%88%E4%BD%93%E7%B3%BB.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/collection%E9%9B%86%E5%90%88%E4%BD%93%E7%B3%BB.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/collection%E9%9B%86%E5%90%88%E4%BD%93%E7%B3%BB.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/collection%E9%9B%86%E5%90%88%E4%BD%93%E7%B3%BB.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.14/collection%E9%9B%86%E5%90%88%E4%BD%93%E7%B3%BB.png"
+        title="collection体系" width="1159" height="602" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ArrayList&lt;String &gt; arrayList=new ArrayList&lt;&gt;();
+</span></span><span class="line"><span class="cl">    arrayList.add(&#34;google&#34;);
+</span></span><span class="line"><span class="cl">    arrayList.add(&#34;baidu&#34;);
+</span></span><span class="line"><span class="cl">    arrayList.add(&#34;tencent&#34;);
+</span></span><span class="line"><span class="cl">    arrayList.add(&#34;bytedance&#34;);
+</span></span><span class="line"><span class="cl">    arrayList.add(&#34;jd&#34;);
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    //forEach
+</span></span><span class="line"><span class="cl">    arrayList.forEach(new Consumer&lt;String&gt;() {
+</span></span><span class="line"><span class="cl">        @Override
+</span></span><span class="line"><span class="cl">        public void accept(String s) {
+</span></span><span class="line"><span class="cl">            System.out.println(s);
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    });
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="313-内部类">3.13 内部类</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%86%85%E9%83%A8%E7%B1%BB.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%86%85%E9%83%A8%E7%B1%BB.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%86%85%E9%83%A8%E7%B1%BB.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%86%85%E9%83%A8%E7%B1%BB.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%86%85%E9%83%A8%E7%B1%BB.png"
+        title="内部类" width="1084" height="562" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB.png"
+        title="静态内部类" width="1083" height="528" />
+静态内部类中可以直接访问外部类的静态成员
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB.png"
+        title="成员内部类" width="1010" height="539" /></p>
+<p><strong>匿名内部类</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB.png"
+        title="匿名内部类" width="959" height="623" /></p>
+<p><strong>常用API</strong></p>
+<ul>
+<li>Object类
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/object_equals.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/object_equals.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/object_equals.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/object_equals.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/object_equals.png"
+        title="object_equals" width="1248" height="537" /></li>
+<li>Objects类，jdk1.7后才有
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/objects.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/objects.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/objects.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/objects.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/objects.png"
+        title="objects概述" width="1213" height="570" />
+<strong>在比较前会做一个是否为null的判断，避免空指针异常，更加安全</strong></li>
+</ul>
+<p><strong>StringBuilder</strong>
+当对字符串进行修改的时候，需要使用 StringBuffer 和 StringBuilder 类。
+和 String 类不同的是，StringBuffer 和 StringBuilder 类的对象能够被多次的修改，并且不产生新的未使用对象。</p>
+<p>在使用 StringBuffer 类时，每次都会对 StringBuffer 对象本身进行操作，而不是生成新的对象，所以如果需要对字符串进行修改推荐使用 StringBuffer。</p>
+<p>StringBuilder 类在 Java 5 中被提出，<strong>它和 StringBuffer 之间的最大不同在于 StringBuilder 的方法不是线程安全的（不能同步访问）。</strong></p>
+<p>由于 StringBuilder 相较于 StringBuffer 有速度优势，所以多数情况下建议使用 StringBuilder 类。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/StringBuilder.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/StringBuilder.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/StringBuilder.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/StringBuilder.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/StringBuilder.png"
+        title="StringBuilder" width="722" height="362" /></p>
+<p><strong>Math</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/math.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/math.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/math.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/math.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/math.png"
+        title="math" width="1069" height="577" /></p>
+<p><strong>System</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/system.jpg"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/system.jpg, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/system.jpg 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/system.jpg 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/system.jpg"
+        title="system" width="1223" height="550" /></p>
+<p><strong>BigDecimal</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/BigDecimal_1.jpg"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/BigDecimal_1.jpg, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/BigDecimal_1.jpg 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/BigDecimal_1.jpg 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/BigDecimal_1.jpg"
+        title="bigdecimal" width="1241" height="513" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/BigDecimal_2.jpg"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/BigDecimal_2.jpg, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/BigDecimal_2.jpg 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/BigDecimal_2.jpg 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/BigDecimal_2.jpg"
+        title="bigdecimal" width="1197" height="580" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/bigdecimal_3.jpg"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/bigdecimal_3.jpg, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/bigdecimal_3.jpg 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/bigdecimal_3.jpg 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/bigdecimal_3.jpg"
+        title="bigdecimal" width="828" height="225" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">System.out.println(0.09+0.01);
+</span></span><span class="line"><span class="cl">double a=0.09,b=0.01;
+</span></span><span class="line"><span class="cl">System.out.println(a+b);
+</span></span><span class="line"><span class="cl">BigDecimal ba=BigDecimal.valueOf(a);
+</span></span><span class="line"><span class="cl">BigDecimal bb=BigDecimal.valueOf(b);
+</span></span><span class="line"><span class="cl">System.out.println(ba.add(bb));
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//输出
+</span></span><span class="line"><span class="cl">0.09999999999999999
+</span></span><span class="line"><span class="cl">0.09999999999999999
+</span></span><span class="line"><span class="cl">0.10
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>注意：BigDecimal是一定要做精度运算的</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">BigDecimal a = BigDecimal.valueOf(10.0);
+</span></span><span class="line"><span class="cl">BigDecimal b = BigDecimal.valueOf(3.0);
+</span></span><span class="line"><span class="cl">//BigDecimal c=a.divide(b); //报错，因为10/3是无限循环，得不到精确值
+</span></span><span class="line"><span class="cl">BigDecimal c = a.divide(b, 2, RoundingMode.HALF_UP); //四舍五入，精确2位
+</span></span><span class="line"><span class="cl">System.out.println(c);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>日期格式化和解析
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%92%8C%E8%A7%A3%E6%9E%90.jpg"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%92%8C%E8%A7%A3%E6%9E%90.jpg, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%92%8C%E8%A7%A3%E6%9E%90.jpg 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%92%8C%E8%A7%A3%E6%9E%90.jpg 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%92%8C%E8%A7%A3%E6%9E%90.jpg"
+        title="日期格式化和解析" width="807" height="461" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%97%A5%E5%8E%86%E5%AF%B9%E8%B1%A1.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%97%A5%E5%8E%86%E5%AF%B9%E8%B1%A1.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%97%A5%E5%8E%86%E5%AF%B9%E8%B1%A1.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%97%A5%E5%8E%86%E5%AF%B9%E8%B1%A1.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%97%A5%E5%8E%86%E5%AF%B9%E8%B1%A1.png"
+        title="日历对象" width="1072" height="545" /></li>
+</ul>
+<p><strong>包装类</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%8C%85%E8%A3%85%E7%B1%BB.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%8C%85%E8%A3%85%E7%B1%BB.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%8C%85%E8%A3%85%E7%B1%BB.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%8C%85%E8%A3%85%E7%B1%BB.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E5%8C%85%E8%A3%85%E7%B1%BB.png"
+        title="包装类" width="690" height="555" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E8%A3%85%E7%AE%B1.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E8%A3%85%E7%AE%B1.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E8%A3%85%E7%AE%B1.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E8%A3%85%E7%AE%B1.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1%E8%A3%85%E7%AE%B1.png"
+        title="自动装箱——拆箱" width="650" height="494" /></p>
+<p><strong>正则表达式</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.13/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.png"
+        title="正则表达式" width="1041" height="356" /></p>
+<hr>
+<h2 id="311-多态">3.11 多态</h2>
+<p><em><strong>多态</strong></em>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E5%A4%9A%E6%80%81.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E5%A4%9A%E6%80%81.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E5%A4%9A%E6%80%81.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E5%A4%9A%E6%80%81.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E5%A4%9A%E6%80%81.png"
+        title="多态" width="955" height="572" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E5%A4%9A%E6%80%81%E4%B8%AD%E7%9A%84%E6%88%90%E5%91%98%E8%AE%BF%E9%97%AE.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E5%A4%9A%E6%80%81%E4%B8%AD%E7%9A%84%E6%88%90%E5%91%98%E8%AE%BF%E9%97%AE.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E5%A4%9A%E6%80%81%E4%B8%AD%E7%9A%84%E6%88%90%E5%91%98%E8%AE%BF%E9%97%AE.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E5%A4%9A%E6%80%81%E4%B8%AD%E7%9A%84%E6%88%90%E5%91%98%E8%AE%BF%E9%97%AE.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E5%A4%9A%E6%80%81%E4%B8%AD%E7%9A%84%E6%88%90%E5%91%98%E8%AE%BF%E9%97%AE.png"
+        title="多态中的成员访问" width="556" height="635" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png"
+        title="注意事项" width="1154" height="558" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E6%80%BB%E7%BB%93.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E6%80%BB%E7%BB%93.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E6%80%BB%E7%BB%93.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E6%80%BB%E7%BB%93.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.11/%E6%80%BB%E7%BB%93.png"
+        title="总结" width="807" height="509" /></p>
+<hr>
+<h2 id="310-final关键字常量枚举抽象类和抽象方法接口">3.10 final关键字、常量、枚举、抽象类和抽象方法、接口</h2>
+<ul>
+<li>
+<p>包：package,相同包下的口语直接访问，否则需要import导入，加入一个类中需要用到不同类，这两个类名又是一样的，那么默认只能导入一个类，另一个需要通过带包名访问
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6.png"
+        title="权限修饰符" width="1065" height="589" /></p>
+</li>
+<li>
+<p><strong>final关键字</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310final.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310final.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310final.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310final.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310final.png"
+        title="final关键字" width="1168" height="498" /></p>
+</li>
+<li>
+<p><strong>常量</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E5%B8%B8%E9%87%8F.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E5%B8%B8%E9%87%8F.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E5%B8%B8%E9%87%8F.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E5%B8%B8%E9%87%8F.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E5%B8%B8%E9%87%8F.png"
+        title="常量" width="984" height="523" /></p>
+</li>
+<li>
+<p><strong>枚举</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%9E%9A%E4%B8%BE%E7%89%B9%E7%82%B9.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%9E%9A%E4%B8%BE%E7%89%B9%E7%82%B9.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%9E%9A%E4%B8%BE%E7%89%B9%E7%82%B9.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%9E%9A%E4%B8%BE%E7%89%B9%E7%82%B9.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%9E%9A%E4%B8%BE%E7%89%B9%E7%82%B9.png"
+        title="枚举特点" width="1234" height="568" /></p>
+</li>
+<li>
+<p><strong>抽象类和抽象方法</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95.png"
+        title="抽象类和抽象方法" width="1091" height="549" /></p>
+<ol>
+<li>抽象类是用来被继承的，抽象方法是交给子类重写实现的</li>
+<li>一个类如果继承了抽象类，那么这个类必须重写抽象类的全部抽象方法，除非这个类也定义为抽象类
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%89%B9%E7%82%B9.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%89%B9%E7%82%B9.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%89%B9%E7%82%B9.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%89%B9%E7%82%B9.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%89%B9%E7%82%B9.png"
+        title="抽象类特点" width="870" height="456" /></li>
+</ol>
+</li>
+<li>
+<p><strong>面试题</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310final%E5%92%8Cabstract.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310final%E5%92%8Cabstract.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310final%E5%92%8Cabstract.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310final%E5%92%8Cabstract.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310final%E5%92%8Cabstract.png"
+        title="final和abstract" width="740" height="266" /></p>
+</li>
+<li>
+<p><em><strong>接口</strong></em>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3.png"
+        title="接口" width="935" height="500" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%A4%9A%E5%AE%9E%E7%8E%B0.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%A4%9A%E5%AE%9E%E7%8E%B0.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%A4%9A%E5%AE%9E%E7%8E%B0.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%A4%9A%E5%AE%9E%E7%8E%B0.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%A4%9A%E5%AE%9E%E7%8E%B0.png"
+        title="接口的多实现" width="1163" height="543" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3%E5%A4%9A%E7%BB%A7%E6%89%BF.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3%E5%A4%9A%E7%BB%A7%E6%89%BF.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3%E5%A4%9A%E7%BB%A7%E6%89%BF.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3%E5%A4%9A%E7%BB%A7%E6%89%BF.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/%E6%8E%A5%E5%8F%A3%E5%A4%9A%E7%BB%A7%E6%89%BF.png"
+        title="接口多继承" width="774" height="405" /></p>
+</li>
+</ul>
+<p><strong>JDK8接口新增方法</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk8%E6%8E%A5%E5%8F%A3.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk8%E6%8E%A5%E5%8F%A3.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk8%E6%8E%A5%E5%8F%A3.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk8%E6%8E%A5%E5%8F%A3.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk8%E6%8E%A5%E5%8F%A3.png"
+        title="JDK8接口1" width="805" height="363" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk8%E6%8E%A5%E5%8F%A32.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk8%E6%8E%A5%E5%8F%A32.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk8%E6%8E%A5%E5%8F%A32.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk8%E6%8E%A5%E5%8F%A32.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk8%E6%8E%A5%E5%8F%A32.png"
+        title="JDK8接口2" width="1008" height="387" />
+<strong>JDK9接口新增方法</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk9%E6%8E%A5%E5%8F%A3.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk9%E6%8E%A5%E5%8F%A3.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk9%E6%8E%A5%E5%8F%A3.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk9%E6%8E%A5%E5%8F%A3.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/jdk9%E6%8E%A5%E5%8F%A3.png"
+        title="JDK9接口" width="792" height="404" />
+<strong><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8E%A5%E5%8F%A3%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8E%A5%E5%8F%A3%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8E%A5%E5%8F%A3%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8E%A5%E5%8F%A3%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.10/20220310%E6%8E%A5%E5%8F%A3%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93.png"
+        title="总结" width="782" height="490" /></strong></p>
+<p><em><strong>注意事项</strong></em></p>
+<ol>
+<li>接口不能创建对象</li>
+<li>一个类实现多个接口，多个接口中有同样的静态方法不冲突，<strong>因为接口的静态方法只能通过接口名来调用，子类无法调用</strong></li>
+<li>一个类继承了父类，同时又实现了接口，父类中和接口中有同名方法，默认用父类的</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">public class Test {
+</span></span><span class="line"><span class="cl">    public static void main(String[] args) {
+</span></span><span class="line"><span class="cl">        ErHa er = new ErHa();
+</span></span><span class="line"><span class="cl">        er.eat();
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">interface Animal {
+</span></span><span class="line"><span class="cl">    default void eat() {
+</span></span><span class="line"><span class="cl">        System.out.println(&#34;接口eat&#34;);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">class Dog {
+</span></span><span class="line"><span class="cl">    public void eat() {
+</span></span><span class="line"><span class="cl">        System.out.println(&#34;class eat&#34;);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">class ErHa extends Dog implements Animal {
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>一个类实现了多个接口，多个接口中存在同名的默认方法，不冲突，整个类重写该方法即可</li>
+<li>一个接口继承多个接口是可以的，如果多个接口存在规范冲突则不能多继承。</li>
+</ol>
+<hr>
+<h2 id="39-static关键字使用代码块单例模式继承">3.9 static关键字使用、代码块、单例模式、继承</h2>
+<p><em><strong>java进阶</strong></em></p>
+<p><strong>static关键字使用</strong></p>
+<ul>
+<li>静态成员变量，有static修饰,属于类，只在类第一次加载时创建，可以被共享访问，通过<code>类名.变量名</code> 或者<code>对象名.变量名</code></li>
+<li>静态成员方法，有static修饰，归属类，用类名访问</li>
+<li>static 访问注意事项：
+<ol>
+<li>静态方法只能访问静态的成员，不可以直接访问实列成员</li>
+<li>实例方法可以访问静态的成员，也可以访问实列成员</li>
+<li>静态方法中是不可以出现this关键字的</li>
+</ol>
+</li>
+<li><strong>工具类不用创建对象，都是静态成员方法，可以写一个private的构造函数</strong>
+<strong>代码块</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309staticCode.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309staticCode.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309staticCode.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309staticCode.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309staticCode.png"
+        title="代码块" width="812" height="423" /></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">public class StaticCode {
+</span></span><span class="line"><span class="cl">    /**
+</span></span><span class="line"><span class="cl">     * 静态代码块，static修饰,与类一起加载，自动触发执行
+</span></span><span class="line"><span class="cl">     * 作用：可以用于初始化静态资源
+</span></span><span class="line"><span class="cl">     */
+</span></span><span class="line"><span class="cl">    public static int num;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    static {
+</span></span><span class="line"><span class="cl">        System.out.println(&#34;这是静态代码块&#34;);
+</span></span><span class="line"><span class="cl">        num = 0;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    public static void main(String[] args) {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>单例模式</strong></p>
+<ul>
+<li>可以保证系统中，应用该模式的这个类永远只有一个实例，即一个类永远只能创建一个对象</li>
+<li>例如任务管理器对象哦我们只需要一个就可以解决问题了，这样口语节省内存空间</li>
+<li>实现方式很多：
+<ol>
+<li>饿汉单例：在用类获取对象的时候，对象以及提前为你创建好了</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">public class SingleInstance {
+</span></span><span class="line"><span class="cl">    //饿汉单例设计模式
+</span></span><span class="line"><span class="cl">    /**
+</span></span><span class="line"><span class="cl">    * 饿汉单例设计模式：在用类获取对象的时候，对象以及提前为你创建好了
+</span></span><span class="line"><span class="cl">    * 2.这个对象只能是一个，所以定义为静态成员变量！
+</span></span><span class="line"><span class="cl">    */
+</span></span><span class="line"><span class="cl">    public static SingleInstance instance=new SingleInstance();
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    /**
+</span></span><span class="line"><span class="cl">    * 1.必须把构造器私有化
+</span></span><span class="line"><span class="cl">    */
+</span></span><span class="line"><span class="cl">    private SingleInstance(){
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>懒汉单例：真正需要该对象的是，才去创建一个对象（延迟加载对象）</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">public class LanSingleInstance {
+</span></span><span class="line"><span class="cl">    //设置成私有的，防止通过类名直接取null的对象
+</span></span><span class="line"><span class="cl">    private static LanSingleInstance instance; //null
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    //提供静态成员方法返回对象
+</span></span><span class="line"><span class="cl">    public static LanSingleInstance getInstance() {
+</span></span><span class="line"><span class="cl">        //只需第一次创建
+</span></span><span class="line"><span class="cl">        if (instance == null) {
+</span></span><span class="line"><span class="cl">            instance = new LanSingleInstance();
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        return instance;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    //构造函数私有
+</span></span><span class="line"><span class="cl">    private LanSingleInstance() {
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p><strong>继承</strong>
+继承就是子类继承父类的特征和行为，使得子类对象（实例）具有父类的实例域和方法，或子类从父类继承方法，使得子类具有父类相同的行为。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">class 父类 {
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">class 子类 extends 父类 {
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF.png"
+        title="继承特点" width="569" height="279" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF%E7%89%B9%E7%82%B92.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF%E7%89%B9%E7%82%B92.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF%E7%89%B9%E7%82%B92.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF%E7%89%B9%E7%82%B92.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF%E7%89%B9%E7%82%B92.png"
+        title="继承特点" width="1196" height="587" />
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF%E7%89%B9%E7%82%B93.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF%E7%89%B9%E7%82%B93.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF%E7%89%B9%E7%82%B93.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF%E7%89%B9%E7%82%B93.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E7%BB%A7%E6%89%BF%E7%89%B9%E7%82%B93.png"
+        title="继承特点" width="698" height="270" /></p>
+<ul>
+<li>重写</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E9%87%8D%E5%86%99.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E9%87%8D%E5%86%99.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E9%87%8D%E5%86%99.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E9%87%8D%E5%86%99.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309%E9%87%8D%E5%86%99.png"
+        title="方法重写" width="1015" height="533" /></p>
+<ul>
+<li>构造器：子类构造器一定要调用父类构造器，无论是有参还是无参构造器，一定要调用
+<strong>super(),this()构造器必须在构造器的第一行</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309this-super.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309this-super.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309this-super.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309this-super.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.9/20220309this-super.png"
+        title="this,super" width="640" height="342" /></li>
+</ul>
+<hr>
+<h2 id="38-stringarraylist集合">3.8 String、ArrayList集合</h2>
+<p><strong>String类</strong>
+java.lang.String ,对象不可更改类型，创建的对象不可更改，String变量每次的修改其实都是产生并指向了新的字符串对象，原来的字符串对象都市没有改变的，所以称不可变字符串</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//创建字符串，
+</span></span><span class="line"><span class="cl">//方式一
+</span></span><span class="line"><span class="cl">String str1 = &#34;方式一 this is a string&#34;;
+</span></span><span class="line"><span class="cl">System.out.println(str1);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//方式二
+</span></span><span class="line"><span class="cl">//1.public String() :创建一个空白字符串，不含任何内容，几乎不用
+</span></span><span class="line"><span class="cl">String str2=new String();
+</span></span><span class="line"><span class="cl">System.out.println(str2);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//2.public string(string) 根据传入的字符串内容来创建字符串对象，几乎不用
+</span></span><span class="line"><span class="cl">String str3=new String(&#34;i am chinese&#34;);
+</span></span><span class="line"><span class="cl">System.out.println(str3);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//3.public string (char [] c) : 根据字符数组的内容来创建字符串对象
+</span></span><span class="line"><span class="cl">char c[]={&#39;a&#39;,&#39;b&#39;,&#39;v&#39;,&#39;i&#39;,&#39;中&#39;,&#39;国&#39;};
+</span></span><span class="line"><span class="cl">String str4=new String(c);
+</span></span><span class="line"><span class="cl">System.out.println(str4);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//4. public string(byte []):根据字节数组的内容来创建字符串对象
+</span></span><span class="line"><span class="cl">byte [] b={97,98,99,100,101,102,103};
+</span></span><span class="line"><span class="cl">String str5=new String(b);
+</span></span><span class="line"><span class="cl">System.out.println(str5);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em><strong>面试题</strong></em></p>
+<p><strong>Q</strong> 
+有什么区别
+<strong>A</strong></p>
+<ul>
+<li>以&quot;&ldquo;方式给出的字符串对象，在字符串常量池中存储 ，而且相同内容只会在其中存储一份</li>
+<li>通过构造器的new对象，每new一次都会产生一个新的对象，放在堆内存中</li>
+</ul>
+<p><strong>Q</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//这行代码创建了两个对象，new一个，常量&#34;abc&#34;一个
+</span></span><span class="line"><span class="cl">String s2 = new String(&#34;abc&#34;); 
+</span></span><span class="line"><span class="cl">//这行代码创建了0个对象
+</span></span><span class="line"><span class="cl">String s1 = &#34;abc&#34;;
+</span></span><span class="line"><span class="cl">//地址不同，false
+</span></span><span class="line"><span class="cl">System.out.println(s1 == s2);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">String str1=&#34;abc&#34;;
+</span></span><span class="line"><span class="cl">string str2=&#34;ab&#34;;
+</span></span><span class="line"><span class="cl">String str3=s2+&#34;c&#34;; //只要没明确写出是字符串，都会new新对象放在堆内存中
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308String%E9%9D%A2%E8%AF%95%E9%A2%98.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308String%E9%9D%A2%E8%AF%95%E9%A2%98.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308String%E9%9D%A2%E8%AF%95%E9%A2%98.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308String%E9%9D%A2%E8%AF%95%E9%A2%98.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308String%E9%9D%A2%E8%AF%95%E9%A2%98.png"
+        title="string面试题" width="749" height="429" /></p>
+<p><em><strong>ArrayList集合</strong></em>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308Arraylist.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308Arraylist.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308Arraylist.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308Arraylist.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308Arraylist.png"
+        title="ArrayList" width="934" height="452" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//泛型
+</span></span><span class="line"><span class="cl">//jdk17开始，泛型后面的类型声明可以不写
+</span></span><span class="line"><span class="cl">ArrayList&lt;String&gt; list=new ArrayList&lt;&gt;(); 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ArrayList&lt;String&gt; list=new ArrayList&lt;String &gt;();
+</span></span><span class="line"><span class="cl">    list.add(&#34;java&#34;);
+</span></span><span class="line"><span class="cl">    list.add(&#34;c&#34;);
+</span></span><span class="line"><span class="cl">    list.add(&#34;c++&#34;);
+</span></span><span class="line"><span class="cl">    list.add(&#34;python&#34;);
+</span></span><span class="line"><span class="cl">    list.add(&#34;js&#34;);
+</span></span><span class="line"><span class="cl">    list.add(&#34;html&#34;);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    //1.public E get(int index)：获取某个位置出的元素值
+</span></span><span class="line"><span class="cl">    System.out.println(list.get(0));
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    //2.public int size() 获取集合的大小
+</span></span><span class="line"><span class="cl">    System.out.println(list.size());
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    //3.集合遍历
+</span></span><span class="line"><span class="cl">    for (String s :
+</span></span><span class="line"><span class="cl">            list) {
+</span></span><span class="line"><span class="cl">        System.out.println(s);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    //4.public E remove(int index) :删除某个索引，并返回被删除的元素值
+</span></span><span class="line"><span class="cl">    String str2=list.remove(0);
+</span></span><span class="line"><span class="cl">    System.out.println(str2);
+</span></span><span class="line"><span class="cl">    System.out.println(list);
+</span></span><span class="line"><span class="cl">    list.remove(&#34;java&#34;);
+</span></span><span class="line"><span class="cl">    // remove(object o )只会删除第一次出现的元素，后面出现的不会删除
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    //5. public E set(int index,E element): 修改某个索引位置的元素值
+</span></span><span class="line"><span class="cl">    list.set(0,&#34;c++&#34;);
+</span></span><span class="line"><span class="cl">    System.out.println(list);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308ArraylistAPI.png"
+        data-srcset="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308ArraylistAPI.png, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308ArraylistAPI.png 1.5x, /javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308ArraylistAPI.png 2x"
+        data-sizes="auto"
+        alt="/javase/note_img/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/3.8/20220308ArraylistAPI.png"
+        title="ArrayListAPI" width="1004" height="511" /></p>
+<h2 id="37">3.7</h2>
+<p>摸鱼</p>
+<h2 id="36">3.6</h2>
+<p>摸鱼</p>
+<hr>
+<h2 id="35-方法重载面向对象">3.5 方法重载、面向对象</h2>
+<p>方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">修饰符 返回值类型 方法名(参数类型 参数名){
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">    方法体
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">    return 返回值;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>递归求1-n的和</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//求1-n的值
+</span></span><span class="line"><span class="cl">public static int nSum(int n){
+</span></span><span class="line"><span class="cl">    if(n!=0){
+</span></span><span class="line"><span class="cl">        return n+nSum(n-1);
+</span></span><span class="line"><span class="cl">    }else {
+</span></span><span class="line"><span class="cl">        return n;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>java中的参数传递机制：</p>
+<ul>
+<li>基本类型的参数传递，是值传递，传的是数据值，并不是传地址</li>
+<li><strong>引用类型的参数传递，传的是地址</strong></li>
+</ul>
+<p><strong>方法重载</strong>：同一个类中，出现多个方法名称相同，但是<strong>形参列表不同</strong>，那么这些方法就是重载方法
+形参列表不同是指，<strong>形参个数、类型、顺序不同</strong></p>
+<p>return可以单独使用，立即跳出，结束当前方法</p>
+<p><em><strong>面向对象</strong></em> 三大特征：<strong>封装、继承、多态</strong></p>
+<ul>
+<li>构造器
+<ul>
+<li>无参数构造器（默认存在的），写不写都有，<strong>一旦定义了有参构造器，那么无参构造器就没有了，还想用无参构造器就必须自己写一个</strong></li>
+<li>有参数构造器</li>
+</ul>
+</li>
+<li>this关键字
+<ul>
+<li>可以出现再构造器和方法中、代表当前对象的地址</li>
+<li>用于指定访问当前对象的成员变量、成员方法</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="34-三种控制结构顺序分支循环-冒泡排序">3.4 三种控制结构，顺序、分支、循环 冒泡排序</h2>
+<p>三种控制结构，顺序、分支、循环
+switch注意事项：</p>
+<ul>
+<li>表达式类型只能是byte、short、int、char，jdk5开始支持枚举，jkd7支持String,不支持double、float，因为double、float底层计算不精确，不支持long,因为太大了</li>
+<li>case给出得值不允许重复，且只能是字面量，不能是变量</li>
+<li>不要忘记写break，否则会出现穿透现象</li>
+</ul>
+<p><strong>for循环</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">for (初始化; 循环语句; 迭代语句){
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">for (int i = 0; i++ &lt; 10; System.out.println(i)){
+</span></span><span class="line"><span class="cl">    //输出1-10
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>冒泡排序</strong></p>
+<ul>
+<li>比较轮数为 数组长度-1</li>
+<li>每轮次数为 数组长度-i-1</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">int [] arr={6,5,4,3,2,1};
+</span></span><span class="line"><span class="cl">for (int i = 0; i &lt; arr.length-1; i++) {
+</span></span><span class="line"><span class="cl">    for (int j = 0; j &lt; arr.length-i-1 ; j++) {
+</span></span><span class="line"><span class="cl">        if(arr[j]&gt;arr[j+1]){
+</span></span><span class="line"><span class="cl">            int temp=arr[j+1];
+</span></span><span class="line"><span class="cl">            arr[j+1]=arr[j];
+</span></span><span class="line"><span class="cl">            arr[j]=temp;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">        System.out.println(&#34;第&#34;+i+&#34;轮&#34;+Arrays.toString(arr));
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">System.out.println(&#34;排序完成：&#34;+Arrays.toString(arr));
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="33-基本数据类型四大类8种自动类型转换">3.3 基本数据类型：四大类8种、自动类型转换</h2>
+<p>JAVA中的数据类型，引用数据类型（除基本数据类型外都是,例如<code>String</code>）和基本数据类型</p>
+<p><strong>基本数据类型：四大类8种</strong></p>
+<ol>
+<li>整数
+<ul>
+<li><code>byte</code>   1字节</li>
+<li><code>short</code>  2字节</li>
+<li><code>int</code>    4字节</li>
+<li><code>long</code>   8字节  <code>long l=1234165464L</code> <em>不加L默认是int</em></li>
+</ul>
+</li>
+<li>浮点数
+<ul>
+<li><code>float</code>  4字节  <code>float score=98.5F</code>  <em>不加F默认是double</em></li>
+<li><code>double</code> 8字节</li>
+</ul>
+</li>
+<li>字符
+<ul>
+<li><code>char</code>   2字节</li>
+</ul>
+</li>
+<li>布尔
+<ul>
+<li><code>boolean</code>1字节</li>
+</ul>
+</li>
+</ol>
+<p><strong>自动类型转换</strong>
+<em>类型范围小的变量，考研直接赋值给类型范围大的变量</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">byte a=12;    原理:   a 00001100 （8位）     
+</span></span><span class="line"><span class="cl">int b=a;              b 00000000 00000000 00000000 00001100 (32位)
+</span></span><span class="line"><span class="cl">System.out.println(b); // b=12 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>byte short char 是直接转换成int类型参与运算的</strong>
+类型转换面试题，byte i=10; byte j=120; byte k=i+j;(<em>不行，byte在运算中当做int,所有k要声明为int</em>)  <strong>因为byte太小，运算容易越界，所有干脆直接当作int运算</strong></p>
+<p>*&amp;&amp; 短路与，左边为false，右边不执行
+*|| 短路或，左边为true,右边不执行
+*三元运行符 <code>条件？a:b  int max=a&gt;b ？ a:b </code>
+三元运算符嵌套，<code>int max = i&gt;j? (i&gt;k? i: k) : (j&gt;k? j: K) </code></p>
+<h2 id="32-git入门">3.2 git入门</h2>
+<p>学习了git使用，搭建了docsify个人博客，主要用于记录学习过程，Java笔记
+其中git使用常用命令为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git init  初始化仓库 
+</span></span><span class="line"><span class="cl">git add xxx.xx 添加文件
+</span></span><span class="line"><span class="cl">git add -A 添加所有修改的文件
+</span></span><span class="line"><span class="cl">git commit -m &#34;xxxx&#34;
+</span></span><span class="line"><span class="cl">git reset --hard HEAD^ 返回上一版本，HEAD时当前版本 
+</span></span><span class="line"><span class="cl">git branch xxx 创建分支
+</span></span><span class="line"><span class="cl">git cheackout xx 切换分支
+</span></span><span class="line"><span class="cl">git merge xx 合并分支
+</span></span><span class="line"><span class="cl">git push origin xx 更新到github
+</span></span><span class="line"><span class="cl">git status 查看当前状态
+</span></span><span class="line"><span class="cl">....
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>附上参考资料，<a href="https://mp.weixin.qq.com/s/swnwBiuyVmhs5iPqv3H6BQ" target="_blank" rel="noopener noreffer">不会再查</a></p>
+<hr>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-06-09</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/javase/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://demo122.github.io/javase/" data-title="javaSE" data-hashtags="javase"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://demo122.github.io/javase/" data-hashtag="javase"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://demo122.github.io/javase/" data-title="javaSE"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://demo122.github.io/javase/" data-title="javaSE"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://demo122.github.io/javase/" data-title="javaSE"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/javase/">javase</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/git%E5%85%A5%E9%97%A8/" class="prev" rel="prev" title="git入门"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>git入门</a>
+            <a href="/docker%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" class="next" rel="next" title="docker基础">docker基础<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.100.1">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://demo122.github.io/" target="_blank">明里</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{"valine":{"appId":"WmmCmkGTiTDymcezY20ogElF-gzGzoHsz","appKey":"pJGjo6q8vt8ckWmlsjCBCVbT","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-CN","pageSize":10,"placeholder":"请发表你的看法","recordIP":true,"serverURLs":"https://wmmcmkgt.lc-cn-n1-shared.com","visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

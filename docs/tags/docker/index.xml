@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>docker - 标签 - 明里的博客</title>
+        <link>https://demo122.github.io/tags/docker/</link>
+        <description>docker - 标签 - 明里的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 08 Jun 2022 13:52:20 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/tags/docker/" rel="self" type="application/rss+xml" /><item>
+    <title>docker基础</title>
+    <link>https://demo122.github.io/docker%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Wed, 08 Jun 2022 13:52:20 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/docker%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[1. docker安装 ubuntu中安装docker 1. 卸载旧版本 1 sudo apt-get remove docker docker-engine docker.io containerd runc 2. 安装依赖 1 2 3 4 5 6 sudo apt-get update sudo apt-get install \ ca-certificates \ curl \ gnupg \ lsb-release 3. 添加doc]]></description>
+</item>
+</channel>
+</rss>

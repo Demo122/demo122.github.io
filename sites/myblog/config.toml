@@ -58,7 +58,7 @@ publishDir = "../../docs"
     pre = ""
     post = ""
     name = "关于"
-    url = "/"
+    url = "/about.md"
     title = ""
   [[menu.main]]
     weight = 5
@@ -79,7 +79,7 @@ publishDir = "../../docs"
   # ["sha256", "sha384", "sha512", "md5"]
   fingerprint = ""
   #  日期格式
-  dateFormat = "2006-01-02 "
+  dateFormat = "2006-01-02"
   # 网站标题, 用于 Open Graph 和 Twitter Cards
   title = "明里的博客"
   # 网站描述, 用于 RSS, SEO, Open Graph 和 Twitter Cards
