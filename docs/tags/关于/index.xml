@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>关于 - 标签 - 明里的博客</title>
+        <link>https://demo122.github.io/tags/%E5%85%B3%E4%BA%8E/</link>
+        <description>关于 - 标签 - 明里的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 09 Jun 2022 21:30:11 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/tags/%E5%85%B3%E4%BA%8E/" rel="self" type="application/rss+xml" /><item>
+    <title>About</title>
+    <link>https://demo122.github.io/about/</link>
+    <pubDate>Thu, 09 Jun 2022 21:30:11 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/about/</guid>
+    <description><![CDATA[明里的hugo博客 博客基于hugo 使用的是loveI主题 使用hugo构建静态文件时默认是生成在public目录下 可以在config中设置pu]]></description>
+</item>
+</channel>
+</rss>

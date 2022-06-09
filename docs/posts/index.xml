@@ -9,7 +9,7 @@
     <pubDate>Thu, 09 Jun 2022 21:30:11 &#43;0800</pubDate>
     <author>明里</author>
     <guid>https://demo122.github.io/about/</guid>
-    <description><![CDATA[]]></description>
+    <description><![CDATA[明里的hugo博客 博客基于hugo 使用的是loveI主题 使用hugo构建静态文件时默认是生成在public目录下 可以在config中设置pu]]></description>
 </item>
 <item>
     <title>crontab定时任务</title>
