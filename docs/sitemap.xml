@@ -2,12 +2,13 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://demo122.github.io/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</loc><lastmod>2022-06-10T21:34:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://demo122.github.io/posts/</loc><lastmod>2022-06-10T21:34:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://demo122.github.io/</loc><lastmod>2022-06-10T21:34:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://demo122.github.io/categories/</loc><lastmod>2022-06-10T20:46:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://demo122.github.io/cet6/</loc><lastmod>2022-06-10T20:46:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://demo122.github.io/posts/</loc><lastmod>2022-06-10T20:46:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://demo122.github.io/tags/</loc><lastmod>2022-06-10T20:46:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://demo122.github.io/tags/%E5%85%AD%E7%BA%A7/</loc><lastmod>2022-06-10T20:46:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://demo122.github.io/</loc><lastmod>2022-06-10T20:46:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://demo122.github.io/categories/%E8%8B%B1%E8%AF%AD/</loc><lastmod>2022-06-10T20:46:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://demo122.github.io/about/</loc><lastmod>2022-06-09T21:30:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://demo122.github.io/tags/%E5%85%B3%E4%BA%8E/</loc><lastmod>2022-06-09T21:30:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
