@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>六级 - 标签 - 明里的博客</title>
+        <link>https://demo122.github.io/tags/%E5%85%AD%E7%BA%A7/</link>
+        <description>六级 - 标签 - 明里的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 10 Jun 2022 20:46:36 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/tags/%E5%85%AD%E7%BA%A7/" rel="self" type="application/rss+xml" /><item>
+    <title>Cet6</title>
+    <link>https://demo122.github.io/cet6/</link>
+    <pubDate>Fri, 10 Jun 2022 20:46:36 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/cet6/</guid>
+    <description><![CDATA[六级怎么过啊]]></description>
+</item>
+</channel>
+</rss>
