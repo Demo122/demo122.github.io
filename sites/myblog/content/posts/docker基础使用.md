@@ -1,7 +1,6 @@
 ---
 title: "docker基础"
 date: 2022-06-08T13:52:20+08:00
-lastmod: 2022-06-09T13:52:20+08:00
 draft: false
 categories: ["docker","开发工具"]
 tags: ["docker"]

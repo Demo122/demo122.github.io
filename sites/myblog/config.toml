@@ -17,6 +17,10 @@ hasCJKLanguage = true
 # 设置静态文件的生成目录
 publishDir = "../../docs"
 
+[frontmatter]
+  # lastmod = [':git', 'lastmod', ':fileModTime', ':default']
+  lastmod = [':fileModTime', ':default']
+
 # 作者配置
 [author]
   name = "明里"

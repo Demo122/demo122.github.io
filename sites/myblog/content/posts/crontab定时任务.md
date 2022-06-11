@@ -1,7 +1,6 @@
 ---
 title: "crontab定时任务"
 date: 2022-06-09T13:52:20+08:00
-lastmod: 2022-06-09 13:52:20
 draft: false
 categories: ["linux"]
 tags: ["crontab定时任务"]
