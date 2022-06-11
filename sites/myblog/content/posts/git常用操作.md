@@ -2,6 +2,8 @@
 title: "Git常用操作"
 date: 2022-06-10T21:34:53+08:00
 draft: false
+categories: ["工具"]
+tags: ["git"]
 ---
 
 # 版本回退

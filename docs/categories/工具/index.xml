@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>工具 - 分类 - 明里的博客</title>
+        <link>https://demo122.github.io/categories/%E5%B7%A5%E5%85%B7/</link>
+        <description>工具 - 分类 - 明里的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 10 Jun 2022 21:34:53 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/categories/%E5%B7%A5%E5%85%B7/" rel="self" type="application/rss+xml" /><item>
+    <title>Git常用操作</title>
+    <link>https://demo122.github.io/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+    <pubDate>Fri, 10 Jun 2022 21:34:53 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+    <description><![CDATA[版本回退 版本回退 回退至上一个版本 1 git reset --hard HEAD 对push的版本进行回退]]></description>
+</item>
+</channel>
+</rss>
