@@ -144,7 +144,7 @@
             host: smtp.163.com
             port: 465
             username: xxxx@163.com
-            password: CONTSNQHENPGGXCD
+            password: xxxxx
             protocol: smtps # 指定协议
             properties:
                 mail.smtp.ssl.enable: true
