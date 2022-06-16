@@ -3,7 +3,42 @@
 
 # 仿牛客社区
 
-## 手动实现分页
+## springboot集成第三方
+
+### 集成reids
+
+- 导包 spring-boot-starter-data-redis
+
+  ```xml
+  <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+  </dependency>
+  ```
+
+- 配置Redis
+
+  - 配置数据源
+
+    ```yaml
+    spring:
+    	redis:
+            database: 11
+            host: localhost
+            port: 6379
+    ```
+
+    
+
+  - 编写配置类，构造RedisTemplate
+
+- 访问Redis
+
+  
+
+## 功能实现
+
+### 动实现分页
 
 - 分页sql语句
 
@@ -118,7 +153,7 @@
 
 - controller中接收分页信息并调用语句分页查找
 
-## 发送邮件
+### 发送邮件
 
 - **邮箱设置**
 
@@ -192,10 +227,10 @@
     }
     ```
 
-    ## 经验
-    
-    ### ajxa请求经过springmvc拦截器后response重定向问题
-    
+## 经验
+
+### ajxa请求经过springmvc拦截器后response重定向问题
+
     - **问题**：ajxa请求经过springmvc拦截器后response重定向后，浏览器会再次请求重定向的页面，但是不会刷新显示
     
     - **解决**：可以设置ajax请求拦截后将重定向页面url作为json数据返回，在ajax回调处理函数中进行页面跳转
@@ -241,6 +276,7 @@
               }
           );
       ```
-      
-      
+
+
+​      
 

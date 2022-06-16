@@ -9,7 +9,7 @@
     <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
     <author>明里</author>
     <guid>https://demo122.github.io/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA/</guid>
-    <description><![CDATA[仿牛客社区 手动实现分页 分页sql语句 1 select * from discuss_post order by type desc, create_time desc limit #{offset}, #{limit} 定义分页信息对象，page类 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24]]></description>
+    <description><![CDATA[仿牛客社区 springboot集成第三方 集成reids 导包 spring-boot-starter-data-redis 1 2 3 4 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt; &lt;/dependency&gt; 配置Redis 配置数据源 1 2 3 4 5 spring: redis: database: 11 host: localhost port: 6379 编写配置类，构]]></description>
 </item>
 </channel>
 </rss>
