@@ -192,5 +192,55 @@
     }
     ```
 
+    ## 经验
     
+    ### ajxa请求经过springmvc拦截器后response重定向问题
+    
+    - **问题**：ajxa请求经过springmvc拦截器后response重定向后，浏览器会再次请求重定向的页面，但是不会刷新显示
+    
+    - **解决**：可以设置ajax请求拦截后将重定向页面url作为json数据返回，在ajax回调处理函数中进行页面跳转
+    
+    - **代码**
+    
+      - java
+      
+      ```java
+        @Override
+          public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+              pass
+            			{
+                      //如果request.getHeader("X-Requested-With") 返回的是"XMLHttpRequest"说明就是ajax请求，需要特殊处理 否则直接重定向就可以了
+                      if("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))){
+                          //自定义json数据返回，包含重定向的地址
+                          JSONObject res=new JSONObject();
+                          res.put("redirect",request.getContextPath() + "/login");
+                          response.setContentType("application/json;charset=utf-8");
+                          response.getWriter().write(res.toJSONString());
+                      }else{
+                          // 如果不是ajax 就正常重定向
+                          response.sendRedirect(request.getContextPath() + "/login");
+                      }
+                      return false;
+        
+              return true;
+          }
+      
+      ```
+      
+      - js
+      
+      ```javascript
+          $.post(
+              reuqest_url,
+              function (data) {
+                  data1 = JSON.parse(JSON.stringify(data));
+                  // console.log(data);
+                  if (data1.redirect != null) {
+                      window.location.href = CONTEXT_PATH + data1.redirect;
+                  } 
+              }
+          );
+      ```
+      
+      
 
