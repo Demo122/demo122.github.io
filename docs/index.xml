@@ -14,14 +14,6 @@
     <description><![CDATA[版本回退 版本回退 回退至上一个版本 1 git reset --hard HEAD 对push的版本进行回退]]></description>
 </item>
 <item>
-    <title>Cet6</title>
-    <link>https://demo122.github.io/cet6/</link>
-    <pubDate>Fri, 10 Jun 2022 20:46:36 &#43;0800</pubDate>
-    <author>明里</author>
-    <guid>https://demo122.github.io/cet6/</guid>
-    <description><![CDATA[六级怎么过啊]]></description>
-</item>
-<item>
     <title>About</title>
     <link>https://demo122.github.io/about/</link>
     <pubDate>Thu, 09 Jun 2022 21:30:11 &#43;0800</pubDate>
@@ -38,36 +30,12 @@
     <description><![CDATA[crontab定时任务 Linux crontab 是用来定期执行程序的命令。 当安装完成操作系统之后，默认便会启动此任务调度命令。 crond 命令每分钟会定期检查是否有要执行的]]></description>
 </item>
 <item>
-    <title>kafka</title>
-    <link>https://demo122.github.io/kafka/</link>
-    <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
-    <author>明里</author>
-    <guid>https://demo122.github.io/kafka/</guid>
-    <description><![CDATA[kafka]]></description>
-</item>
-<item>
     <title>mysql笔记</title>
     <link>https://demo122.github.io/mysql/</link>
     <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
     <author>明里</author>
     <guid>https://demo122.github.io/mysql/</guid>
     <description><![CDATA[mysql mysql安装和配置 MySQL 5.7.24 解压版,解压安装 配置 添加环境变量 新建配置文件 新建一个文本文件，内容如下： 1 2 3 4 5 6 7 [mysql] default-character-set=utf8 [mysqld] character-set-server=utf8 default-storage-engine=INNODB sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION 把上面的文本文件]]></description>
-</item>
-<item>
-    <title>Redis笔记</title>
-    <link>https://demo122.github.io/redis/</link>
-    <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
-    <author>明里</author>
-    <guid>https://demo122.github.io/redis/</guid>
-    <description><![CDATA[Redis 安装]]></description>
-</item>
-<item>
-    <title>Springboot笔记</title>
-    <link>https://demo122.github.io/springboot2/</link>
-    <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
-    <author>明里</author>
-    <guid>https://demo122.github.io/springboot2/</guid>
-    <description><![CDATA[Springboot笔记 基础 集成junit 导入springboot-test包 1 2 3 4 5 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; 编写测试类和测试方法，在测试类上加注解@S]]></description>
 </item>
 <item>
     <title>ssm配置</title>
@@ -84,6 +52,38 @@
     <author>明里</author>
     <guid>https://demo122.github.io/%E9%9D%A2%E8%AF%95/</guid>
     <description><![CDATA[八股文 牛客八股 javaguide]]></description>
+</item>
+<item>
+    <title>仿牛客社区</title>
+    <link>https://demo122.github.io/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA/</link>
+    <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA/</guid>
+    <description><![CDATA[仿牛客社区 springboot集成第三方 集成reids 导包 spring-boot-starter-data-redis 1 2 3 4 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt; &lt;/dependency&gt; 配置Redis 配置数据源 1 2 3 4 5 spring: redis: database: 11 host: localhost port: 6379 编写配置类，构]]></description>
+</item>
+<item>
+    <title>牛客算法top101</title>
+    <link>https://demo122.github.io/%E7%89%9B%E5%AE%A2%E7%AE%97%E6%B3%95top101/</link>
+    <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/%E7%89%9B%E5%AE%A2%E7%AE%97%E6%B3%95top101/</guid>
+    <description><![CDATA[牛客算法top101 链表 反转链表 题目 给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后]]></description>
+</item>
+<item>
+    <title>随笔</title>
+    <link>https://demo122.github.io/%E9%9A%8F%E7%AC%94/</link>
+    <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/%E9%9A%8F%E7%AC%94/</guid>
+    <description><![CDATA[随笔 2022/6/9 投鼎桥科技。。。]]></description>
+</item>
+<item>
+    <title>docker基础</title>
+    <link>https://demo122.github.io/docker%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Wed, 08 Jun 2022 13:52:20 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/docker%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[1. docker安装 ubuntu中安装docker 1. 卸载旧版本 1 sudo apt-get remove docker docker-engine docker.io containerd runc 2. 安装依赖 1 2 3 4 5 6 sudo apt-get update sudo apt-get install \ ca-certificates \ curl \ gnupg \ lsb-release 3. 添加doc]]></description>
 </item>
 </channel>
 </rss>

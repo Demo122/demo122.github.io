@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://demo122.github.io/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA/" /><meta property="og:image" content="https://demo122.github.io/favicon.ico"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-09T13:52:20+08:00" />
-<meta property="article:modified_time" content="2022-06-16T16:03:58+08:00" /><meta property="og:site_name" content="明里的博客" />
+<meta property="article:modified_time" content="2022-06-16T16:31:25+08:00" /><meta property="og:site_name" content="明里的博客" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://demo122.github.io/favicon.ico"/>
@@ -30,8 +30,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/demo122.github.io\/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA\/"
-        },"genre": "posts","keywords": "java项目, 实战","wordcount":  1199 ,
-        "url": "https:\/\/demo122.github.io\/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA\/","datePublished": "2022-06-09T13:52:20+08:00","dateModified": "2022-06-16T16:03:58+08:00","publisher": {
+        },"genre": "posts","keywords": "java项目, 实战","wordcount":  1311 ,
+        "url": "https:\/\/demo122.github.io\/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA\/","datePublished": "2022-06-09T13:52:20+08:00","dateModified": "2022-06-16T16:31:25+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -105,7 +105,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">仿牛客社区</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://demo122.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>明里</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/java%E9%A1%B9%E7%9B%AE/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>java项目</a>&nbsp;<a href="/categories/%E5%AE%9E%E6%88%98/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>实战</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-09">2022-06-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1199 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-09">2022-06-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1311 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA/" class="leancloud_visitors" data-flag-title="仿牛客社区">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -179,7 +179,57 @@
 </div></li>
 <li>
 <p>编写配置类，构造RedisTemplate</p>
-</li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RedisConfig</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@Bean</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">RedisTemplate</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="nf">redisTemplate</span><span class="o">(</span><span class="n">RedisConnectionFactory</span> <span class="n">factory</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">RedisTemplate</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">template</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RedisTemplate</span><span class="o">&lt;&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">template</span><span class="o">.</span><span class="na">setConnectionFactory</span><span class="o">(</span><span class="n">factory</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// 设置key的序列化方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">template</span><span class="o">.</span><span class="na">setKeySerializer</span><span class="o">(</span><span class="n">RedisSerializer</span><span class="o">.</span><span class="na">string</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 设置value的序列化方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">template</span><span class="o">.</span><span class="na">setValueSerializer</span><span class="o">(</span><span class="n">RedisSerializer</span><span class="o">.</span><span class="na">json</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 设置hash的key的序列化方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">template</span><span class="o">.</span><span class="na">setHashKeySerializer</span><span class="o">(</span><span class="n">RedisSerializer</span><span class="o">.</span><span class="na">string</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 设置hash的value的序列化方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">template</span><span class="o">.</span><span class="na">setHashValueSerializer</span><span class="o">(</span><span class="n">RedisSerializer</span><span class="o">.</span><span class="na">json</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">template</span><span class="o">.</span><span class="na">afterPropertiesSet</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">template</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 </li>
 <li>
