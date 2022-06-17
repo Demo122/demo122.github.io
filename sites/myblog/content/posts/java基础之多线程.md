@@ -47,4 +47,39 @@ class ThreadDemo extends Thread{
 
 ### 方式二 实现Runnable接口
 
+- 定义类实现Runnable接口的run方法，run方法为执行体
+
+- 创建Runnable接口实现类的对象，并将其作为target传入Thread的构造函数获取线程对象
+
+- 启动start()方法
+
+```java
+public class RunnableThreadDemo {
+    public static void main(String[] args) {
+        //2.创建Runnable接口实现类的实例，将其传入到Thread的构造方法中
+        RunnableThread runnableThread=new RunnableThread();
+        Thread t=new Thread(runnableThread);
+        t.start();
+        for (int i = 0; i < 10; i++) {
+            System.out.println("这是主线程："+i);
+        }
+    }
+}
+
+/**
+ * 1.定义类实现Runnable接口的run方法，run方法为执行体
+ */
+class RunnableThread implements Runnable{
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println("这是子线程："+i);
+        }
+    }
+}
+```
+
+  
+
 ### 方式三 实现callable接口
