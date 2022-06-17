@@ -3,7 +3,15 @@
         <title>所有文章 - 明里的博客</title>
         <link>https://demo122.github.io/posts/</link>
         <description>所有文章 | 明里的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 10 Jun 2022 21:34:53 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 17 Jun 2022 17:24:19 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Java基础之多线程</title>
+    <link>https://demo122.github.io/java%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+    <pubDate>Fri, 17 Jun 2022 17:24:19 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/java%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid>
+    <description><![CDATA[多线程的创建 方式一 继承Thread类 创建Thread的子类，并重写run（）方法，run()中的代码为执行体 创建该类的实例，调用它的star]]></description>
+</item>
+<item>
     <title>Git常用操作</title>
     <link>https://demo122.github.io/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
     <pubDate>Fri, 10 Jun 2022 21:34:53 &#43;0800</pubDate>
@@ -74,14 +82,6 @@
     <author>明里</author>
     <guid>https://demo122.github.io/%E9%9A%8F%E7%AC%94/</guid>
     <description><![CDATA[随笔 2022/6/9 投鼎桥科技。。。]]></description>
-</item>
-<item>
-    <title>docker基础</title>
-    <link>https://demo122.github.io/docker%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/</link>
-    <pubDate>Wed, 08 Jun 2022 13:52:20 &#43;0800</pubDate>
-    <author>明里</author>
-    <guid>https://demo122.github.io/docker%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/</guid>
-    <description><![CDATA[1. docker安装 ubuntu中安装docker 1. 卸载旧版本 1 sudo apt-get remove docker docker-engine docker.io containerd runc 2. 安装依赖 1 2 3 4 5 6 sudo apt-get update sudo apt-get install \ ca-certificates \ curl \ gnupg \ lsb-release 3. 添加doc]]></description>
 </item>
 </channel>
 </rss>
