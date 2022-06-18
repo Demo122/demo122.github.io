@@ -86,13 +86,19 @@ class RunnableThread implements Runnable{
 
 ### 方式三 实现callable接口
 
-1. 创建callable接口的实现类
-1. 实现call方法
-1. 创建callable接口实现类的实例
-1. 使用FutureTask类封装callable对象，并创建futuretask对象
-1. 把futuretask对象传入Thread构造函数创建线程对象
-1. 启动线程
-1. 使用futuretask对象的get()方法获取返回值
+- 创建callable接口的实现类
+
+- 实现call方法
+
+- 创建callable接口实现类的实例
+
+- 使用FutureTask类封装callable对象，并创建futuretask对象
+
+- 把futuretask对象传入Thread构造函数创建线程对象
+
+- 启动线程
+
+- 使用futuretask对象的get()方法获取返回值
 
 ```java
 public class CallableThreadDemo {
@@ -155,7 +161,7 @@ class CallableThread implements Callable<Integer> {
 
 ## 线程常用方法
 
-### Thread类常用构造方法：
+### Thread类常用构造方法
 
 - Thread()
 - Thread(String name)
@@ -164,14 +170,14 @@ class CallableThread implements Callable<Integer> {
 
 *其中，参数 name为线程名，参数 target为包含线程体的目标对象。*
 
-### Thread类常用静态方法：
+### Thread类常用静态方法
 
 - currentThread()：返回当前正在执行的线程；
 - interrupted()：返回当前执行的线程是否已经被中断；
 - sleep(long millis)：使当前执行的线程睡眠多少毫秒数；
 - yield()：使当前执行的线程自愿暂时放弃对处理器的使用权并允许其他线程执行；
 
-### Thread类常用实例方法：
+### Thread类常用实例方法
 
 - getId()：返回该线程的id；
 - getName()：返回该线程的名字；
@@ -185,3 +191,6 @@ class CallableThread implements Callable<Integer> {
 - setPriority(int newPriority)：改变该线程的优先级；
 - join()：等待该线程终止；
 - join(long millis)：等待该线程终止,至多等待多少毫秒数。
+
+## 线程同步
+
