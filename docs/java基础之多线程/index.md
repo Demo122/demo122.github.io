@@ -81,3 +81,71 @@ class RunnableThread implements Runnable{
 
 ### 方式三 实现callable接口
 
+1. 创建callable接口的实现类
+1. 实现call方法
+1. 创建callable接口实现类的实例
+1. 使用FutureTask类封装callable对象，并创建futuretask对象
+1. 把futuretask对象传入Thread构造函数创建线程对象
+1. 启动线程
+1. 使用futuretask对象的get()方法获取返回值
+
+```java
+public class CallableThreadDemo {
+    public static void main(String[] args) {
+        //3.创建callable接口实现类的实例
+        Callable<Integer> callable = new CallableThread(10);
+        // 4.使用FutureTask类封装callable对象，并创建futuretask对象
+        FutureTask<Integer> futureTask = new FutureTask<>(callable);
+        //5.把futuretask对象传入Thread构造函数创建线程对象
+        Thread t = new Thread(futureTask);
+        //6.启动线程
+        t.start();
+
+        Callable<Integer> callable2 = new CallableThread(20);
+        FutureTask<Integer> futureTask2 = new FutureTask<>(callable2);
+        Thread t2 = new Thread(futureTask2);
+        t2.start();
+
+        //7.使用futuretask对象获取返回值
+        try {
+            //如果此时futurtask的线程没有执行完，这里代码会等待它执行完再取结果
+            Integer res = futureTask.get();
+            System.out.println(res);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Integer res2 = futureTask2.get();
+            System.out.println(res2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+// 1.创建callable接口的实现类
+class CallableThread implements Callable<Integer> {
+    private int n;
+
+    public CallableThread(int n) {
+        this.n = n;
+    }
+
+    // 2、实现call方法
+    @Override
+    public Integer call() throws Exception {
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += i;
+            System.out.println(Thread.currentThread().getName()+"---"+sum);
+        }
+        return sum;
+    }
+}
+```
+
+
