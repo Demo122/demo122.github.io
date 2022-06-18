@@ -148,4 +148,36 @@ class CallableThread implements Callable<Integer> {
 }
 ```
 
+## 线程常用方法
+
+### Thread类常用构造方法：
+
+- Thread()
+- Thread(String name)
+- Thread(Runnable target)
+- Thread(Runnable target, String name)
+
+*其中，参数 name为线程名，参数 target为包含线程体的目标对象。*
+
+### Thread类常用静态方法：
+
+- currentThread()：返回当前正在执行的线程；
+- interrupted()：返回当前执行的线程是否已经被中断；
+- sleep(long millis)：使当前执行的线程睡眠多少毫秒数；
+- yield()：使当前执行的线程自愿暂时放弃对处理器的使用权并允许其他线程执行；
+
+### Thread类常用实例方法：
+
+- getId()：返回该线程的id；
+- getName()：返回该线程的名字；
+- getPriority()：返回该线程的优先级；
+- interrupt()：使该线程中断；
+- isInterrupted()：返回该线程是否被中断；
+- isAlive()：返回该线程是否处于活动状态；
+- isDaemon()：返回该线程是否是守护线程；
+- setDaemon(boolean on)：将该线程标记为守护线程或用户线程，如果不标记默认是非守护线程；
+- setName(String name)：设置该线程的名字；
+- setPriority(int newPriority)：改变该线程的优先级；
+- join()：等待该线程终止；
+- join(long millis)：等待该线程终止,至多等待多少毫秒数。
 
