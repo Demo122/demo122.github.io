@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://demo122.github.io/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA/" /><meta property="og:image" content="https://demo122.github.io/favicon.ico"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-09T13:52:20+08:00" />
-<meta property="article:modified_time" content="2022-06-18T22:25:10+08:00" /><meta property="og:site_name" content="明里的博客" />
+<meta property="article:modified_time" content="2022-06-18T22:29:49+08:00" /><meta property="og:site_name" content="明里的博客" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://demo122.github.io/favicon.ico"/>
@@ -30,8 +30,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/demo122.github.io\/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA\/"
-        },"genre": "posts","keywords": "java项目, 实战","wordcount":  1859 ,
-        "url": "https:\/\/demo122.github.io\/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA\/","datePublished": "2022-06-09T13:52:20+08:00","dateModified": "2022-06-18T22:25:10+08:00","publisher": {
+        },"genre": "posts","keywords": "java项目, 实战","wordcount":  1871 ,
+        "url": "https:\/\/demo122.github.io\/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA\/","datePublished": "2022-06-09T13:52:20+08:00","dateModified": "2022-06-18T22:29:49+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -105,7 +105,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">仿牛客社区</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://demo122.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>明里</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/java%E9%A1%B9%E7%9B%AE/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>java项目</a>&nbsp;<a href="/categories/%E5%AE%9E%E6%88%98/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>实战</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-09">2022-06-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1859 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-09">2022-06-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1871 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA/" class="leancloud_visitors" data-flag-title="仿牛客社区">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -798,53 +798,84 @@
 </ul>
 <h2 id="经验">经验</h2>
 <h3 id="ajxa请求经过springmvc拦截器后response重定向问题">ajxa请求经过springmvc拦截器后response重定向问题</h3>
-<pre><code>- **问题**：ajxa请求经过springmvc拦截器后response重定向后，浏览器会再次请求重定向的页面，但是不会刷新显示
-
-- **解决**：可以设置ajax请求拦截后将重定向页面url作为json数据返回，在ajax回调处理函数中进行页面跳转
-
-- **代码**
-
-  - java
-  
-  ```java
-    @Override
-      public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-          pass
-        			{
-                  //如果request.getHeader(&quot;X-Requested-With&quot;) 返回的是&quot;XMLHttpRequest&quot;说明就是ajax请求，需要特殊处理 否则直接重定向就可以了
-                  if(&quot;XMLHttpRequest&quot;.equals(request.getHeader(&quot;X-Requested-With&quot;))){
-                      //自定义json数据返回，包含重定向的地址
-                      JSONObject res=new JSONObject();
-                      res.put(&quot;redirect&quot;,request.getContextPath() + &quot;/login&quot;);
-                      response.setContentType(&quot;application/json;charset=utf-8&quot;);
-                      response.getWriter().write(res.toJSONString());
-                  }else{
-                      // 如果不是ajax 就正常重定向
-                      response.sendRedirect(request.getContextPath() + &quot;/login&quot;);
-                  }
-                  return false;
-    
-          return true;
-      }
-  
-  ```
-  
-  - js
-  
-  ```javascript
-      $.post(
-          reuqest_url,
-          function (data) {
-              data1 = JSON.parse(JSON.stringify(data));
-              // console.log(data);
-              if (data1.redirect != null) {
-                  window.location.href = CONTEXT_PATH + data1.redirect;
-              } 
-          }
-      );
-  ```
-</code></pre>
-<p>​</p>
+<ul>
+<li><strong>问题</strong>：ajxa请求经过springmvc拦截器后response重定向后，浏览器会再次请求重定向的页面，但是不会刷新显示</li>
+<li><strong>解决</strong>：可以设置ajax请求拦截后将重定向页面url作为json数据返回，在ajax回调处理函数中进行页面跳转</li>
+<li><strong>代码</strong></li>
+</ul>
+<p><strong>java代码</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Override</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">preHandle</span><span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="o">,</span> <span class="n">Object</span> <span class="n">handler</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pass</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//如果request.getHeader(&#34;X-Requested-With&#34;) 返回的是&#34;XMLHttpRequest&#34;说明就是ajax请求，需要特殊处理 否则直接重定向就可以了
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="o">(</span><span class="s">&#34;XMLHttpRequest&#34;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getHeader</span><span class="o">(</span><span class="s">&#34;X-Requested-With&#34;</span><span class="o">))){</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//自定义json数据返回，包含重定向的地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">JSONObject</span> <span class="n">res</span><span class="o">=</span><span class="k">new</span> <span class="n">JSONObject</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="n">res</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;redirect&#34;</span><span class="o">,</span><span class="n">request</span><span class="o">.</span><span class="na">getContextPath</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;/login&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">response</span><span class="o">.</span><span class="na">setContentType</span><span class="o">(</span><span class="s">&#34;application/json;charset=utf-8&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">response</span><span class="o">.</span><span class="na">getWriter</span><span class="o">().</span><span class="na">write</span><span class="o">(</span><span class="n">res</span><span class="o">.</span><span class="na">toJSONString</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 如果不是ajax 就正常重定向
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getContextPath</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;/login&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>js代码</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">    <span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">reuqest_url</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">data1</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// console.log(data);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="nx">data1</span><span class="p">.</span><span class="nx">redirect</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">CONTEXT_PATH</span> <span class="o">+</span> <span class="nx">data1</span><span class="p">.</span><span class="nx">redirect</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
