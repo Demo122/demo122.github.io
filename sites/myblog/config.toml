@@ -353,18 +353,18 @@ publishDir = "../../docs"
     #  文章页面的分享信息设置
     [params.page.share]
       enable = true
-      Twitter = true
-      Facebook = true
+      Twitter = false
+      Facebook = false
       Linkedin = false
       Whatsapp = false
       Pinterest = false
       Tumblr = false
-      HackerNews = true
+      HackerNews = false
       Reddit = false
       VK = false
       Buffer = false
       Xing = false
-      Line = true
+      Line = false
       Instapaper = false
       Pocket = false
       Flipboard = false
