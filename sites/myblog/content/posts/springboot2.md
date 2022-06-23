@@ -1,6 +1,6 @@
 ---
 title: "Springboot笔记"
-date: 2022-06-07T13:52:20+08:00
+date: 2022-06-17T13:52:20+08:00
 draft: false
 categories: ["java框架"]
 tags: ["Springboot"]
@@ -50,4 +50,18 @@ tags: ["Springboot"]
 ## 开发实用
 
 ## 原理
+
+## POM
+
+### spring-boot-starter-web
+
+```xml
+<!--        springboot-web -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
+
+
 

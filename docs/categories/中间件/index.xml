@@ -12,11 +12,11 @@
     <description><![CDATA[kafka的入门使用 kafka入门 启动zookeeper 1 bin\windows\zookeeper-server-start.bat config\zookeeper.properties 启动kafka 1 bin\windows\kafka-server-start.bat config\server.properties 创建主题 1 kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test springboot整合ka]]></description>
 </item>
 <item>
-    <title>Redis笔记</title>
-    <link>https://demo122.github.io/redis/</link>
+    <title>Redis基础</title>
+    <link>https://demo122.github.io/redis%E5%9F%BA%E7%A1%80/</link>
     <pubDate>Sun, 05 Jun 2022 13:52:20 &#43;0800</pubDate>
     <author>明里</author>
-    <guid>https://demo122.github.io/redis/</guid>
+    <guid>https://demo122.github.io/redis%E5%9F%BA%E7%A1%80/</guid>
     <description><![CDATA[Redis 安装]]></description>
 </item>
 </channel>

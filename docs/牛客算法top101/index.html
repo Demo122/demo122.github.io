@@ -5,17 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>牛客算法top101 - 明里的博客</title><meta name="Description" content="明里的博客"><meta property="og:title" content="牛客算法top101" />
-<meta property="og:description" content="牛客算法top101 链表 反转链表 题目 给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后" />
+<meta property="og:description" content="牛客算法top101 链表 BM1 反转链表 题目 给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://demo122.github.io/%E7%89%9B%E5%AE%A2%E7%AE%97%E6%B3%95top101/" /><meta property="og:image" content="https://demo122.github.io/favicon.ico"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-09T13:52:20+08:00" />
-<meta property="article:modified_time" content="2022-06-18T16:50:45+08:00" /><meta property="og:site_name" content="明里的博客" />
+<meta property="article:modified_time" content="2022-06-23T18:05:49+08:00" /><meta property="og:site_name" content="明里的博客" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://demo122.github.io/favicon.ico"/>
 
 <meta name="twitter:title" content="牛客算法top101"/>
-<meta name="twitter:description" content="牛客算法top101 链表 反转链表 题目 给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后"/>
+<meta name="twitter:description" content="牛客算法top101 链表 BM1 反转链表 题目 给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表"/>
 <meta name="application-name" content="我的网站">
 <meta name="apple-mobile-web-app-title" content="我的网站"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -30,8 +30,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/demo122.github.io\/%E7%89%9B%E5%AE%A2%E7%AE%97%E6%B3%95top101\/"
-        },"genre": "posts","keywords": "面试, 算法, 刷题, 牛客算法top101","wordcount":  1194 ,
-        "url": "https:\/\/demo122.github.io\/%E7%89%9B%E5%AE%A2%E7%AE%97%E6%B3%95top101\/","datePublished": "2022-06-09T13:52:20+08:00","dateModified": "2022-06-18T16:50:45+08:00","publisher": {
+        },"genre": "posts","keywords": "面试, 算法, 刷题, 牛客算法top101","wordcount":  2161 ,
+        "url": "https:\/\/demo122.github.io\/%E7%89%9B%E5%AE%A2%E7%AE%97%E6%B3%95top101\/","datePublished": "2022-06-09T13:52:20+08:00","dateModified": "2022-06-23T18:05:49+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -105,8 +105,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">牛客算法top101</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://demo122.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>明里</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E9%9D%A2%E8%AF%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>面试</a>&nbsp;<a href="/categories/%E7%AE%97%E6%B3%95/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>算法</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-09">2022-06-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1194 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/%E7%89%9B%E5%AE%A2%E7%AE%97%E6%B3%95top101/" class="leancloud_visitors" data-flag-title="牛客算法top101">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-09">2022-06-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2161 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/%E7%89%9B%E5%AE%A2%E7%AE%97%E6%B3%95top101/" class="leancloud_visitors" data-flag-title="牛客算法top101">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -118,9 +118,12 @@
   <ul>
     <li><a href="#链表">链表</a>
       <ul>
-        <li><a href="#反转链表">反转链表</a></li>
-        <li><a href="#反转链表内指定区间">反转链表内指定区间</a></li>
-        <li><a href="#合并两个排序的链表">合并两个排序的链表</a></li>
+        <li><a href="#bm1-反转链表">BM1 反转链表</a></li>
+        <li><a href="#bm2-反转链表内指定区间">BM2 反转链表内指定区间</a></li>
+        <li><a href="#bm3-合并两个排序的链表">BM3 合并两个排序的链表</a></li>
+        <li><a href="#bm4-判断链表是否有环">BM4 判断链表是否有环</a></li>
+        <li><a href="#bm5-找出链表中环的入口">BM5 找出链表中环的入口</a></li>
+        <li><a href="#bm6-链表中的倒数第k个节点">BM6 链表中的倒数第k个节点</a></li>
         <li><a href="#标题">标题</a></li>
       </ul>
     </li>
@@ -128,9 +131,12 @@
 </nav></div>
             </div><div class="content" id="content"><h1 id="牛客算法top101">牛客算法top101</h1>
 <h2 id="链表">链表</h2>
-<h3 id="反转链表">反转链表</h3>
+<h3 id="bm1-反转链表">BM1 反转链表</h3>
 <p><strong>题目</strong></p>
-<p>给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后，返回新链表的表头。<a href="https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=295&amp;sfm=html&amp;channel=nowcoder" target="_blank" rel="noopener noreffer">链接</a></p>
+<ul>
+<li>给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后，返回新链表的表头。</li>
+<li><a href="https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=295&amp;sfm=html&amp;channel=nowcoder" target="_blank" rel="noopener noreffer">链接</a></li>
+</ul>
 <p><strong>解答</strong></p>
 <ul>
 <li>步骤
@@ -201,32 +207,11 @@
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="反转链表内指定区间">反转链表内指定区间</h3>
+</div><h3 id="bm2-反转链表内指定区间">BM2 反转链表内指定区间</h3>
 <p><strong>题目</strong></p>
 <ul>
-<li>
-<p>将一个节点数为 size 链表 m 位置到 n 位置之间的区间反转，要求时间复杂度 O(n)<em>O</em>(<em>n</em>)，空间复杂度 O(1)<em>O</em>(1)。</p>
-</li>
-<li>
-<p>示例</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">输入</span><span class="err">：</span>
-</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="n">1</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">3</span><span class="o">,</span><span class="n">4</span><span class="o">,</span><span class="n">5</span><span class="o">},</span><span class="n">2</span><span class="o">,</span><span class="n">4</span>
-</span></span><span class="line"><span class="cl"><span class="n">返回值</span><span class="err">：</span>
-</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="n">1</span><span class="o">,</span><span class="n">4</span><span class="o">,</span><span class="n">3</span><span class="o">,</span><span class="n">2</span><span class="o">,</span><span class="n">5</span><span class="o">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p><a href="https://www.nowcoder.com/practice/b58434e200a648c589ca2063f1faf58c?tpId=295&amp;sfm=html&amp;channel=nowcoder" target="_blank" rel="noopener noreffer">链接</a></p>
-</li>
+<li>将一个节点数为 size 链表 m 位置到 n 位置之间的区间反转，要求时间复杂度 O(n)<em>O</em>(<em>n</em>)，空间复杂度 O(1)<em>O</em>(1)。</li>
+<li><a href="https://www.nowcoder.com/practice/b58434e200a648c589ca2063f1faf58c?tpId=295&amp;sfm=html&amp;channel=nowcoder" target="_blank" rel="noopener noreffer">链接</a></li>
 </ul>
 <p><strong>解答</strong></p>
 <ul>
@@ -303,7 +288,7 @@
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="合并两个排序的链表">合并两个排序的链表</h3>
+</div><h3 id="bm3-合并两个排序的链表">BM3 合并两个排序的链表</h3>
 <p><strong>题目</strong></p>
 <ul>
 <li>
@@ -414,6 +399,281 @@
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><h3 id="bm4-判断链表是否有环">BM4 判断链表是否有环</h3>
+<p><strong>题目</strong></p>
+<ul>
+<li>描述：<strong>给定一个链表，判断是否有环</strong></li>
+<li><a href="https://www.nowcoder.com/practice/650474f313294468a4ded3ce0f7898b9?tpId=295&amp;tqId=605&amp;ru=/exam/oj&amp;qru=/ta/format-top101/question-ranking&amp;sourceUrl=%2Fexam%2Foj" target="_blank" rel="noopener noreffer">链接</a></li>
+</ul>
+<p><strong>解答</strong></p>
+<ul>
+<li>思路：<strong>使用快慢双指针遍历，如果快慢指针为null，说明无环，否则快指针迟早会追上慢指针，两者相遇，说明有环</strong></li>
+<li>代码</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Definition for singly-linked list.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * class ListNode {
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     int val;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     ListNode next;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     ListNode(int x) {
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *         val = x;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *         next = null;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     }
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * }
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasCycle</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">head</span><span class="o">==</span><span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ListNode</span> <span class="n">fast</span><span class="o">=</span><span class="n">head</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ListNode</span> <span class="n">slow</span><span class="o">=</span><span class="n">head</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="o">(</span><span class="n">fast</span><span class="o">.</span><span class="na">next</span><span class="o">!=</span><span class="kc">null</span><span class="o">&amp;&amp;</span><span class="n">fast</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">fast</span><span class="o">=</span><span class="n">fast</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">slow</span><span class="o">=</span><span class="n">slow</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//相遇，说明有环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span><span class="o">(</span><span class="n">fast</span><span class="o">==</span><span class="n">slow</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//退出while,说明fast到链表尾遇到了null，无环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="bm5-找出链表中环的入口">BM5 找出链表中环的入口</h3>
+<p><strong>题目</strong></p>
+<ul>
+<li>描述：给定一个链表，如果有环，找出它的入口</li>
+<li><a href="https://www.nowcoder.com/practice/253d2c59ec3e4bc68da16833f79a38e4?tpId=295&amp;tags=&amp;title=&amp;difficulty=0&amp;judgeStatus=0&amp;rp=0&amp;sourceUrl=%2Fexam%2Foj" target="_blank" rel="noopener noreffer">链接</a></li>
+</ul>
+<p><strong>解答</strong></p>
+<ul>
+<li>思路</li>
+<li>步骤
+<ul>
+<li>使用<a href="https://blog.nowcoder.net/n/7478651e88f744128f6562e97396e04c" target="_blank" rel="noopener noreffer">判断链表中是否有环</a>中的方法判断链表是否有环，并找到相遇的节点</li>
+<li>慢指针继续在相遇节点，快指针回到链表头，两个指针同步逐个元素逐个元素开始遍历链表。</li>
+<li>再次相遇的地方就是环的入口</li>
+</ul>
+</li>
+<li>代码</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> public class ListNode {
+</span></span></span><span class="line"><span class="cl"><span class="cm">    int val;
+</span></span></span><span class="line"><span class="cl"><span class="cm">    ListNode next = null;
+</span></span></span><span class="line"><span class="cl"><span class="cm">
+</span></span></span><span class="line"><span class="cl"><span class="cm">    ListNode(int val) {
+</span></span></span><span class="line"><span class="cl"><span class="cm">        this.val = val;
+</span></span></span><span class="line"><span class="cl"><span class="cm">    }
+</span></span></span><span class="line"><span class="cl"><span class="cm">}
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ListNode</span> <span class="nf">hasCycle</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">head</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="c1">//先判断链表为空的情况
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ListNode</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span> <span class="c1">//快慢双指针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">ListNode</span> <span class="n">slow</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span><span class="o">(</span><span class="n">fast</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">fast</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span> <span class="c1">//如果没环快指针会先到链表尾
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">//快指针移动两步
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">//慢指针移动一步
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span><span class="o">(</span><span class="n">fast</span> <span class="o">==</span> <span class="n">slow</span><span class="o">)</span> <span class="c1">//相遇则有环，返回相遇的位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">return</span> <span class="n">slow</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">//到末尾说明没有环，返回null
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ListNode</span> <span class="nf">EntryNodeOfLoop</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">pHead</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ListNode</span> <span class="n">slow</span> <span class="o">=</span> <span class="n">hasCycle</span><span class="o">(</span><span class="n">pHead</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="o">(</span><span class="n">slow</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="c1">//没有环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ListNode</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">pHead</span><span class="o">;</span> <span class="c1">//快指针回到表头
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">while</span><span class="o">(</span><span class="n">fast</span> <span class="o">!=</span> <span class="n">slow</span><span class="o">){</span> <span class="c1">//再次相遇即是环入口
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">slow</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="bm6-链表中的倒数第k个节点">BM6 链表中的倒数第k个节点</h3>
+<p><strong>题目</strong></p>
+<ul>
+<li>一个长度为n的链表，返回原链表中从倒数第k个结点至尾节点的全部节点</li>
+<li>如果该链表长度小于k，请返回一个长度为 0 的链表</li>
+<li><a href="https://www.nowcoder.com/practice/886370fe658f41b498d40fb34ae76ff9?tpId=295&amp;tqId=1377477&amp;ru=/exam/oj&amp;qru=/ta/format-top101/question-ranking&amp;sourceUrl=%2Fexam%2Foj" target="_blank" rel="noopener noreffer">链接</a></li>
+</ul>
+<p><strong>解答</strong></p>
+<ul>
+<li>思路：<strong>让两个指针一前一后，相隔刚好为k，这样，当快指针遍历到链表尾时，满指针刚好在倒数的第k个位置</strong></li>
+<li>代码</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * public class ListNode {
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   int val;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   ListNode next = null;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   public ListNode(int val) {
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *     this.val = val;
+</span></span></span><span class="line"><span class="cl"><span class="cm"> *   }
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * }
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param pHead ListNode类
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @param k int整型
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return ListNode类
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">ListNode</span> <span class="nf">FindKthToTail</span> <span class="o">(</span><span class="n">ListNode</span> <span class="n">pHead</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// write code here
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">ListNode</span> <span class="n">fast</span><span class="o">=</span><span class="n">pHead</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ListNode</span> <span class="n">slow</span><span class="o">=</span><span class="n">pHead</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//先让快指针走到顺数第k个位置
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="o">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">k</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">fast</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">fast</span><span class="o">=</span><span class="n">fast</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//没有到第k个位置就为空了，说嘛链表长度小于k，返回null
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//slow、fast一起往下走，当fast走到底时，slow指向倒数第k个
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">while</span><span class="o">(</span><span class="n">fast</span><span class="o">!=</span><span class="kc">null</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">fast</span><span class="o">=</span><span class="n">fast</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">slow</span><span class="o">=</span><span class="n">slow</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">slow</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
 </div><h3 id="标题">标题</h3>
 <p><strong>题目</strong></p>
 <ul>
@@ -449,7 +709,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-06-18</span>
+                <span>更新于 2022-06-23</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>

@@ -46,4 +46,18 @@
 
 ## 原理
 
+## POM
+
+### spring-boot-starter-web
+
+```xml
+<!--        springboot-web -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
+
+
+
 

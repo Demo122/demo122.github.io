@@ -20,6 +20,8 @@ git status 查看当前状态
 ```
 附上参考资料，[不会再查](https://mp.weixin.qq.com/s/swnwBiuyVmhs5iPqv3H6BQ)
 
+[git指令](https://mp.weixin.qq.com/s/HLEifr_cuDlZpc2pxTN-PA)
+
 ## 2. git开发实践
 ### 2.1 版本回退
 ####  2.1.1 回退至上一个版本

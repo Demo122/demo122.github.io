@@ -1,7 +1,6 @@
 ---
-title: "Redis笔记"
+title: "Redis基础"
 date: 2022-06-05T13:52:20+08:00
-lastmod: 2022-06-09T13:52:20+08:00
 draft: false
 categories: ["中间件"]
 tags: ["Redis"]

@@ -2,11 +2,12 @@
 
 # 牛客算法top101
 ## 链表
-###  反转链表
+###  BM1 反转链表
 
 **题目**
 
-给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后，返回新链表的表头。[链接](https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=295&sfm=html&channel=nowcoder)
+- 给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后，返回新链表的表头。
+- [链接](https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=295&sfm=html&channel=nowcoder)
 
 **解答**
 
@@ -46,23 +47,11 @@ public class Solution {
 }
 ```
 
-### 反转链表内指定区间
+### BM2 反转链表内指定区间
 
 **题目**
 
 - 将一个节点数为 size 链表 m 位置到 n 位置之间的区间反转，要求时间复杂度 O(n)*O*(*n*)，空间复杂度 O(1)*O*(1)。
-
-- 示例
-
-  ```java
-  输入：
-  {1,2,3,4,5},2,4
-  返回值：
-  {1,4,3,2,5}
-  ```
-
-  
-
 - [链接](https://www.nowcoder.com/practice/b58434e200a648c589ca2063f1faf58c?tpId=295&sfm=html&channel=nowcoder)
 
 **解答**
@@ -107,7 +96,7 @@ public class Solution {
     }
 }
 ```
-### 合并两个排序的链表
+### BM3 合并两个排序的链表
 
 **题目**
 
@@ -165,6 +154,167 @@ public class Solution {
             cur.next=list1;
         }
        return head.next;
+    }
+}
+```
+
+### BM4 判断链表是否有环
+
+**题目**
+
+- 描述：**给定一个链表，判断是否有环**
+- [链接](https://www.nowcoder.com/practice/650474f313294468a4ded3ce0f7898b9?tpId=295&tqId=605&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj)
+
+**解答**
+
+- 思路：**使用快慢双指针遍历，如果快慢指针为null，说明无环，否则快指针迟早会追上慢指针，两者相遇，说明有环**
+- 代码
+
+```java
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        if(head==null) return false;
+        ListNode fast=head;
+        ListNode slow=head;
+        while(fast.next!=null&&fast.next.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+            //相遇，说明有环
+            if(fast==slow){
+                return true;
+            }
+        }
+        //退出while,说明fast到链表尾遇到了null，无环
+        return false;
+    }
+}
+```
+
+### BM5 找出链表中环的入口
+
+**题目**
+
+- 描述：给定一个链表，如果有环，找出它的入口
+- [链接](https://www.nowcoder.com/practice/253d2c59ec3e4bc68da16833f79a38e4?tpId=295&tags=&title=&difficulty=0&judgeStatus=0&rp=0&sourceUrl=%2Fexam%2Foj)
+
+**解答**
+
+- 思路
+- 步骤
+  - 使用[判断链表中是否有环](https://blog.nowcoder.net/n/7478651e88f744128f6562e97396e04c)中的方法判断链表是否有环，并找到相遇的节点
+  - 慢指针继续在相遇节点，快指针回到链表头，两个指针同步逐个元素逐个元素开始遍历链表。
+  - 再次相遇的地方就是环的入口
+- 代码
+
+```java
+import java.util.*;
+/*
+ public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+*/
+public class Solution {
+    public ListNode hasCycle(ListNode head) {
+        if(head == null) //先判断链表为空的情况
+            return null;
+        ListNode fast = head; //快慢双指针
+        ListNode slow = head;
+        while(fast != null && fast.next != null){ //如果没环快指针会先到链表尾
+            fast = fast.next.next; //快指针移动两步
+            slow = slow.next; //慢指针移动一步
+            if(fast == slow) //相遇则有环，返回相遇的位置
+                return slow;
+        }
+        return null; //到末尾说明没有环，返回null
+    }
+    
+    public ListNode EntryNodeOfLoop(ListNode pHead) {
+        ListNode slow = hasCycle(pHead);
+        if(slow == null) //没有环
+            return null;
+        ListNode fast = pHead; //快指针回到表头
+        while(fast != slow){ //再次相遇即是环入口
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+}
+
+```
+
+
+
+### BM6 链表中的倒数第k个节点
+
+**题目**
+
+- 一个长度为n的链表，返回原链表中从倒数第k个结点至尾节点的全部节点
+- 如果该链表长度小于k，请返回一个长度为 0 的链表
+- [链接](https://www.nowcoder.com/practice/886370fe658f41b498d40fb34ae76ff9?tpId=295&tqId=1377477&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj)
+
+**解答**
+
+- 思路：**让两个指针一前一后，相隔刚好为k，这样，当快指针遍历到链表尾时，满指针刚好在倒数的第k个位置**
+- 代码
+
+```java
+import java.util.*;
+
+/*
+ * public class ListNode {
+ *   int val;
+ *   ListNode next = null;
+ *   public ListNode(int val) {
+ *     this.val = val;
+ *   }
+ * }
+ */
+
+public class Solution {
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     *
+     * @param pHead ListNode类
+     * @param k int整型
+     * @return ListNode类
+     */
+    public ListNode FindKthToTail (ListNode pHead, int k) {
+        // write code here
+        ListNode fast=pHead;
+        ListNode slow=pHead;
+        //先让快指针走到顺数第k个位置
+        for(int i=0;i<k;i++){
+            if(fast!=null){
+                fast=fast.next;
+            }else{
+                //没有到第k个位置就为空了，说嘛链表长度小于k，返回null
+                return null;
+            }
+        }
+        //slow、fast一起往下走，当fast走到底时，slow指向倒数第k个
+        while(fast!=null){
+            fast=fast.next;
+            slow=slow.next;
+        }
+        return slow;
     }
 }
 ```

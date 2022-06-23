@@ -4,11 +4,11 @@
         <link>https://demo122.github.io/tags/redis/</link>
         <description>Redis - 标签 - 明里的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 05 Jun 2022 13:52:20 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/tags/redis/" rel="self" type="application/rss+xml" /><item>
-    <title>Redis笔记</title>
-    <link>https://demo122.github.io/redis/</link>
+    <title>Redis基础</title>
+    <link>https://demo122.github.io/redis%E5%9F%BA%E7%A1%80/</link>
     <pubDate>Sun, 05 Jun 2022 13:52:20 &#43;0800</pubDate>
     <author>明里</author>
-    <guid>https://demo122.github.io/redis/</guid>
+    <guid>https://demo122.github.io/redis%E5%9F%BA%E7%A1%80/</guid>
     <description><![CDATA[Redis 安装]]></description>
 </item>
 </channel>

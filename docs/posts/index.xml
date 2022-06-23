@@ -12,20 +12,20 @@
     <description><![CDATA[多线程的创建 方式一 继承Thread类 创建Thread的子类，并重写run（）方法，run()中的代码为执行体 创建该类的实例，调用它的star]]></description>
 </item>
 <item>
+    <title>Springboot笔记</title>
+    <link>https://demo122.github.io/springboot2/</link>
+    <pubDate>Fri, 17 Jun 2022 13:52:20 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/springboot2/</guid>
+    <description><![CDATA[Springboot笔记 基础 集成junit 导入springboot-test包 1 2 3 4 5 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; 编写测试类和测试方法，在测试类上加注解@S]]></description>
+</item>
+<item>
     <title>Git常用操作</title>
     <link>https://demo122.github.io/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
     <pubDate>Fri, 10 Jun 2022 21:34:53 &#43;0800</pubDate>
     <author>明里</author>
     <guid>https://demo122.github.io/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
     <description><![CDATA[1. git入门 学习了git使用，搭建了docsify个人博客，主要用于记录学习过程，Java笔记 其中git使用常用命令为： 1 2 3 4 5 6 7 8 9 10]]></description>
-</item>
-<item>
-    <title>About</title>
-    <link>https://demo122.github.io/about/</link>
-    <pubDate>Thu, 09 Jun 2022 21:30:11 &#43;0800</pubDate>
-    <author>明里</author>
-    <guid>https://demo122.github.io/about/</guid>
-    <description><![CDATA[明里的hugo博客 博客基于hugo 使用的是loveI主题 使用hugo构建静态文件时默认是生成在public目录下 可以在config中设置pu]]></description>
 </item>
 <item>
     <title>crontab定时任务</title>
@@ -73,7 +73,7 @@
     <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
     <author>明里</author>
     <guid>https://demo122.github.io/%E7%89%9B%E5%AE%A2%E7%AE%97%E6%B3%95top101/</guid>
-    <description><![CDATA[牛客算法top101 链表 反转链表 题目 给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后]]></description>
+    <description><![CDATA[牛客算法top101 链表 BM1 反转链表 题目 给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表]]></description>
 </item>
 <item>
     <title>随笔</title>
