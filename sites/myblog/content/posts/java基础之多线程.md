@@ -232,4 +232,65 @@ class CallableThread implements Callable<Integer> {
 
 ### 同步方法
 
-### Reetranlock
+**对方法加上`synchronized`关键字上锁**
+
+**示例：**
+
+```java
+public synchronized void drawMoney(double draw_money) {
+    //获取当前线程名字
+    String name = Thread.currentThread().getName();
+    if (this.money >= draw_money) {
+        System.out.println(name + "进来了，取走了" + draw_money);
+        this.money -= draw_money;
+        System.out.println("余额：" + this.money);
+    } else {
+        System.out.println(name + "进来了,钱不够了");
+    }
+}
+```
+
+**底层原理：**
+
+- 底层也是有隐式锁对象，锁住整个方法
+- 如果是实例方法，默认使用`this`作为锁对象
+- 如果是静态方法，默认使用`类名.class`作为锁对象
+
+### ReetrantLock
+
+- 为了更清晰的表达加锁和解锁，就jdk5以后提供了一个新的锁对象，lock,更加灵活方便
+- **Lock是接口，我们使用它的实现类ReetrantLock，它提供了很多锁操作**
+- `void lock 获得锁`
+- `void unlock 解锁`
+
+**示例：**
+
+```java
+//加上final修饰，变成唯一不可替换的锁
+private final Lock lock = new ReentrantLock();
+
+public void drawMoney(double draw_money) {
+
+    //获取当前线程名字
+    String name = Thread.currentThread().getName();
+
+    //上锁
+    lock.lock();
+    try {
+        if (this.money >= draw_money) {
+
+            System.out.println(name + "进来了，取走了" + draw_money);
+
+            this.money -= draw_money;
+
+            System.out.println("余额：" + this.money);
+        } else {
+            System.out.println(name + "进来了,钱不够了");
+        }
+    } finally {
+        //解锁
+        lock.unlock();
+    }
+}
+```
+
