@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://demo122.github.io/java%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B/" /><meta property="og:image" content="https://demo122.github.io/favicon.ico"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-17T17:24:19+08:00" />
-<meta property="article:modified_time" content="2022-06-24T16:37:27+08:00" /><meta property="og:site_name" content="明里的博客" />
+<meta property="article:modified_time" content="2022-06-24T21:13:41+08:00" /><meta property="og:site_name" content="明里的博客" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://demo122.github.io/favicon.ico"/>
@@ -30,8 +30,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/demo122.github.io\/java%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B\/"
-        },"genre": "posts","keywords": "多线程","wordcount":  2541 ,
-        "url": "https:\/\/demo122.github.io\/java%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B\/","datePublished": "2022-06-17T17:24:19+08:00","dateModified": "2022-06-24T16:37:27+08:00","publisher": {
+        },"genre": "posts","keywords": "多线程","wordcount":  2704 ,
+        "url": "https:\/\/demo122.github.io\/java%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B\/","datePublished": "2022-06-17T17:24:19+08:00","dateModified": "2022-06-24T21:13:41+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -105,7 +105,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Java基础之多线程</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://demo122.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>明里</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/java%E5%9F%BA%E7%A1%80/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>java基础</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-17">2022-06-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2541 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-06-17">2022-06-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2704 字&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 6 分钟&nbsp;<span id="/java%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="leancloud_visitors" data-flag-title="Java基础之多线程">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -121,6 +121,7 @@
         <li><a href="#方式一-继承thread类">方式一 继承Thread类</a></li>
         <li><a href="#方式二-实现runnable接口">方式二 实现Runnable接口</a></li>
         <li><a href="#方式三-实现callable接口">方式三 实现callable接口</a></li>
+        <li><a href="#方式四-线程池重点">方式四 线程池（重点）</a></li>
       </ul>
     </li>
     <li><a href="#线程常用方法">线程常用方法</a>
@@ -137,6 +138,7 @@
         <li><a href="#reetrantlock">ReetrantLock</a></li>
       </ul>
     </li>
+    <li><a href="#线程通信">线程通信</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="多线程的创建">多线程的创建</h2>
@@ -416,36 +418,37 @@
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="线程常用方法">线程常用方法</h2>
+</div><h3 id="方式四-线程池重点">方式四 线程池（重点）</h3>
+<h2 id="线程常用方法">线程常用方法</h2>
 <h3 id="thread类常用构造方法">Thread类常用构造方法</h3>
 <ul>
-<li>Thread()</li>
-<li>Thread(String name)</li>
-<li>Thread(Runnable target)</li>
-<li>Thread(Runnable target, String name)</li>
+<li><code>Thread()</code></li>
+<li><code>Thread(String name)</code></li>
+<li><code>Thread(Runnable target)</code></li>
+<li><code>Thread(Runnable target, String name)</code></li>
 </ul>
-<p><em>其中，参数 name为线程名，参数 target为包含线程体的目标对象。</em></p>
+<p><em>其中，参数 <code>name</code>为线程名，参数 <code>target</code>为包含线程体的目标对象。</em></p>
 <h3 id="thread类常用静态方法">Thread类常用静态方法</h3>
 <ul>
-<li>currentThread()：返回当前正在执行的线程；</li>
-<li>interrupted()：返回当前执行的线程是否已经被中断；</li>
-<li>sleep(long millis)：使当前执行的线程睡眠多少毫秒数；</li>
-<li>yield()：使当前执行的线程自愿暂时放弃对处理器的使用权并允许其他线程执行；</li>
+<li><code>currentThread()</code>：<strong>返回当前正在执行的线程；</strong></li>
+<li><code>interrupted()</code>：<strong>返回当前执行的线程是否已经被中断；</strong></li>
+<li><code>sleep(long millis)</code>：<strong>使当前执行的线程睡眠多少毫秒数；</strong></li>
+<li><code>yield()</code>：<strong>使当前执行的线程自愿暂时放弃对处理器的使用权并允许其他线程执行；</strong></li>
 </ul>
 <h3 id="thread类常用实例方法">Thread类常用实例方法</h3>
 <ul>
-<li>getId()：返回该线程的id；</li>
-<li>getName()：返回该线程的名字；</li>
-<li>getPriority()：返回该线程的优先级；</li>
-<li>interrupt()：使该线程中断；</li>
-<li>isInterrupted()：返回该线程是否被中断；</li>
-<li>isAlive()：返回该线程是否处于活动状态；</li>
-<li>isDaemon()：返回该线程是否是守护线程；</li>
-<li>setDaemon(boolean on)：将该线程标记为守护线程或用户线程，如果不标记默认是非守护线程；</li>
-<li>setName(String name)：设置该线程的名字；</li>
-<li>setPriority(int newPriority)：改变该线程的优先级；</li>
-<li>join()：等待该线程终止；</li>
-<li>join(long millis)：等待该线程终止,至多等待多少毫秒数。</li>
+<li><strong><code>getId()</code>：返回该线程的id；</strong></li>
+<li><strong><code>getName()</code>：返回该线程的名字；</strong></li>
+<li><strong><code>getPriority()</code>：返回该线程的优先级；</strong></li>
+<li><strong><code>interrupt()</code>：使该线程中断；</strong></li>
+<li><strong><code>isInterrupted()</code>：返回该线程是否被中断；</strong></li>
+<li><strong><code>isAlive()</code>：返回该线程是否处于活动状态；</strong></li>
+<li><strong><code>isDaemon()</code>：返回该线程是否是守护线程；</strong></li>
+<li><strong><code>setDaemon(boolean on)</code>：将该线程标记为守护线程或用户线程，如果不标记默认是非守护线程；</strong></li>
+<li><strong><code>setName(String name)</code>：设置该线程的名字；</strong></li>
+<li><strong>setPriority(int newPriority)：改变该线程的优先级；</strong></li>
+<li><strong><code>join()</code>：等待该线程终止；</strong></li>
+<li><strong><code>join(long millis)</code>：等待该线程终止,至多等待多少毫秒数。</strong></li>
 </ul>
 <h2 id="线程同步">线程同步</h2>
 <h3 id="同步代码块">同步代码块</h3>
@@ -545,8 +548,8 @@
 <ul>
 <li>为了更清晰的表达加锁和解锁，就jdk5以后提供了一个新的锁对象，lock,更加灵活方便</li>
 <li><strong>Lock是接口，我们使用它的实现类ReetrantLock，它提供了很多锁操作</strong></li>
-<li><code>void lock 获得锁</code></li>
-<li><code>void unlock 解锁</code></li>
+<li><strong><code>void lock 获得锁</code></strong></li>
+<li><strong><code>void unlock 解锁</code></strong></li>
 </ul>
 <p><strong>示例：</strong></p>
 <div class="highlight"><div class="chroma">
@@ -607,7 +610,16 @@
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="线程通信">线程通信</h2>
+<ul>
+<li><strong>wait():  当前线程等待，直到另一个线程调用notify()或者notifyAll()唤醒自己</strong></li>
+<li><strong>notify()：唤醒正在等待对象监视器（锁对象）的单个线程</strong></li>
+<li><strong>notifyAll()： 唤醒正在等到对象监视器（锁对象）的所以线程</strong></li>
+</ul>
+<blockquote>
+<p>上述方法应该使用当前同步锁对象进行调用，例如使用**<code>this,this.wait()</code>**</p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">

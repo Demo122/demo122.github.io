@@ -159,38 +159,42 @@ class CallableThread implements Callable<Integer> {
 }
 ```
 
+### 方式四 线程池（重点）
+
+
+
 ## 线程常用方法
 
 ### Thread类常用构造方法
 
-- Thread()
-- Thread(String name)
-- Thread(Runnable target)
-- Thread(Runnable target, String name)
+- `Thread()`
+- `Thread(String name)`
+- `Thread(Runnable target)`
+- `Thread(Runnable target, String name)`
 
-*其中，参数 name为线程名，参数 target为包含线程体的目标对象。*
+*其中，参数 `name`为线程名，参数 `target`为包含线程体的目标对象。*
 
 ### Thread类常用静态方法
 
-- currentThread()：返回当前正在执行的线程；
-- interrupted()：返回当前执行的线程是否已经被中断；
-- sleep(long millis)：使当前执行的线程睡眠多少毫秒数；
-- yield()：使当前执行的线程自愿暂时放弃对处理器的使用权并允许其他线程执行；
+- `currentThread()`：**返回当前正在执行的线程；**
+- `interrupted()`：**返回当前执行的线程是否已经被中断；**
+- `sleep(long millis)`：**使当前执行的线程睡眠多少毫秒数；**
+- `yield()`：**使当前执行的线程自愿暂时放弃对处理器的使用权并允许其他线程执行；**
 
 ### Thread类常用实例方法
 
-- getId()：返回该线程的id；
-- getName()：返回该线程的名字；
-- getPriority()：返回该线程的优先级；
-- interrupt()：使该线程中断；
-- isInterrupted()：返回该线程是否被中断；
-- isAlive()：返回该线程是否处于活动状态；
-- isDaemon()：返回该线程是否是守护线程；
-- setDaemon(boolean on)：将该线程标记为守护线程或用户线程，如果不标记默认是非守护线程；
-- setName(String name)：设置该线程的名字；
-- setPriority(int newPriority)：改变该线程的优先级；
-- join()：等待该线程终止；
-- join(long millis)：等待该线程终止,至多等待多少毫秒数。
+- **`getId()`：返回该线程的id；**
+- **`getName()`：返回该线程的名字；**
+- **`getPriority()`：返回该线程的优先级；**
+- **`interrupt()`：使该线程中断；**
+- **`isInterrupted()`：返回该线程是否被中断；**
+- **`isAlive()`：返回该线程是否处于活动状态；**
+- **`isDaemon()`：返回该线程是否是守护线程；**
+- **`setDaemon(boolean on)`：将该线程标记为守护线程或用户线程，如果不标记默认是非守护线程；**
+- **`setName(String name)`：设置该线程的名字；**
+- **setPriority(int newPriority)：改变该线程的优先级；**
+- **`join()`：等待该线程终止；**
+- **`join(long millis)`：等待该线程终止,至多等待多少毫秒数。**
 
 ## 线程同步
 
@@ -260,8 +264,8 @@ public synchronized void drawMoney(double draw_money) {
 
 - 为了更清晰的表达加锁和解锁，就jdk5以后提供了一个新的锁对象，lock,更加灵活方便
 - **Lock是接口，我们使用它的实现类ReetrantLock，它提供了很多锁操作**
-- `void lock 获得锁`
-- `void unlock 解锁`
+- **`void lock 获得锁`**
+- **`void unlock 解锁`**
 
 **示例：**
 
@@ -294,3 +298,10 @@ public void drawMoney(double draw_money) {
 }
 ```
 
+## 线程通信
+
+- **wait():  当前线程等待，直到另一个线程调用notify()或者notifyAll()唤醒自己**
+- **notify()：唤醒正在等待对象监视器（锁对象）的单个线程**
+- **notifyAll()： 唤醒正在等到对象监视器（锁对象）的所以线程**
+
+> 上述方法应该使用当前同步锁对象进行调用，例如使用**`this,this.wait()`**
