@@ -161,7 +161,85 @@ class CallableThread implements Callable<Integer> {
 
 ### 方式四 线程池（重点）
 
+#### 线程池获得方式
 
+**JDK5起提供了代表线程池的接口：`ExecutorService`**
+
+- **方式一：使用ExecutorService的实现类ThreadPoolExecutor创建线程池对象（推荐）**
+- 方式二：使用Executors（线程池的工具类）调用静态方法返回不同特点的线程池对象
+
+> 在一些高并发的场景下，方式二容易造成资源浪费，占用太多系统资源
+
+#### 线程池参数介绍
+
+```java
+/**
+* public ThreadPoolExecutor(int corePoolSize,
+*                           int maximumPoolSize,
+*                           long keepAliveTime,
+*                           TimeUnit unit,
+*                           BlockingQueue<Runnable> workQueue,
+*                           ThreadFactory threadFactory,
+*                           RejectedExecutionHandler handler)
+*/
+```
+
+- **`corePoolSize`: 指定线程池的核心线程数量**
+- **`maximumPoolSize`：指定线程池可支持的最大线程数量**
+-  **`keepAliveTime`：指定临时线程的最大存活时间**
+-  **`unit`：指定存活时间的单位**
+- **`workQueue`：指定任务队列，配置任务队列的长度**
+- **`threadFactory`：指定用哪个线程工厂创建线程**
+- **`handler`：指定拒绝策略，当任务队列满，线程忙时该怎么处理**
+
+##### 新任务拒绝策略
+
+- `ThreadPoolExecutor.AbortPolicy:` **默认策略，丢弃任务并抛出RejectedExecutionException异常**
+- `ThreadPoolExecutor.CallerRunsPolicy`: 由主线程负责调用任务的run()方法从而绕过线程池直接执行
+
+#### ExecutorService常用方法
+
+- **`void execute(Runnable command)`: 执行任务，没有返回值，一般用来执行Runnable任务**
+- **`Future<T> submit(Callable<T> task)`: 执行任务，返回未来任务对象获取线程执行结果，一般拿来执行Callable任务**
+- **`void shutdown()`:等任务执行完毕后关闭线程**
+- **`List<Runnable> shutdownNow()`:立刻关闭、停止正在执行的任务，并返回队列中未执行的任务**
+
+#### 使用ThreadPoolExecutor创建线程池
+
+```java
+//ExecutorService的实现类ThreadPoolExecutor创建线程池对象
+ExecutorService threadPool = new ThreadPoolExecutor(3, 5,8,TimeUnit.SECONDS,
+                new ArrayBlockingQueue<(5), Executors.defaultThreadFactory(),
+                new ThreadPoolExecutor.AbortPolicy());
+//把任务传给线程池处理
+threadPool.execute(new RunnableThread());
+threadPool.execute(new RunnableThread());
+threadPool.execute(new RunnableThread());
+```
+
+#### 使用Executors获取不同特点的线程池对象
+
+**Executors底层也是使用ThreadPoolExecutor创建线程池**
+
+```java
+//创建三个固定线程
+ExecutorService executorService=Executors.newFixedThreadPool(3);
+executorService.execute(new RunnableThread());
+executorService.execute(new RunnableThread());
+executorService.execute(new RunnableThread());
+```
+
+
+
+#### 线程池常见面试题
+
+> **临时线程什么时候创建？**
+
+- **当新任务提交时，发现核心线程都在忙，任务队列也满了，并且还可以创建临时线程，此时才会创建临时线程**
+
+> **什么时候会开始拒绝任务？**
+
+- **核心线程、临时线程都在忙，任务队列也满了，此时新来的任务才会开始拒绝**
 
 ## 线程常用方法
 
@@ -304,4 +382,5 @@ public void drawMoney(double draw_money) {
 - **notify()：唤醒正在等待对象监视器（锁对象）的单个线程**
 - **notifyAll()： 唤醒正在等到对象监视器（锁对象）的所以线程**
 
-> 上述方法应该使用当前同步锁对象进行调用，例如使用**`this,this.wait()`**
+> 上述方法应该使用当前同步锁对象进行调用，例如使用`this,this.wait()`
+
