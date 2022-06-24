@@ -189,4 +189,43 @@ class CallableThread implements Callable<Integer> {
 
 ## 线程同步
 
+### 同步代码块
+
+**使用```synchronized```关键字对代码进行上锁**
+
+**示例：**
+
+```java
+ public void drawMoney(double draw_money){
+
+        //获取当前线程名字
+        String name=Thread.currentThread().getName();
+		//this作为锁对象
+        synchronized (this){
+            if (this.money>=draw_money){
+
+                System.out.println(name+"进来了，取走了"+draw_money);
+
+                this.money-=draw_money;
+
+                System.out.println("余额："+this.money);
+            }else {
+                System.out.println(name+"进来了,钱不够了");
+            }
+        }
+
+    }
+```
+
+> 锁对象用任意唯一对象好不好？**不好，会影响无关线程的执行**
+
+***锁对象的规范要求***
+
+- **建议使用`共享资源`作为锁对象**
+- **对于实例方法建议使用`this`作为锁对象**
+- **对于静态方法建议使用`字节码（类名.class）`对象作为锁对象**
+
+### 同步方法
+
+### Reetranlock
 
