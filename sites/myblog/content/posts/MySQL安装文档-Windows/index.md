@@ -1,5 +1,5 @@
 ---
-title: "MySQL安装文档-Windows版"
+title: "MySQL安装文档-Windows"
 date: 2022-06-03T13:52:20+08:00
 lastmod: 2022-06-09T15:52:20+08:00
 draft: false

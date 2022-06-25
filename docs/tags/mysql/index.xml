@@ -20,7 +20,7 @@
     <description><![CDATA[mysql mysql安装和配置 MySQL 5.7.24 解压版,解压安装 配置 添加环境变量 新建配置文件 新建一个文本文件，内容如下： 1 2 3 4 5 6 7 [mysql] default-character-set=utf8 [mysqld] character-set-server=utf8 default-storage-engine=INNODB sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION 把上面的文本文件]]></description>
 </item>
 <item>
-    <title>MySQL安装文档-Windows版</title>
+    <title>MySQL安装文档-Windows</title>
     <link>https://demo122.github.io/mysql%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3-windows/</link>
     <pubDate>Fri, 03 Jun 2022 13:52:20 &#43;0800</pubDate>
     <author>明里</author>
@@ -28,7 +28,7 @@
     <description><![CDATA[MySQL安装 1. 安装 1). 双击官方下来的安装包文件 2). 根据安装提示进行安装 安装MySQL的相关组件，这个过程可能需要耗时几分钟，耐心等待。 ==输入]]></description>
 </item>
 <item>
-    <title>MySQL卸载文档-Windows版</title>
+    <title>MySQL卸载文档-Windows</title>
     <link>https://demo122.github.io/mysql%E5%8D%B8%E8%BD%BD%E6%96%87%E6%A1%A3-windows/</link>
     <pubDate>Thu, 02 Jun 2022 13:52:20 &#43;0800</pubDate>
     <author>明里</author>

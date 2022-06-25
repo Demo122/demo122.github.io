@@ -1,4 +1,4 @@
-# MySQL卸载文档-Windows版
+# MySQL卸载文档-Windows
 
 
 ## MySQL卸载文档-Windows版

@@ -1,4 +1,4 @@
-# MySQL安装文档-Windows版
+# MySQL安装文档-Windows
 
 
 ## MySQL安装

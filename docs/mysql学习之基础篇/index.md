@@ -5,8 +5,8 @@
 
 ### mysql安装与卸载
 
-- [MySQL安装文档-Windows版 - 明里的博客 (demo122.github.io)](https://demo122.github.io/mysql安装/)
-- [MySQL卸载文档-Windows版 - 明里的博客 (demo122.github.io)](https://demo122.github.io/mysql卸载文档-windows版/)
+- [MySQL安装文档-Windows版 - 明里的博客 (demo122.github.io)](../mysql安装文档-windows/)
+- [MySQL卸载文档-Windows版 - 明里的博客 (demo122.github.io)](../mysql卸载文档-windows/)
 
 ## SQL语句
 
