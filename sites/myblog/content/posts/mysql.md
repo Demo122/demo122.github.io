@@ -1,10 +1,10 @@
 ---
-title: "mysql笔记"
+title: "mysql安装使用"
 date: 2022-06-09T13:52:20+08:00
 lastmod: 2022-06-09T13:52:20+08:00
 draft: false
 categories: ["数据库"]
-tags: ["Mysql"]
+tags: ["mysql","基础"]
 ---
 
 # mysql

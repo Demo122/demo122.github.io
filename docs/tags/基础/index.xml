@@ -1,0 +1,55 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>基础 - 标签 - 明里的博客</title>
+        <link>https://demo122.github.io/tags/%E5%9F%BA%E7%A1%80/</link>
+        <description>基础 - 标签 - 明里的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 25 Jun 2022 20:50:39 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/tags/%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
+    <title>Mysql学习之基础篇</title>
+    <link>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
+    <pubDate>Sat, 25 Jun 2022 20:50:39 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
+    <description><![CDATA[Mysql概述 SQL语句 常用函数 约束 多表查询 事物]]></description>
+</item>
+<item>
+    <title>Java基础之多线程</title>
+    <link>https://demo122.github.io/java%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+    <pubDate>Fri, 17 Jun 2022 17:24:19 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/java%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid>
+    <description><![CDATA[线程的六种状态 new新建态 runnable可运行(就绪) blocked锁阻塞 waitting无限等待 timed waiting计时等待 teminate]]></description>
+</item>
+<item>
+    <title>Springboot笔记</title>
+    <link>https://demo122.github.io/springboot2/</link>
+    <pubDate>Fri, 17 Jun 2022 13:52:20 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/springboot2/</guid>
+    <description><![CDATA[Springboot笔记 基础 集成junit 导入springboot-test包 1 2 3 4 5 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; 编写测试类和测试方法，在测试类上加注解@S]]></description>
+</item>
+<item>
+    <title>Java基础之IO流</title>
+    <link>https://demo122.github.io/java%E5%9F%BA%E7%A1%80%E4%B9%8Bio%E6%B5%81/</link>
+    <pubDate>Thu, 16 Jun 2022 17:24:19 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/java%E5%9F%BA%E7%A1%80%E4%B9%8Bio%E6%B5%81/</guid>
+    <description><![CDATA[字符编解码 字符集 GBK UTF-8 GBK: 汉字占两个字节 UTF-8: 汉字占三个字节 任何字符集中英文和数字都占一个字节 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 /** * 字符集 GBK UTF-8 * GBK:]]></description>
+</item>
+<item>
+    <title>mysql安装使用</title>
+    <link>https://demo122.github.io/mysql/</link>
+    <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/mysql/</guid>
+    <description><![CDATA[mysql mysql安装和配置 MySQL 5.7.24 解压版,解压安装 配置 添加环境变量 新建配置文件 新建一个文本文件，内容如下： 1 2 3 4 5 6 7 [mysql] default-character-set=utf8 [mysqld] character-set-server=utf8 default-storage-engine=INNODB sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION 把上面的文本文件]]></description>
+</item>
+<item>
+    <title>Redis基础</title>
+    <link>https://demo122.github.io/redis%E5%9F%BA%E7%A1%80/</link>
+    <pubDate>Sun, 05 Jun 2022 13:52:20 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/redis%E5%9F%BA%E7%A1%80/</guid>
+    <description><![CDATA[Redis 安装]]></description>
+</item>
+</channel>
+</rss>

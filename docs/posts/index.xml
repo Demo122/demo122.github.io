@@ -3,13 +3,21 @@
         <title>所有文章 - 明里的博客</title>
         <link>https://demo122.github.io/posts/</link>
         <description>所有文章 | 明里的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 17 Jun 2022 17:24:19 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 25 Jun 2022 20:50:39 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Mysql学习之基础篇</title>
+    <link>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
+    <pubDate>Sat, 25 Jun 2022 20:50:39 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
+    <description><![CDATA[Mysql概述 SQL语句 常用函数 约束 多表查询 事物]]></description>
+</item>
+<item>
     <title>Java基础之多线程</title>
     <link>https://demo122.github.io/java%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
     <pubDate>Fri, 17 Jun 2022 17:24:19 &#43;0800</pubDate>
     <author>明里</author>
     <guid>https://demo122.github.io/java%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid>
-    <description><![CDATA[多线程的创建 方式一 继承Thread类 创建Thread的子类，并重写run（）方法，run()中的代码为执行体 创建该类的实例，调用它的star]]></description>
+    <description><![CDATA[线程的六种状态 new新建态 runnable可运行(就绪) blocked锁阻塞 waitting无限等待 timed waiting计时等待 teminate]]></description>
 </item>
 <item>
     <title>Springboot笔记</title>
@@ -44,7 +52,7 @@
     <description><![CDATA[crontab定时任务 Linux crontab 是用来定期执行程序的命令。 当安装完成操作系统之后，默认便会启动此任务调度命令。 crond 命令每分钟会定期检查是否有要执行的]]></description>
 </item>
 <item>
-    <title>mysql笔记</title>
+    <title>mysql安装使用</title>
     <link>https://demo122.github.io/mysql/</link>
     <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
     <author>明里</author>
@@ -74,14 +82,6 @@
     <author>明里</author>
     <guid>https://demo122.github.io/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA/</guid>
     <description><![CDATA[仿牛客社区 springboot集成第三方 集成reids 导包 spring-boot-starter-data-redis 1 2 3 4 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt; &lt;/dependency&gt; 配置Redis 配置数据源 1 2 3 4 5 spring: redis: database: 11 host: localhost port: 6379 编写配置类，构]]></description>
-</item>
-<item>
-    <title>牛客算法top101</title>
-    <link>https://demo122.github.io/%E7%89%9B%E5%AE%A2%E7%AE%97%E6%B3%95top101/</link>
-    <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
-    <author>明里</author>
-    <guid>https://demo122.github.io/%E7%89%9B%E5%AE%A2%E7%AE%97%E6%B3%95top101/</guid>
-    <description><![CDATA[牛客算法top101 链表 BM1 反转链表 题目 给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表]]></description>
 </item>
 </channel>
 </rss>

@@ -3,7 +3,7 @@ title: "git入门"
 date: 2022-03-09T13:52:20+08:00
 draft: false
 categories: ["git","开发工具"]
-tags: ["git"]
+tags: ["git","开发工具"]
 ---
 ## 1. git入门
 学习了git使用，搭建了docsify个人博客，主要用于记录学习过程，Java笔记

@@ -3,7 +3,7 @@ title: "Java基础之IO流"
 date: 2022-06-16T17:24:19+08:00
 draft: false
 categories: ["java基础"]
-tags: ["IO流"]
+tags: ["IO流","基础"]
 ---
 
 ## 字符编解码

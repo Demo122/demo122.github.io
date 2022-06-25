@@ -3,8 +3,19 @@ title: "Java基础之多线程"
 date: 2022-06-17T17:24:19+08:00
 draft: false
 categories: ["java基础"]
-tags: ["多线程"]
+tags: ["多线程","基础"]
 ---
+
+## 线程的六种状态
+
+- new新建态
+- runnable可运行(就绪)
+- blocked锁阻塞
+- waitting无限等待
+- timed waiting计时等待
+- teminated终止态
+
+> sleep()和wait都可以计时等待，**其中sleep()不会释放锁**
 
 ## 多线程的创建
 

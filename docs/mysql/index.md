@@ -1,4 +1,4 @@
-# mysql笔记
+# mysql安装使用
 
 
 # mysql

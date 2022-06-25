@@ -3,7 +3,7 @@ title: "Springboot笔记"
 date: 2022-06-17T13:52:20+08:00
 draft: false
 categories: ["java框架"]
-tags: ["Springboot"]
+tags: ["Springboot","基础"]
 ---
 # Springboot笔记
 

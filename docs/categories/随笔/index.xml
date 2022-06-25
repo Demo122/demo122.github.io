@@ -11,5 +11,13 @@
     <guid>https://demo122.github.io/%E9%9A%8F%E7%AC%94/</guid>
     <description><![CDATA[随笔 2022/6/9 投鼎桥科技。。。]]></description>
 </item>
+<item>
+    <title>About</title>
+    <link>https://demo122.github.io/about/</link>
+    <pubDate>Wed, 01 Jun 2022 21:30:11 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/about/</guid>
+    <description><![CDATA[明里的hugo博客 博客基于hugo 使用的是loveI主题 使用hugo构建静态文件时默认是生成在public目录下 可以在config中设置pu]]></description>
+</item>
 </channel>
 </rss>

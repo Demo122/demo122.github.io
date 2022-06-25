@@ -2,7 +2,7 @@
 title: "About"
 date: 2022-06-01T21:30:11+08:00
 draft: false
-categories: ["随想"]
+categories: ["随笔"]
 tags: ["关于"]
 ---
 
