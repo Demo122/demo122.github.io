@@ -9,7 +9,7 @@
     <pubDate>Sun, 03 Jul 2022 20:50:39 &#43;0800</pubDate>
     <author>明里</author>
     <guid>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87-2-%E7%BA%A6%E6%9D%9F%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E4%BA%8B%E7%89%A9/</guid>
-    <description><![CDATA[约束 概述 概念：约束是作用于表中字段上的规则，用于限制存储在表中的数据。 目的：保证数据库中数据的正确、有效性和完整性。 外键约束 多表查询 多表关系]]></description>
+    <description><![CDATA[约束 概述 概念：约束是作用于表中字段上的规则，用于限制存储在表中的数据。 目的：保证数据库中数据的正确、有效性和完整性。 分类: 约束 描述 关键字 非空]]></description>
 </item>
 <item>
     <title>mysql学习之基础篇-1-安装、sql基础</title>

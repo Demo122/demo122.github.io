@@ -5,17 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>mysql学习之基础篇-2-约束、多表查询、事物 - 明里的博客</title><meta name="Description" content="明里的博客"><meta property="og:title" content="mysql学习之基础篇-2-约束、多表查询、事物" />
-<meta property="og:description" content="约束 概述 概念：约束是作用于表中字段上的规则，用于限制存储在表中的数据。 目的：保证数据库中数据的正确、有效性和完整性。 外键约束 多表查询 多表关系" />
+<meta property="og:description" content="约束 概述 概念：约束是作用于表中字段上的规则，用于限制存储在表中的数据。 目的：保证数据库中数据的正确、有效性和完整性。 分类: 约束 描述 关键字 非空" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87-2-%E7%BA%A6%E6%9D%9F%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E4%BA%8B%E7%89%A9/" /><meta property="og:image" content="https://demo122.github.io/favicon.ico"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-03T20:50:39+08:00" />
-<meta property="article:modified_time" content="2022-07-04T17:44:35+08:00" /><meta property="og:site_name" content="明里的博客" />
+<meta property="article:modified_time" content="2022-07-04T22:04:24+08:00" /><meta property="og:site_name" content="明里的博客" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://demo122.github.io/favicon.ico"/>
 
 <meta name="twitter:title" content="mysql学习之基础篇-2-约束、多表查询、事物"/>
-<meta name="twitter:description" content="约束 概述 概念：约束是作用于表中字段上的规则，用于限制存储在表中的数据。 目的：保证数据库中数据的正确、有效性和完整性。 外键约束 多表查询 多表关系"/>
+<meta name="twitter:description" content="约束 概述 概念：约束是作用于表中字段上的规则，用于限制存储在表中的数据。 目的：保证数据库中数据的正确、有效性和完整性。 分类: 约束 描述 关键字 非空"/>
 <meta name="application-name" content="我的网站">
 <meta name="apple-mobile-web-app-title" content="我的网站"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -30,8 +30,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/demo122.github.io\/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87-2-%E7%BA%A6%E6%9D%9F%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E4%BA%8B%E7%89%A9\/"
-        },"genre": "posts","keywords": "mysql, 基础","wordcount":  84 ,
-        "url": "https:\/\/demo122.github.io\/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87-2-%E7%BA%A6%E6%9D%9F%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E4%BA%8B%E7%89%A9\/","datePublished": "2022-07-03T20:50:39+08:00","dateModified": "2022-07-04T17:44:35+08:00","publisher": {
+        },"genre": "posts","keywords": "mysql, 基础","wordcount":  3050 ,
+        "url": "https:\/\/demo122.github.io\/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87-2-%E7%BA%A6%E6%9D%9F%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E4%BA%8B%E7%89%A9\/","datePublished": "2022-07-03T20:50:39+08:00","dateModified": "2022-07-04T22:04:24+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -105,8 +105,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">mysql学习之基础篇-2-约束、多表查询、事物</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://demo122.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>明里</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>mysql</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-03">2022-07-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 84 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87-2-%E7%BA%A6%E6%9D%9F%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E4%BA%8B%E7%89%A9/" class="leancloud_visitors" data-flag-title="mysql学习之基础篇-2-约束、多表查询、事物">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-07-03">2022-07-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 3050 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87-2-%E7%BA%A6%E6%9D%9F%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E4%BA%8B%E7%89%A9/" class="leancloud_visitors" data-flag-title="mysql学习之基础篇-2-约束、多表查询、事物">
                         <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -119,15 +119,23 @@
     <li><a href="#约束">约束</a>
       <ul>
         <li><a href="#概述">概述</a></li>
-        <li><a href="#外键约束">外键约束</a></li>
+        <li><a href="#建表约束案例">建表约束案例</a></li>
+        <li><a href="#外键约束">外键约束</a>
+          <ul>
+            <li><a href="#语法">语法</a></li>
+            <li><a href="#删除更新行为">删除/更新行为</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#多表查询">多表查询</a>
       <ul>
         <li><a href="#多表关系">多表关系</a></li>
+        <li><a href="#连接查询">连接查询</a></li>
         <li><a href="#内连接">内连接</a></li>
         <li><a href="#外连接">外连接</a></li>
         <li><a href="#自连接">自连接</a></li>
+        <li><a href="#联合查询">联合查询</a></li>
         <li><a href="#子查询">子查询</a></li>
       </ul>
     </li>
@@ -138,12 +146,596 @@
 <h3 id="概述">概述</h3>
 <p>概念：约束是作用于表中字段上的规则，用于限制存储在表中的数据。</p>
 <p>目的：保证数据库中数据的正确、有效性和完整性。</p>
+<p>分类:</p>
+<table>
+<thead>
+<tr>
+<th>约束</th>
+<th>描述</th>
+<th>关键字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>非空约束</td>
+<td>限制该字段的数据不能为null</td>
+<td>NOT NULL</td>
+</tr>
+<tr>
+<td>唯一约束</td>
+<td>保证该字段的所有数据都是唯一、不重复的</td>
+<td>UNIQUE</td>
+</tr>
+<tr>
+<td>主键约束</td>
+<td>主键是一行数据的唯一标识，要求非空且唯一</td>
+<td>PRIMARY KEY</td>
+</tr>
+<tr>
+<td>默认约束</td>
+<td>保存数据时，如果未指定该字段的值，则采用默认值</td>
+<td>DEFAULT</td>
+</tr>
+<tr>
+<td>检查约束(8.0.16版本之后)</td>
+<td>保证字段值满足某一个条件</td>
+<td>CHECK</td>
+</tr>
+<tr>
+<td>外键约束</td>
+<td>用来让两张表的数据之间建立连接，保证数据的一致性和完整性</td>
+<td>FOREIGN KEY</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>注意：约束是作用于表中字段上的，可以在创建表/修改表的时候添加约束</strong></p>
+</blockquote>
+<h3 id="建表约束案例">建表约束案例</h3>
+<div class="details admonition question open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-question-circle fa-fw" aria-hidden="true"></i>根据需求，完成表结构的创建。需求如下：<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>字段含义</th>
+<th>字段类型</th>
+<th>约束条件</th>
+<th>约束关键字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>ID唯一标识</td>
+<td>int</td>
+<td>主键，并且自动增长</td>
+<td>PRIMARY KEY, AUTO_INCREMENT</td>
+</tr>
+<tr>
+<td>name</td>
+<td>姓名</td>
+<td>varchar(10)</td>
+<td>不为空，并且唯一</td>
+<td>NOT NULL , UNIQUE</td>
+</tr>
+<tr>
+<td>age</td>
+<td>年龄</td>
+<td>int</td>
+<td>大于0，并且小于等于120</td>
+<td>CHECK</td>
+</tr>
+<tr>
+<td>status</td>
+<td>状态</td>
+<td>char(1)</td>
+<td>如果没有指定该值，默认为1</td>
+<td>DEFAULT</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>性别</td>
+<td>char(1)</td>
+<td>无</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+        </div>
+    </div>
+<p><strong>对应的建表语句为:</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tb_user</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w">  </span><span class="k">COMMENT</span><span class="w">  </span><span class="s1">&#39;ID唯一标识&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w">  </span><span class="k">COMMENT</span><span class="w">  </span><span class="s1">&#39;姓名&#39;</span><span class="w"> </span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">age</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">check</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">120</span><span class="p">)</span><span class="w">  </span><span class="k">COMMENT</span><span class="w">  </span><span class="s1">&#39;年龄&#39;</span><span class="w"> </span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">default</span><span class="w">  </span><span class="s1">&#39;1&#39;</span><span class="w">  </span><span class="k">COMMENT</span><span class="w">  </span><span class="s1">&#39;状态&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">gender</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w">  </span><span class="k">COMMENT</span><span class="w">  </span><span class="s1">&#39;性别&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>在为字段添加约束时，我们只需要在字段之后加上约束的关键字即可，需要关注其语法</p>
+</blockquote>
 <h3 id="外键约束">外键约束</h3>
-<h2 id="多表查询">多表查询</h2>
+<p><strong>外键：用来让两张表的数据之间建立连接，从而保证数据的一致性和完整性</strong></p>
+<h4 id="语法">语法</h4>
+<ul>
+<li>
+<p><strong>添加外键</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- 建表时添加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="err">表名</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="err">字段名</span><span class="w">    </span><span class="err">数据类型</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">[</span><span class="k">CONSTRAINT</span><span class="p">]</span><span class="w">   </span><span class="p">[</span><span class="err">外键名称</span><span class="p">]</span><span class="w">  </span><span class="k">FOREIGN</span><span class="w">  </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="err">外键字段名</span><span class="p">)</span><span class="w">   </span><span class="k">REFERENCES</span><span class="w">   </span><span class="err">主表</span><span class="w"> </span><span class="p">(</span><span class="err">主表列名</span><span class="p">)</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 修改表结构时添加
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">ALTER</span><span class="w">   </span><span class="k">TABLE</span><span class="w">  </span><span class="err">表名</span><span class="w">   </span><span class="k">ADD</span><span class="w">  </span><span class="k">CONSTRAINT</span><span class="w">   </span><span class="err">外键名称</span><span class="w">   </span><span class="k">FOREIGN</span><span class="w">   </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="err">外键字段名</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">REFERENCES</span><span class="w">  </span><span class="err">主表</span><span class="w"> </span><span class="p">(</span><span class="err">主表列名</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>案例: 为emp表的dept_id字段添加外键约束,关联dept表的主键id</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">add</span><span class="w"> </span><span class="k">constraint</span><span class="w"> </span><span class="n">fk_emp_dept_id</span><span class="w"> </span><span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">dept_id</span><span class="p">)</span><span class="w"> </span><span class="k">references</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">dept</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>删除外键</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w">   </span><span class="k">TABLE</span><span class="w">  </span><span class="err">表名</span><span class="w">   </span><span class="k">DROP</span><span class="w">  </span><span class="k">FOREIGN</span><span class="w">  </span><span class="k">KEY</span><span class="w">  </span><span class="err">外键名称</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>案例：删除emp表的外键fk_emp_dept_id</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">alter</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">drop</span><span class="w"> </span><span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">fk_emp_dept_id</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="删除更新行为">删除/更新行为</h4>
+<p>添加了外键之后，再删除父表数据时产生的约束行为，我们就称为删除/更新行为。具体的删除/更新行
+为有以下几种：</p>
+<table>
+<thead>
+<tr>
+<th>行为</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NO ACTION</td>
+<td>当在父表中删除/更新对应记录时，首先检查该记录是否有对应外键，如果有则不允许删除/更新。 (与 RESTRICT 一致) 默认行为</td>
+</tr>
+<tr>
+<td>RESTRICT</td>
+<td>当在父表中删除/更新对应记录时，首先检查该记录是否有对应外键，如果有则不允许删除/更新。 (与 NO ACTION 一致) 默认行为</td>
+</tr>
+<tr>
+<td>CASCADE</td>
+<td>当在父表中删除/更新对应记录时，首先检查该记录是否有对应外键，如果有，则也删除/更新外键在子表中的记录</td>
+</tr>
+<tr>
+<td>SET NULL</td>
+<td>当在父表中删除对应记录时，首先检查该记录是否有对应外键，如果有则设置子表中该外键值为null（这就要求该外键允许取null）</td>
+</tr>
+<tr>
+<td>SET DEFAULT</td>
+<td>父表有变更时，子表将外键列设置成一个默认的值 (Innodb不支持)</td>
+</tr>
+</tbody>
+</table>
+<p>具体语法为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w">  </span><span class="err">表名</span><span class="w">  </span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w">  </span><span class="err">外键名称</span><span class="w">  </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w">  </span><span class="p">(</span><span class="err">外键字段</span><span class="p">)</span><span class="w">   </span><span class="k">REFERENCES</span><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="err">主表名</span><span class="w"> </span><span class="p">(</span><span class="err">主表字段名</span><span class="p">)</span><span class="w">   </span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">CASCADE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="多表查询">多表查询</h2>
 <h3 id="多表关系">多表关系</h3>
+<p>项目开发中，在进行数据库表结构设计时，会根据业务需求及业务模块之间的关系，分析并设计表结
+构，由于业务之间相互关联，所以各个表结构之间也存在着各种联系，基本上分为三种：</p>
+<ul>
+<li>
+<p><strong>一对多(多对一)</strong></p>
+<ul>
+<li>案例: 部门 与 员工的关系</li>
+<li>关系: 一个部门对应多个员工，一个员工对应一个部门</li>
+<li>实现: 在多的一方建立外键，指向一的一方的主键</li>
+</ul>
+</li>
+<li>
+<p><strong>多对多</strong></p>
+<ul>
+<li>
+<p>案例: 学生 与 课程的关系</p>
+</li>
+<li>
+<p>关系: 一个学生可以选修多门课程，一门课程也可以供多个学生选择</p>
+</li>
+<li>
+<p>实现: 建立第三张中间表，中间表至少包含两个外键，分别关联两方主键</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>一对一</strong></p>
+<ul>
+<li>
+<p>案例: 用户 与 用户详情的关系</p>
+</li>
+<li>
+<p><strong>关系: 一对一关系，多用于单表拆分，将一张表的基础字段放在一张表中，其他详情字段放在另一张表中，以提升操作效率</strong></p>
+</li>
+<li>
+<p>实现: 在任意一方加入外键，关联另外一方的主键，并且设置外键为唯一的(UNIQUE)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="连接查询">连接查询</h3>
+<ul>
+<li><strong>内连接：相当于查询A、B交集部分数据</strong></li>
+<li><strong>外连接：</strong>
+<ul>
+<li><strong>左外连接：查询左表所有数据，以及两张表交集部分数据</strong></li>
+<li><strong>右外连接：查询右表所有数据，以及两张表交集部分数据</strong></li>
+<li><strong>自连接：当前表与自身的连接查询，自连接必须使用表别名</strong></li>
+</ul>
+</li>
+</ul>
 <h3 id="内连接">内连接</h3>
+<p><strong>内连接的语法分为两种: 隐式内连接、显式内连接</strong></p>
+<ul>
+<li>
+<p><strong>隐式内连接</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">  </span><span class="err">字段列表</span><span class="w">   </span><span class="k">FROM</span><span class="w">   </span><span class="err">表</span><span class="mi">1</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="err">表</span><span class="mi">2</span><span class="w">   </span><span class="k">WHERE</span><span class="w">   </span><span class="err">条件</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>显式内连接</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">  </span><span class="err">字段列表</span><span class="w">   </span><span class="k">FROM</span><span class="w">   </span><span class="err">表</span><span class="mi">1</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="k">INNER</span><span class="w"> </span><span class="p">]</span><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="err">表</span><span class="mi">2</span><span class="w">  </span><span class="k">ON</span><span class="w">  </span><span class="err">连接条件</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<div class="details admonition tip">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>案例A: 隐式内连接实现<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- A. 查询每一个员工的姓名 , 及关联的部门的名称 (隐式内连接实现)
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 表结构: emp , dept
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 连接条件: emp.dept_id = dept.id
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 为每一张表起别名,简化SQL编写
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+<div class="details admonition tip">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>案例B: 显式内连接实现<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- B. 查询每一个员工的姓名 , 及关联的部门的名称 (显式内连接实现) 
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- INNER JOIN ... ON ...
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 表结构: emp , dept
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 连接条件: emp.dept_id = dept.id
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w">  </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 为每一张表起别名,简化SQL编写
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w">  </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+<blockquote>
+<p>注意事项: 一旦为表起了别名，就不能再使用表名来指定对应的字段了，此时只能够使用别名来指定字段。</p>
+</blockquote>
 <h3 id="外连接">外连接</h3>
+<p><strong>外连接分为两种，分别是：左外连接 和 右外连接</strong></p>
+<ul>
+<li>
+<p><strong>左外连接</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">  </span><span class="err">字段列表</span><span class="w">   </span><span class="k">FROM</span><span class="w">   </span><span class="err">表</span><span class="mi">1</span><span class="w">  </span><span class="k">LEFT</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="k">OUTER</span><span class="w"> </span><span class="p">]</span><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="err">表</span><span class="mi">2</span><span class="w">  </span><span class="k">ON</span><span class="w">  </span><span class="err">条件</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>左外连接相当于查询表1(左表)的所有数据，当然也包含表1和表2交集部分的数据</p>
+</blockquote>
+</li>
+<li>
+<p><strong>右外连接</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">  </span><span class="err">字段列表</span><span class="w">   </span><span class="k">FROM</span><span class="w">   </span><span class="err">表</span><span class="mi">1</span><span class="w">  </span><span class="k">RIGHT</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="k">OUTER</span><span class="w"> </span><span class="p">]</span><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="err">表</span><span class="mi">2</span><span class="w">  </span><span class="k">ON</span><span class="w">  </span><span class="err">条件</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>右外连接相当于查询表2(右表)的所有数据，当然也包含表1和表2交集部分的数据</p>
+</blockquote>
+</li>
+</ul>
+<div class="details admonition tip">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>案例A: 左外连接<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- A. 查询emp表的所有数据, 和对应的部门信息 
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 由于需求中提到，要查询emp的所有数据，所以是不能内连接查询的，需要考虑使用外连接查询。
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 表结构: emp, dept
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 连接条件: emp.dept_id = dept.id
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">outer</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+<div class="details admonition tip">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>案例B: 右外连接<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- B. 查询dept表的所有数据, 和对应的员工信息(右外连接)
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 由于需求中提到，要查询dept表的所有数据，所以是不能内连接查询的，需要考虑使用外连接查询
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 表结构: emp, dept
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 连接条件: emp.dept_id = dept.id
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">right</span><span class="w"> </span><span class="k">outer</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">outer</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">id</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+<blockquote>
+<p>注意事项：<strong>左外连接和右外连接是可以相互替换的，只需要调整在连接查询时SQL中，表结构的先后顺</strong>
+<strong>序就可以了。而我们在日常开发使用时，更偏向于左外连接。</strong></p>
+</blockquote>
 <h3 id="自连接">自连接</h3>
+<p><strong>自连接查询，顾名思义，就是自己连接自己，也就是把一张表连接查询多次。</strong></p>
+<ul>
+<li>
+<p><strong>语法</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">  </span><span class="err">字段列表</span><span class="w">   </span><span class="k">FROM</span><span class="w">   </span><span class="err">表</span><span class="n">A</span><span class="w">   </span><span class="err">别名</span><span class="n">A</span><span class="w">   </span><span class="k">JOIN</span><span class="w">  </span><span class="err">表</span><span class="n">A</span><span class="w">    </span><span class="err">别名</span><span class="n">B</span><span class="w">   </span><span class="k">ON</span><span class="w">  </span><span class="err">条件</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>而对于自连接查询，可以是内连接查询，也可以是外连接查询</p>
+</blockquote>
+</li>
+</ul>
+<div class="details admonition tip">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>案例: 自连接<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- A. 查询员工 及其 所属领导的名字
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 表结构: emp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">managerid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- B. 查询所有员工 emp 及其领导的名字 emp , 如果员工没有领导, 也需要查询出来
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 表结构: emp a , emp b
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="s1">&#39;员工&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="s1">&#39;领导&#39;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">managerid</span><span class="w"> </span><span class="o">=</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">b</span><span class="p">.</span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+<blockquote>
+<p>注意事项:  <strong>在自连接查询中，必须要为表起别名，要不然我们不清楚所指定的条件、返回的字段，到底</strong>
+<strong>是哪一张表的字段</strong></p>
+</blockquote>
+<h3 id="联合查询">联合查询</h3>
+<p><strong>对于union查询，就是把多次查询的结果合并起来，形成一个新的查询结果集</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">  </span><span class="err">字段列表</span><span class="w">   </span><span class="k">FROM</span><span class="w">   </span><span class="err">表</span><span class="n">A</span><span class="w">  </span><span class="p">...</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">UNION</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">SELECT</span><span class="w">  </span><span class="err">字段列表</span><span class="w">  </span><span class="k">FROM</span><span class="w">   </span><span class="err">表</span><span class="n">B</span><span class="w">  </span><span class="p">....</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>对于联合查询的多张表的列数必须保持一致，字段类型也需要保持一致</strong></li>
+<li><strong>union all 会将全部的数据直接合并在一起，union 会对合并之后的数据去重</strong></li>
+</ul>
+<div class="details admonition tip">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>案例: 联合查询<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="c1">-- A. 将薪资低于 5000 的员工 , 和 年龄大于 50 岁的员工全部查询出来.
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 当前对于这个需求，我们可以直接使用多条件查询，使用逻辑运算符 or 连接即可。 那这里呢，我们
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- 也可以通过union/union all来联合查询
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">union</span><span class="w"> </span><span class="k">all</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">-- 去重
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5000</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">union</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
+<blockquote>
+<p><strong>注意： 如果多条查询语句查询出来的结果，字段数量不一致，在进行union/union all联合查询时，将会报错</strong></p>
+</blockquote>
 <h3 id="子查询">子查询</h3>
 <h2 id="事物">事物</h2>
 </div><div class="post-footer" id="post-footer">
