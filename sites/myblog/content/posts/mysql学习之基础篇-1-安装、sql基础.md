@@ -605,7 +605,41 @@ entrydate asc limit 5 ;
 
 #### 执行顺序
 
-![](img\mysql学习之基础篇-DQL执行顺序.jpg)
+```sql
+SELECT            执行顺序
+    字段列表          4
+FROM
+    表名列表          1
+WHERE
+    条件列表          2
+GROUP  BY
+    分组字段列表       
+HAVING               3
+    分组后条件列表
+ORDER BY
+    排序字段列表       5 
+LIMIT
+    分页参数          6
+```
+
+故而顺序为： 
+
+```sql
+FROM
+    表名列表 
+WHERE
+    条件列表  
+GROUP  BY
+    分组字段列表       
+HAVING              
+    分组后条件列表
+SELECT       
+    字段列表
+ORDER BY
+    排序字段列表       
+LIMIT
+    分页参数          
+```
 
 ### DCL 管理数据库用户、控制数据库的访问权限
 
@@ -616,13 +650,9 @@ DCL英文全称是Data Control Language(数据控制语言)，用来管理数据
 
 - 查询用户 `select * from mysql.user;`
 
-  查询的结果如下:
-
-  ![](img\mysql学习之基础篇-DCL查询用户.jpg)
-
   >其中 Host代表当前用户访问的主机, 如果为localhost, 仅代表只能够在当前本机访问，是不可以
   >远程访问的。 User代表的是访问该数据库的用户名。在MySQL中需要通过Host和User来唯一标识一个用户
-
+  
 - 创建用户
 
   ```sql
