@@ -3,14 +3,22 @@
         <title>明里的博客</title>
         <link>https://demo122.github.io/</link>
         <description>明里的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 25 Jun 2022 20:50:39 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 03 Jul 2022 20:50:39 &#43;0800</lastBuildDate>
             <atom:link href="https://demo122.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>Mysql学习之基础篇</title>
-    <link>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/</link>
+    <title>mysql学习之基础篇-2-约束、多表查询、事物</title>
+    <link>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87-2-%E7%BA%A6%E6%9D%9F%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E4%BA%8B%E7%89%A9/</link>
+    <pubDate>Sun, 03 Jul 2022 20:50:39 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87-2-%E7%BA%A6%E6%9D%9F%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E4%BA%8B%E7%89%A9/</guid>
+    <description><![CDATA[约束 概述 概念：约束是作用于表中字段上的规则，用于限制存储在表中的数据。 目的：保证数据库中数据的正确、有效性和完整性。 外键约束 多表查询 多表关系]]></description>
+</item>
+<item>
+    <title>mysql学习之基础篇-1-安装、sql基础</title>
+    <link>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87-1-%E5%AE%89%E8%A3%85sql%E5%9F%BA%E7%A1%80/</link>
     <pubDate>Sat, 25 Jun 2022 20:50:39 &#43;0800</pubDate>
     <author>明里</author>
-    <guid>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/</guid>
+    <guid>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87-1-%E5%AE%89%E8%A3%85sql%E5%9F%BA%E7%A1%80/</guid>
     <description><![CDATA[Mysql概述 mysql安装与卸载 MySQL安装文档-Windows版 - 明里的博客 (demo122.github.io) MySQL卸载文档-Windows版 - 明里的博客 (demo122.github.io) 如果安]]></description>
 </item>
 <item>
@@ -76,14 +84,6 @@
     <author>明里</author>
     <guid>https://demo122.github.io/%E9%9D%A2%E8%AF%95/</guid>
     <description><![CDATA[八股文 牛客八股 javaguide]]></description>
-</item>
-<item>
-    <title>仿牛客社区</title>
-    <link>https://demo122.github.io/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA/</link>
-    <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
-    <author>明里</author>
-    <guid>https://demo122.github.io/%E4%BB%BF%E7%89%9B%E5%AE%A2%E7%A4%BE%E5%8C%BA/</guid>
-    <description><![CDATA[仿牛客社区 springboot集成第三方 集成reids 导包 spring-boot-starter-data-redis 1 2 3 4 &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt; &lt;/dependency&gt; 配置Redis 配置数据源 1 2 3 4 5 spring: redis: database: 11 host: localhost port: 6379 编写配置类，构]]></description>
 </item>
 </channel>
 </rss>
