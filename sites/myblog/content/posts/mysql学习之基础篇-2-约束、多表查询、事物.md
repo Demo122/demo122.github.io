@@ -322,7 +322,336 @@ select * from emp where age > 50;
 
 ### 子查询
 
+**SQL语句中嵌套SELECT语句，称为嵌套查询，又称子查询**
+
+例如：`SELECT  *  FROM   t1   WHERE  column1 =  ( SELECT  column1  FROM  t2 );`
+
+- **标量子查询（子查询结果为单个值）**
+
+  **子查询返回的结果是单个值（数字、字符串、日期等），最简单的形式，这种子查询称为标量子查询。**
+  **常用的操作符：=  <>  >   >=   <  <=**
+
+  ```sql
+  -- 查询 "销售部" 的所有员工信息
+  select * from emp where dept_id = (select id from dept where name = '销售部');
+  ```
+
+- **列子查询(子查询结果为一列)**
+
+  **子查询返回的结果是一列（可以是多行），这种子查询称为列子查询。**
+
+  **常用的操作符：IN 、NOT IN 、 ANY 、SOME 、 ALL**
+
+  | 操作符 | 描述                                   |
+  | ------ | -------------------------------------- |
+  | IN     | 在指定的集合范围之内，多选一           |
+  | NOT IN | 不在指定的集合范围之内                 |
+  | ANY    | 子查询返回列表中，有任意一个满足即可   |
+  | SOME   | 与ANY等同，使用SOME的地方都可以使用ANY |
+  | ALL    | 子查询返回列表的所有值都必须满足       |
+
+  ```sql
+  -- 查询 "销售部" 和 "市场部" 的所有员工信息
+  select * from emp where dept_id in (select id from dept where name = '销售部' or 
+  name = '市场部');
+  ```
+
+- **行子查询(子查询结果为一行)**
+
+  **子查询返回的结果是一行（可以是多列），这种子查询称为行子查询**
+
+  **常用的操作符：= 、<> 、IN 、NOT IN**
+
+  ```sql
+  -- 查询与 "张无忌" 的薪资及直属领导相同的员工信息 ;
+  -- 这个需求同样可以拆解为两步进行:
+  -- 1. 查询 "张无忌" 的薪资及直属领导
+  select salary, managerid from emp where name = '张无忌';
+  -- 2. 查询与 "张无忌" 的薪资及直属领导相同的员工信息 
+  select * from emp where (salary,managerid) = (select salary, managerid from emp 
+  where name = '张无忌');
+  ```
+
+- **表子查询(子查询结果为多行多列)**
+
+  **子查询返回的结果是多行多列，这种子查询称为表子查询**
+
+  **常用的操作符：IN**
+
+  ```sql
+  -- 案例1 
+  -- 查询与 "鹿杖客" , "宋远桥" 的职位和薪资相同的员工信息
+  -- 分解为两步执行
+  -- 1. 查询 "鹿杖客" , "宋远桥" 的职位和薪资
+  select job, salary from emp where name = '鹿杖客' or name = '宋远桥';
+  -- 2. 查询与 "鹿杖客" , "宋远桥" 的职位和薪资相同的员工信息
+  select * from emp where (job,salary) in ( select job, salary from emp where name = 
+  '鹿杖客' or name = '宋远桥' );
+  
+  -- 案例2
+  -- 查询入职日期是 "2006-01-01" 之后的员工信息 , 及其部门信息
+  -- 1. 入职日期是 "2006-01-01" 之后的员工信息
+  select * from emp where entrydate > '2006-01-01';
+  -- 2. 查询这部分员工, 对应的部门信息
+  select e.*, d.* from (select * from emp where entrydate > '2006-01-01') e left 
+  join dept d on e.dept_id = d.id ;
+  ```
+
+### 多表查询案例
+
+**这里主要涉及到的表就三张：emp员工表、dept部门表、salgrade薪资等级表**
+
+**表结构代码如下：**
+
+```sql
+create table test2.dept
+(
+    id   int auto_increment comment 'ID' primary key,
+    name varchar(50) not null comment '部门名称'
+)comment '部门表';
+
+create table test2.emp
+(
+    id        int auto_increment comment 'ID'  primary key,
+    name      varchar(50) not null comment '姓名',
+    age       int         null comment '年龄',
+    job       varchar(20) null comment '职位',
+    salary    int         null comment '薪资',
+    entrydate date        null comment '入职时间',
+    managerid int         null comment '直属领导ID',
+    dept_id   int         null comment '部门ID',
+    constraint fk_emp_dept_id foreign key (dept_id) references test2.dept (id)
+)comment '员工表';
+
+create table test2.salgrade
+(
+    grade int null,
+    losal int null,
+    hisal int null
+)comment '薪资等级表';
+
+```
+
+**案例**
+
+```sql
+-- 1. 查询员工的姓名、年龄、职位、部门信息 （隐式内连接）
+-- 表: emp , dept
+-- 连接条件: emp.dept_id = dept.id
+
+select e.name, e.age, e.job, d.name
+from emp e,
+     dept d
+where e.dept_id = d.id;
 
 
-## 事物
 
+-- 2. 查询年龄小于30岁的员工的姓名、年龄、职位、部门信息（显式内连接）
+-- 表: emp , dept
+-- 连接条件: emp.dept_id = dept.id
+select e.name, e.age, e.job, d.name
+from emp e
+         inner join dept d on e.dept_id = d.id
+where e.age < 30;
+
+
+-- 3. 查询拥有员工的部门ID、部门名称
+-- 表: emp , dept
+-- 连接条件: emp.dept_id = dept.id
+select distinct d.id, d.name
+from emp e,
+     dept d
+where e.dept_id = d.id;
+
+-- 4. 查询所有年龄大于40岁的员工, 及其归属的部门名称; 如果员工没有分配部门, 也需要展示出来
+-- 表: emp , dept
+-- 连接条件: emp.dept_id = dept.id
+-- 外连接
+select e.*, d.name
+from emp e
+         left join dept d on e.dept_id = d.id
+where e.age > 40;
+
+
+-- 5. 查询所有员工的工资等级
+-- 表: emp , salgrade
+-- 连接条件 : emp.salary >= salgrade.losal and emp.salary <= salgrade.hisal
+select e.name, e.salary, s.grade
+from emp e,
+     salgrade s
+where e.salary between s.losal and s.hisal;
+
+-- 6. 查询 "研发部" 所有员工的信息及 工资等级
+-- 表: emp , salgrade , dept
+-- 连接条件 : emp.salary between salgrade.losal and salgrade.hisal , emp.dept_id = dept.id
+-- 查询条件 : dept.name = '研发部'
+select e.name, s.grade, d.name
+from emp e,
+     salgrade s,
+     dept d
+where e.salary between s.losal and s.hisal
+  and e.dept_id = d.id
+  and d.name = "研发部";
+
+
+-- 7. 查询 "研发部" 员工的平均工资
+-- 表: emp , dept
+-- 连接条件 :  emp.dept_id = dept.id
+select avg(e.salary)
+from emp e
+         inner join dept d on e.dept_id = d.id
+where d.name = "研发部";
+
+-- 8. 查询工资比 "灭绝" 高的员工信息。
+-- a. 查询 "灭绝" 的薪资
+select salary
+from emp
+where name = "灭绝";
+
+-- b. 查询比她工资高的员工数据
+select *
+from emp
+where salary > (select salary from emp where name = "灭绝");
+
+
+-- 9. 查询比平均薪资高的员工信息
+-- a. 查询员工的平均薪资
+select avg(salary)
+from emp;
+
+-- b. 查询比平均薪资高的员工信息
+select *
+from emp
+where salary > (select avg(salary) from emp);
+
+
+-- 10. 查询低于本部门平均工资的员工信息
+
+-- a. 查询指定部门平均薪资  1
+select avg(e.salary), d.name
+from emp e
+         inner join dept d on e.dept_id = d.id
+where d.id = 1;
+
+select avg(e.salary), d.name
+from emp e
+         inner join dept d on e.dept_id = d.id
+group by d.id;
+
+-- b. 查询低于本部门平均工资的员工信息
+select *
+from emp e1
+where e1.salary < (select avg(e.salary)
+                   from emp e
+                   where e.dept_id = e1.dept_id);
+
+-- 11. 查询所有的部门信息, 并统计部门的员工人数
+select d.*,count(*) "员工人数" from emp e ,dept d where e.dept_id=d.id group by d.id;
+
+# select d.*,count(*) "员工人数" from emp e left join dept d on e.dept_id=d.id group by d.id;
+
+```
+
+## 事务
+
+**事务 是一组操作的集合，它是一个不可分割的工作单位，事务会把所有的操作作为一个整体一起向系**
+**统提交或撤销操作请求，即这些操作要么同时成功，要么同时失败**
+
+### 控制事务一
+
+- **查看/设置事务提交方式**
+
+  ```sql
+  SELECT  @@autocommit ;
+  SET   @@autocommit = 0 ;
+  ```
+
+- **提交事务**
+
+  ```sql
+  COMMIT;
+  ```
+
+- **回滚事务**
+
+  ```sql
+  ROLLBACK;
+  ```
+
+  >**注意：上述的这种方式，我们是修改了事务的自动提交行为, 把默认的自动提交修改为了手动提**
+  >**交, 此时我们执行的DML语句都不会提交, 需要手动的执行commit进行提交。**
+
+### 控制事务二
+
+- **开启事务**
+
+  ```sql
+  START  TRANSACTION   或  BEGIN ;
+  ```
+
+- **提交事务**
+
+  ```sql
+  COMMIT;
+  ```
+
+- **回滚事务**
+
+  ```sql
+  ROLLBACK;
+  ```
+
+### 事务四大特性
+
+- **原子性（Atomicity）：事务是不可分割的最小操作单元，要么全部成功，要么全部失败。**
+- **一致性（Consistency）：事务完成时，必须使所有的数据都保持一致状态。**
+- **隔离性（Isolation）：数据库系统提供的隔离机制，保证事务在不受外部并发操作影响的独立环境下运行。**
+- **持久性（Durability）：事务一旦提交或回滚，它对数据库中的数据的改变就是永久的。**
+
+### 并发事务问题
+
+- **赃读：一个事务读到另外一个事务还没有提交的数据。**
+
+  **比如事务B读取到了事务A未提交的数据。**
+
+- **不可重复读：一个事务先后读取同一条记录，但两次读取的数据不同，称之为不可重复读**
+
+  **事务A两次读取同一条记录，但是读取到的数据却是不一样的。**
+
+- **幻读：一个事务按照条件查询数据时，没有对应的数据行，但是在插入数据时，又发现这行数据**
+  **已经存在，好像出现了 "幻影"。**
+
+### 事务隔离级别
+
+为了解决并发事务所引发的问题，在数据库中引入了事务隔离级别。主要有以下几种：
+
+| 隔离级别              | 脏读 | 不可重复读 | 幻读 |
+| --------------------- | ---- | ---------- | ---- |
+| Read uncommitted      | √    | √          | √    |
+| Read committed        | ×    | √          | √    |
+| Repeatable Read(默认) | ×    | ×          | √    |
+| Serializable          | ×    | ×          | ×    |
+
+- 查看事务隔离级别
+
+  ```sql
+  SELECT @@TRANSACTION_ISOLATION;
+  ```
+
+- 设置事务隔离级别
+
+  ```sql
+  SET  [ SESSION | GLOBAL ]  TRANSACTION  ISOLATION  LEVEL  { READ UNCOMMITTED | 
+  READ COMMITTED | REPEATABLE READ | SERIALIZABLE }
+  ```
+
+  -
+
+  ```sql
+  select @@transaction_isolation;
+  
+  set session transaction isolation level read committed ;
+  set session transaction isolation level repeatable read ;
+  ```
+
+> **注意：事务隔离级别越高，数据越安全，但是性能越低。**
