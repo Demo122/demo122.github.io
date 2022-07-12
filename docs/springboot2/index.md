@@ -179,6 +179,22 @@
 
 ### 热部署
 
+- 开启开发者工具
+
+  ```xml
+  <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <optional>true</optional>
+  </dependency>
+  ```
+
+- 激活热部署：Ctrl + F9
+- 关于热部署
+  - 重启（Restart）：自定义开发代码，包含类、页面、配置文件等，加载位置restart类加载器
+  - 重载（ReLoad）：jar包，加载位置base类加载器
+  - **热部署仅仅加载当前开发者自定义开发的资源，不加载jar资源**
+
 ### 配置高级
 
 - **使用@ConfigurationProperties为第三方bean绑定属性**

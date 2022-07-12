@@ -3,10 +3,10 @@
         <title>Springboot - 标签 - 明里的博客</title>
         <link>https://demo122.github.io/tags/springboot/</link>
         <description>Springboot - 标签 - 明里的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 27 Jun 2022 13:52:20 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/tags/springboot/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 22 Jun 2022 13:52:20 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/tags/springboot/" rel="self" type="application/rss+xml" /><item>
     <title>Springboot笔记-入门</title>
     <link>https://demo122.github.io/springboot2/</link>
-    <pubDate>Mon, 27 Jun 2022 13:52:20 &#43;0800</pubDate>
+    <pubDate>Wed, 22 Jun 2022 13:52:20 &#43;0800</pubDate>
     <author>明里</author>
     <guid>https://demo122.github.io/springboot2/</guid>
     <description><![CDATA[Springboot笔记-入门 基础 整合junit @SpringBootTest 类型：测试类注解 位置：测试类定义上方 作用：设置JUnit加载的SpringBoot启动类 导]]></description>
