@@ -3,7 +3,15 @@
         <title>git - 标签 - 明里的博客</title>
         <link>https://demo122.github.io/tags/git/</link>
         <description>git - 标签 - 明里的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 10 Jun 2022 21:34:53 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/tags/git/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 14 Jul 2022 13:52:20 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/tags/git/" rel="self" type="application/rss+xml" /><item>
+    <title>PDF</title>
+    <link>https://demo122.github.io/pdf/</link>
+    <pubDate>Thu, 14 Jul 2022 13:52:20 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/pdf/</guid>
+    <description><![CDATA[1.git讲义]]></description>
+</item>
+<item>
     <title>Git常用操作</title>
     <link>https://demo122.github.io/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
     <pubDate>Fri, 10 Jun 2022 21:34:53 &#43;0800</pubDate>
