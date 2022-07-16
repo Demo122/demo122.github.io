@@ -3,15 +3,7 @@
         <title>开发工具 - 分类 - 明里的博客</title>
         <link>https://demo122.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</link>
         <description>开发工具 - 分类 - 明里的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 14 Jul 2022 13:52:20 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="self" type="application/rss+xml" /><item>
-    <title>PDF</title>
-    <link>https://demo122.github.io/pdf/</link>
-    <pubDate>Thu, 14 Jul 2022 13:52:20 &#43;0800</pubDate>
-    <author>明里</author>
-    <guid>https://demo122.github.io/pdf/</guid>
-    <description><![CDATA[1.git讲义]]></description>
-</item>
-<item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 08 Jun 2022 13:52:20 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="self" type="application/rss+xml" /><item>
     <title>docker基础</title>
     <link>https://demo122.github.io/docker%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/</link>
     <pubDate>Wed, 08 Jun 2022 13:52:20 &#43;0800</pubDate>

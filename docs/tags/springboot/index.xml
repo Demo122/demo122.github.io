@@ -1,9 +1,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Springboot - 标签 - 明里的博客</title>
+        <title>springboot - 标签 - 明里的博客</title>
         <link>https://demo122.github.io/tags/springboot/</link>
-        <description>Springboot - 标签 - 明里的博客</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 22 Jun 2022 13:52:20 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/tags/springboot/" rel="self" type="application/rss+xml" /><item>
+        <description>springboot - 标签 - 明里的博客</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 14 Jul 2022 13:52:20 &#43;0800</lastBuildDate><atom:link href="https://demo122.github.io/tags/springboot/" rel="self" type="application/rss+xml" /><item>
+    <title>PDF汇总</title>
+    <link>https://demo122.github.io/pdf%E6%B1%87%E6%80%BB/</link>
+    <pubDate>Thu, 14 Jul 2022 13:52:20 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/pdf%E6%B1%87%E6%80%BB/</guid>
+    <description><![CDATA[含有git、springboot、ssm、mysql、redis的pdf资料 git讲义 maven 01-Maven基础 02-Maven高级 springboot Sprin]]></description>
+</item>
+<item>
     <title>Springboot笔记-入门</title>
     <link>https://demo122.github.io/springboot2/</link>
     <pubDate>Wed, 22 Jun 2022 13:52:20 &#43;0800</pubDate>
