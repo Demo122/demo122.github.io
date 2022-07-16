@@ -14,6 +14,14 @@
     <description><![CDATA[1.git讲义]]></description>
 </item>
 <item>
+    <title>mysql学习之进阶篇-1-索引</title>
+    <link>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E9%98%B6%E7%AF%87-1-%E7%B4%A2%E5%BC%95/</link>
+    <pubDate>Tue, 12 Jul 2022 20:50:39 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%BF%9B%E9%98%B6%E7%AF%87-1-%E7%B4%A2%E5%BC%95/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>mysql学习之基础篇-2-约束、多表查询、事物</title>
     <link>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87-2-%E7%BA%A6%E6%9D%9F%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E4%BA%8B%E7%89%A9/</link>
     <pubDate>Sun, 03 Jul 2022 20:50:39 &#43;0800</pubDate>
@@ -27,7 +35,7 @@
     <pubDate>Sat, 25 Jun 2022 20:50:39 &#43;0800</pubDate>
     <author>明里</author>
     <guid>https://demo122.github.io/mysql%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87-1-%E5%AE%89%E8%A3%85sql%E5%9F%BA%E7%A1%80/</guid>
-    <description><![CDATA[Mysql概述 mysql安装与卸载 MySQL安装文档-Windows版 - 明里的博客 (demo122.github.io) MySQL卸载文档-Windows版 - 明里的博客 (demo122.github.io) 如果安]]></description>
+    <description><![CDATA[Mysql概述 mysql安装与卸载 windows MySQL安装文档-Windows版 - 明里的博客 (demo122.github.io) MySQL卸载文档-Windows版 - 明里的博客 (demo122.github.io) linux M]]></description>
 </item>
 <item>
     <title>Springboot笔记-入门</title>
@@ -54,6 +62,14 @@
     <description><![CDATA[字符编解码 字符集 GBK UTF-8 GBK: 汉字占两个字节 UTF-8: 汉字占三个字节 任何字符集中英文和数字都占一个字节 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 /** * 字符集 GBK UTF-8 * GBK:]]></description>
 </item>
 <item>
+    <title>MySQL8.0.26-Linux版安装</title>
+    <link>https://demo122.github.io/mysql%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3-linux/</link>
+    <pubDate>Sun, 12 Jun 2022 20:50:39 &#43;0800</pubDate>
+    <author>明里</author>
+    <guid>https://demo122.github.io/mysql%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3-linux/</guid>
+    <description><![CDATA[MySQL8.0.26-Linux版安装 1. 准备一台Linux服务器 云服务器或者虚拟机都可以; Linux的版本为 CentOS7; 2. 下载Linux版MySQL]]></description>
+</item>
+<item>
     <title>Git常用操作</title>
     <link>https://demo122.github.io/git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
     <pubDate>Fri, 10 Jun 2022 21:34:53 &#43;0800</pubDate>
@@ -68,22 +84,6 @@
     <author>明里</author>
     <guid>https://demo122.github.io/crontab%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/</guid>
     <description><![CDATA[crontab定时任务 Linux crontab 是用来定期执行程序的命令。 当安装完成操作系统之后，默认便会启动此任务调度命令。 crond 命令每分钟会定期检查是否有要执行的]]></description>
-</item>
-<item>
-    <title>mysql安装使用</title>
-    <link>https://demo122.github.io/mysql/</link>
-    <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
-    <author>明里</author>
-    <guid>https://demo122.github.io/mysql/</guid>
-    <description><![CDATA[mysql mysql安装和配置 MySQL 5.7.24 解压版,解压安装 配置 添加环境变量 新建配置文件 新建一个文本文件，内容如下： 1 2 3 4 5 6 7 [mysql] default-character-set=utf8 [mysqld] character-set-server=utf8 default-storage-engine=INNODB sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION 把上面的文本文件]]></description>
-</item>
-<item>
-    <title>ssm配置</title>
-    <link>https://demo122.github.io/ssm%E9%85%8D%E7%BD%AE/</link>
-    <pubDate>Thu, 09 Jun 2022 13:52:20 &#43;0800</pubDate>
-    <author>明里</author>
-    <guid>https://demo122.github.io/ssm%E9%85%8D%E7%BD%AE/</guid>
-    <description><![CDATA[Spring配置-applicationContext.xml 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39]]></description>
 </item>
 </channel>
 </rss>
